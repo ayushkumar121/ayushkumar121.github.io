@@ -207,3 +207,12 @@
     left: 506px;
     top: 280px;
   }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }  
+
+  th, td {
+    padding: 15px;
+  }

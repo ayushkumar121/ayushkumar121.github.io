@@ -35,7 +35,15 @@ function closeKnob() {
 
         if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
             task_done = true
+            
+            document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)} ml`
+
+            var result = ( readingTitration.toPrecision(2) * 0.0282 * 10 ) / 2
+
+            document.querySelector('#result').innerHTML = `<b>Result : ${result.toPrecision(4)}</b>`
+
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH Solution')
+            addTask('🎉 Experiment Complete 🎉')
         }
     }
 }

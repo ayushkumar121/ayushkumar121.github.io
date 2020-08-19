@@ -5,6 +5,13 @@ var sampleImages = [
     './assets/3passoil.png',
 ]
 
+var sampleNames = [
+    'Fresh Oil',
+    '1st Pass Oil',
+    '2nd Pass Oil',
+    '3rd Pass Oil',
+]
+
 var selectedSample = null
 
 function selectSample(sender, id) {
@@ -18,6 +25,7 @@ function selectSample(sender, id) {
         })
 
         document.querySelector('#sampleimage').src = sampleImages[id]
+        document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
 
         addTask('<b>Step 1</b> Sample selection')
     }
