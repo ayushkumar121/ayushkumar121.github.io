@@ -1,1 +1,232 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Home</title><link rel="stylesheet" href="/style.27c41d56.css"></head><body> <nav class="overlay-nav"> <button id="menu-button"> <svg width="64" height="64" viewBox="0 0 16 16" fill="#0a0a0a" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M14 10.5a.5.5 0 00-.5-.5h-3a.5.5 0 000 1h3a.5.5 0 00.5-.5zm0-3a.5.5 0 00-.5-.5h-7a.5.5 0 000 1h7a.5.5 0 00.5-.5zm0-3a.5.5 0 00-.5-.5h-11a.5.5 0 000 1h11a.5.5 0 00.5-.5z"/></svg> </button> <div id="title-card"> <span><b>1080p</b> <br> Graphics</span> </div> <div class="overlay"> <div class="nav-links"> <div style="margin-left:20%;"><a href="/index.html">H<span class="outline-light">ome</span></a></div> <div><a href="https://www.behance.net/" target="_blank">B<span class="outline-light">ehance</span></a></div> <div style="margin-left:20%;"><a href="/about.html">A<span class="outline-light">bout</span></a> </div> <div class="side-links"> <div><a href="#">+91 88586 70503</a></div> <div><a href="#">ayushkumar121@<i>outlook.com</i></a></div> </div> </div> </div> </nav> <main data-router-wrapper=""> <section data-router-view="home" class="home"> <div class="home-content"> <div class="home-presentation"> <section class="slide" id="slide-1"> <div class="row"> <div class="col"> <video class="hero" src="/hero-2.41ee41c0.mp4" loop autoplay muted> </video> </div> <div class="col"> <h1>A digital-first creative studio that designs to engage & impact</h1> <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut varius justo, ut volutpat turpis. Phasellus efficitur ipsum nec nunc auctor, quis malesuada ante egestas. Ut varius ex sed diam sagittis bibendum. </p> <p style="color:#666">WEBSITES . ARTWORK . VIDEOS</p> </div> </div> </section> <section class="slide" id="slide-2"> <h1>Who we are</h1> <p class="animated-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut varius justo, ut volutpat turpis. Phasellus efficitur ipsum nec nunc auctor, quis malesuada ante egestas. Ut varius ex sed diam sagittis bibendum. Morbi vitae varius ex, sit amet egestas libero. Sed feugiat nibh sed neque pretium, ut volutpat metus facilisis. Nulla sed vehicula sem, a egestas quam. Aliquam ultrices hendrerit interdum. Maecenas efficitur sodales sem at pulvinar. Duis in nisl ipsum. </p> <h1>What we do</h1> <div class="services-container animated-text"> <img src="/SupportTeam.91805bcc.jpg" alt="Support"> <img src="/Tips.983189cf.jpg" alt="Tips"> <img src="/Expert.a53e6667.jpg" alt="Expert"> </div> </section> <section class="slide" id="slide-3"> <h1 class="animated-text">Have a project in mind?</h1> <h2 class="animated-text"> <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@<i class="outline-dark">outlook.com</i></a> </h2> </section> </div> </div> </section> </main> <script src="/js.2a55a90e.js"></script> </body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>HBTU vLab</title>
+
+  <link rel="stylesheet" href="./style/index.css" />
+</head>
+
+<body>
+  <header>
+    <h1>Determination of %FFA in Cooking Oil/Fat</h1>
+  </header>
+
+  <main>
+    <div class="super-container">
+      <div class="hero">
+        <div id="expriment" style="background-image: url('./assets/bg.png');">
+          <div class="step active" id="step-0">
+            <p style="text-align: center; font-size: 28px; width: 100%; background: #fff;padding: 10px 0;">Make yourself
+              Familiar with the instrument</p>
+
+            <div class="instruments">
+              <span class="tooltip element" style="top: 320px;left: 570px;">
+                <img src="./assets/measuring cylinder.png" />
+                <span class="tooltiptext">Measuring cylinder</span>
+              </span>
+              <span class="tooltip element" style="top: 370px;left: 510px;">
+                <img src="./assets/flask.png" />
+                <span class="tooltiptext">Conical Flask</span>
+              </span>
+              <span class="tooltip element" style="left: 250px;top: 350px;">
+                <img src="./assets/weighing-scale.png" />
+                <span class="tooltiptext">Weighing Scale</span>
+              </span>
+
+              <span class="tooltip element" style="left: 650px;top: 350px;">
+                <img src="./assets/gas stove.png" />
+                <span class="tooltiptext">Burner</span>
+              </span>
+
+              <span class="tooltip element" style="top: 60px;left: 470px; z-index: 0;">
+                <img src="./assets/burette.png" />
+                <span class="tooltiptext">Burette</span>
+              </span>
+            </div>
+
+          </div>
+
+          <div class="step" id="step-1">
+            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 1: Select the Sample
+            </p>
+
+            <div class="instruments step1-tools">
+              <div class="element tooltip" onclick="selectSample(this, 0)" style="left: 260px;top: 280px;">
+                <img src="./assets/Fresh Oil.png" />
+                <div class="tooltiptext">Select This Sample</div>
+              </div>
+              <div class="element tooltip" onclick="selectSample(this, 1)" style="left: 370px;top: 280px;">
+                <img src="./assets/1passoil.png" />
+                <div class="tooltiptext">Select This Sample</div>
+              </div>
+              <div class="element tooltip" onclick="selectSample(this, 2)" style="left: 490px;top: 280px;">
+                <img src="./assets/2passoil.png" />
+                <div class="tooltiptext">Select This Sample</div>
+              </div>
+              <div class="element tooltip" onclick="selectSample(this, 3)" style="left: 600px;top: 280px;">
+                <img src="./assets/3passoil.png" />
+                <div class="tooltiptext">Select This Sample</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="step" id="step-2">
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 2: Weigh 2gms of Oil
+              Sample in conical flask.</p>
+
+            <div class="instruments">
+              <img id="sampleimage" class="element" style="top: 260px;left: 600px;" />
+
+              <div class="element" id="placeflask" onclick="placeFlask()">
+                <img src="./assets/flask.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
+                  flask</small>
+              </div>
+
+              <img src="./assets/weighing-scale.png" class="element" style="top: 350px;left: 230px;" />
+            </div>
+
+            <button class="element" onclick="addSample()" style="top: 430px;left: 200px; opacity: 0;">
+              <img src="./assets/add.svg">
+            </button>
+
+            <button class="element" onclick="zeroReading()" style="top: 430px;left: 300px; opacity: 0;z-index: 5;">
+              <img src="./assets/zero.svg">
+            </button>
+
+            <button class="element" onclick="removeSample()" style="top: 430px;left: 400px; opacity: 0;">
+              <img src="./assets/remove.svg">
+            </button>
+
+
+            <div class="element reading-meter">
+              <div id="sample-reading">0.0</div>
+            </div>
+
+          </div>
+
+          <div class="step" id="step-3">
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 3: Add 50 ml ethyl
+              alcohol in conical flask.</p>
+
+            <div class="instruments">
+              <div class="element" id="step3flask" onclick="pourAlcohol()"
+                style="top: 330px; left: 300px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/flask.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;opacity: 0;">click to pour
+                  alcohol</small>
+              </div>
+
+              <div class="element" id="measuring" onclick="measureAlcohol()"
+                style="top: 330px;left: 430px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/measuring cylinder.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
+                  alcohol</small>
+              </div>
+
+              <img src="./assets/alcohol.png" id="alcoholbottle" class="element" style="top: 300px;left: 620px;" />
+            </div>
+
+          </div>
+
+          <div class="step" id="step-4">
+            <div style="text-align: center; font-size: 28px;background: #fff;padding-top: 10px">
+              Step 4: Heat the mixture upto boiling condition. <br />
+              <div style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px;">⚠
+                Please proceed with caution while working with burner</div>
+            </div>
+
+            <div class="instruments">
+              <img src="./assets/gas stove.png" class="element" style="top: 350px;left: 400px;" />
+
+              <div class="element" onclick="placeFlaskOnBurner()" id="step-4-flask"
+                style="top: 330px;left: 550px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/flask.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
+                  flask</small>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="step" id="step-5">
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 5: Add 2-3 drops of
+              phenolpthalein indicator in hot condition.</p>
+
+            <div class="instruments">
+              <div class="element" id="step5flask" onclick="pourPhenolphthalein()"
+                style="top: 330px;left: 430px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/flask.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
+                  phenolphthalein</small>
+              </div>
+
+              <img src="./assets/Phenolphthalein.png" id="phenolphthalein" class="element"
+                style="top: 350px;left: 620px;" />
+            </div>
+          </div>
+
+          <div class="step" id="step-6">
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 6: Titrate the mixture
+              with 0.1 N NaOH Solution.</p>
+
+            <div class="instruments">
+              <img class="element" src="./assets/burette.png" style="left: 430px; top: 100px; font-weight: 600;" />
+              <img class="element" src="./assets/flask.png" style="left: 453px; top: 350px; font-weight: 600;" />
+
+              <button class="element" style="top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
+                onclick="openKnob()">Open Knob</button>
+              <button class="element" style="top:250px;left: 550px;font-weight: 600; background: #000; color: #fff;"
+                onclick="closeKnob()">Close Knob</button>
+            </div>
+
+            <div class="element" style="bottom:0px; height:50px; width: 100%;  background: #ccc">
+              <div style="width:100%; height: 100%; background: hotpink; display:grid; place-items: center;"
+                id="readingSlider">
+                <p style="font-weight: 600; font-size: 28px; color:#fff" id="readingText">0 ml</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="step" id="step-7" style="background-image: unset; background-color: #fff;">
+            <p style="text-align: center; font-size: 48px;background: #fff;padding: 10px 0;">
+              🎉 Experiment Complete 🎉
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="sidebar">
+        <h1>Completed Tasks</h1>
+        <ul id="taskslist">
+          <li><b>Step 0</b> Instruments Observation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="controls" class="active">
+      <button>
+        <img src="./assets/manual.svg">
+      </button>
+
+      <button onclick="next()">
+        <img src="./assets/forward.svg">
+      </button>
+    </div>
+  </main>
+
+  <script src="./scripts/gsap.min.js"></script>
+  <script src="./scripts/index.js"></script>
+  <script src="./scripts/step1.js"></script>
+  <script src="./scripts/step2.js"></script>
+  <script src="./scripts/step3.js"></script>
+  <script src="./scripts/step4.js"></script>
+  <script src="./scripts/step5.js"></script>
+  <script src="./scripts/step6.js"></script>
+</body>
+
+</html>
