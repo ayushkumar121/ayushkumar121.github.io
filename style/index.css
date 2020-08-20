@@ -166,6 +166,8 @@
 
   #sidebar{
     width: 400px;
+    height: 600px;
+    overflow-y: scroll;
   }
 
   .super-container{

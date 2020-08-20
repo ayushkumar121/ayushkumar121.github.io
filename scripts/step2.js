@@ -20,8 +20,8 @@ function addSample() {
                 .to('#sampleimage', {
                     duration: 2, rotation: -60, onComplete: () => {
                         document.querySelector('#step-2 .instruments').appendChild(drop)
-                        reading += 1
-                        sample += 1
+                        reading += 2
+                        sample += 2
 
                         common()
                     }
@@ -36,8 +36,8 @@ function addSample() {
 function removeSample() {
     if (flaskAdded) {
         if (reading > 0.0) {
-            reading -= 0.5
-            sample -= 0.5
+            reading -= 1
+            sample -= 1
         }
         common()
     }
@@ -71,7 +71,7 @@ function placeFlask() {
         anim1
             .to('#placeflask', { duration: 2, y: -100, x: -180, onStart: () => animating = true })
             .to('#placeflask', { duration: 1, y: -40 })
-            .to('button.element', { duration: 1, opacity: 1 })
+            .to('#step-2 button.element', { duration: 1, opacity: 1 })
             .to(readingObj, {
                 duration: .25, ease: new SteppedEase.config(10), x: 10, onUpdate: () => {
                     reading = readingObj.x
