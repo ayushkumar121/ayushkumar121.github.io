@@ -1,9 +1,9 @@
 var alcoholMeasured = false
 
+gsap.to('#step-3 #arrowHand2', { y: 5, yoyo: true, repeat: 1000 })
 
 function measureAlcohol() {
     if (!alcoholMeasured) {
-
         var drop = document.createElement("img")
         drop.src = './assets/drop.png'
         drop.classList.add('element', 'drop-step-3')
@@ -14,6 +14,7 @@ function measureAlcohol() {
         var anim = gsap.timeline()
 
         anim
+            .to('#alcoholCabottleCap', {y : -50})
             .to('#alcoholbottle', { duration: 2, x: -100, y: -50 })
             .to('#alcoholbottle', {
                 rotation: -45, onComplete: () => {
@@ -22,11 +23,14 @@ function measureAlcohol() {
             })
             .to(drop, { y: 50, opacity: 0 })
             .to('#alcoholbottle', { rotation: 0 })
-            .to('#alcoholbottle', {
-                duration: 2, x: 0, y: 0, onComplete: () => {
+            .to('#alcoholbottle', {duration: 2, x: 0, y: 0})
+            .to('#alcoholCabottleCap', {
+                y:0
+                , onComplete: () => {
                     alcoholMeasured = true
                 }
             })
+            .to('#step-3 #arrowHand2', {x: -130})
             .to('#step3flask small', { opacity: 1 })
 
     }
@@ -51,8 +55,10 @@ function pourAlcohol() {
             })
             .to(drop, { y: 50, opacity: 0 })
             .to('#measuring', { rotation: 0 })
-            .to('#measuring', {
-                duration: 1, x: 0, y: 0, onComplete: () => {
+            .to('#measuring', { duration: 1, x: 0, y: 0})
+            .to('#step-3 #arrowHand2', {
+                opacity: 0
+                , onComplete: () => {
                     task_done = true
                     addTask('<b>Step 3</b> Add 50 ml ethyl alcohol in conical flask')
                 }

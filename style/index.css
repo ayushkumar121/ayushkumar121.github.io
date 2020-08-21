@@ -55,17 +55,18 @@
   #expriment{
     width: 960px;
     height: 500px;
-    border-radius: 8px;
     margin:30px 0;
   }
 
   #controls {
     display: none;
+    position: absolute;
+    margin-top: -150px;
+    right: 500px;
   }
 
   #controls.active{
     display: inline-block;
-    margin-left: 50px;
   }
 
   button {
@@ -173,7 +174,7 @@
   .super-container{
     display: flex;
     justify-content: space-around;
-    margin-top: 5px;
+    margin-top: 50px;
   }
 
   #taskslist{

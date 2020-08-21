@@ -51,6 +51,7 @@ function zeroReading() {
     if (!task_done) {
         if (flaskAdded) {
             reading = 0.0
+            gsap.to('#step-2 #arrowHand', { x: -100 })
         }
         common()
     }
@@ -87,7 +88,7 @@ function placeFlask() {
                 },
                 onComplete: () => {
                     animating = false
-                    gsap.to('#arrowHand', { y: 20, yoyo: true, repeat: 1000 })
+                    gsap.to('#step-2 #arrowHand', { y: 5, yoyo: true, repeat: 1000 })
                 }
             })
 
