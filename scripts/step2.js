@@ -5,6 +5,14 @@ var sample = 0.0
 var flaskAdded = false
 var animating = false
 
+var flaskFrames = [
+    './assets/flask.png',
+    './assets/thoda flask.png',
+    './assets/half flask.png',
+    './assets/full flask.png'
+]
+
+
 function addSample() {
     if (!task_done) {
         if (flaskAdded && !animating) {
@@ -27,7 +35,17 @@ function addSample() {
                             common()
                         }
                     })
-                    .to(drop, { y: 50, opacity: 0, ease: Sine.easeIn })
+                    .to(drop, {
+                        y: 50, opacity: 0, repeat: 5, ease: Sine.easeIn, onStart: () => {
+                            var frameObject = { i: 0 }
+
+                            gsap.to(frameObject, {
+                                duration: 2, i: 3, ease: new SteppedEase.config(3), onUpdate: () => {
+                                    document.querySelector('#step-2-flask').src = flaskFrames[frameObject.i]
+                                }
+                            })
+                        }
+                    })
                     .to('#sampleimage', { duration: 2, rotation: 0 })
                     .to('#sampleimage', { duration: 1, y: 0, x: 0, onComplete: () => animating = false })
             }
@@ -72,7 +90,7 @@ function common() {
 
 function placeFlask() {
     if (!flaskAdded) {
-        var readingObj = { x: 0 };
+        var readingObj = { x: 0 }
         gsap.to('#placeflask > small', { duration: .25, opacity: 0 })
 
         var anim1 = gsap.timeline()
