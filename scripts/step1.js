@@ -24,7 +24,7 @@ function selectSample(sender, id) {
             duration: 1, y: -100, ease: Back.easeOut.config(1.7)
         })
 
-        document.querySelector('#sampleimage').src = sampleImages[id]
+        document.querySelector('#sampleimage img').src = sampleImages[id]
         document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
 
         addTask('<b>Step 1</b> Sample selection')

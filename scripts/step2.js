@@ -4,6 +4,7 @@ var sample = 0.0
 //var alcoholAdded = false
 var flaskAdded = false
 var animating = false
+var sampleHovering = false
 
 var flaskFrames = [
     './assets/flask.png',
@@ -12,10 +13,25 @@ var flaskFrames = [
     './assets/full flask.png'
 ]
 
+var frameObject = { i: 0 }
+
+function hoverSample() {
+    if (!sampleHovering && flaskAdded) {
+        var anim = gsap.timeline()
+        anim
+            .to('#sampleimage > small', { duration: .25, opacity: 0 })
+            .to('#sampleimage', {
+                duration: 1, y: -100, x: -230, onComplete: () => {
+                    sampleHovering = true
+                }
+            })
+
+    }
+}
 
 function addSample() {
     if (!task_done) {
-        if (flaskAdded && !animating) {
+        if (flaskAdded && !animating && sampleHovering) {
             if (reading < 10.0) {
 
                 var drop = document.createElement("img")
@@ -25,29 +41,28 @@ function addSample() {
 
                 var anim1 = gsap.timeline()
                 anim1
-                    .to('#sampleimage', { duration: 1, y: -100, x: -230, onStart: () => animating = true })
                     .to('#sampleimage', {
                         duration: 2, rotation: -60, onComplete: () => {
                             document.querySelector('#step-2 .instruments').appendChild(drop)
-                            reading += 2
-                            sample += 2
+                            reading += .5
+                            sample += .5
 
+                            animating = true
                             common()
                         }
                     })
                     .to(drop, {
                         y: 50, opacity: 0, repeat: 5, ease: Sine.easeIn, onStart: () => {
-                            var frameObject = { i: 0 }
-
-                            gsap.to(frameObject, {
-                                duration: 2, i: 3, ease: new SteppedEase.config(3), onUpdate: () => {
-                                    document.querySelector('#step-2-flask').src = flaskFrames[frameObject.i]
-                                }
-                            })
+                            if (frameObject.i == 0) {
+                                gsap.to(frameObject, {
+                                    duration: 2, i: 3, ease: new SteppedEase.config(3), onUpdate: () => {
+                                        document.querySelector('#step-2-flask').src = flaskFrames[frameObject.i]
+                                    }
+                                })
+                            }
                         }
                     })
-                    .to('#sampleimage', { duration: 2, rotation: 0 })
-                    .to('#sampleimage', { duration: 1, y: 0, x: 0, onComplete: () => animating = false })
+                    .to('#sampleimage', { duration: 2, rotation: 0, onComplete: () => animating = false })
             }
         }
     }
@@ -55,10 +70,10 @@ function addSample() {
 
 function removeSample() {
     if (!task_done) {
-        if (flaskAdded) {
+        if (flaskAdded && sampleHovering) {
             if (reading > 0.0) {
-                reading -= 1
-                sample -= 1
+                reading -= .5
+                sample -= .5
             }
             common()
         }
@@ -69,7 +84,6 @@ function zeroReading() {
     if (!task_done) {
         if (flaskAdded) {
             reading = 0.0
-            gsap.to('#step-2 #arrowHand', { x: -100 })
         }
         common()
     }
@@ -81,8 +95,7 @@ function common() {
     if (sample == 2.0) {
         task_done = true
         addTask('<b>Step 2</b> Weigh 2gms of Oil Sample in conical flask')
-        gsap.to('#step-2 #arrowHand', { opacity: 0 })
-
+      //  gsap.to('#sampleimage', { duration: 2, x: 0, y: 0, rotation: 0 })
     }
     else
         task_done = false
@@ -97,8 +110,8 @@ function placeFlask() {
         anim1
             .to('#placeflask', { duration: 2, y: -100, x: -180, onStart: () => animating = true })
             .to('#placeflask', { duration: 1, y: -40 })
+            .to('#sampleimage > small', { duration: .25, opacity: 1 })
             .to('#step-2 button.element', { duration: 1, opacity: 1 })
-            .to('#step-2 #arrowHand', { opacity: 1 })
             .to(readingObj, {
                 duration: .25, ease: new SteppedEase.config(10), x: 10, onUpdate: () => {
                     reading = readingObj.x
@@ -106,7 +119,6 @@ function placeFlask() {
                 },
                 onComplete: () => {
                     animating = false
-                    gsap.to('#step-2 #arrowHand', { y: 5, yoyo: true, repeat: 1000 })
                 }
             })
 
