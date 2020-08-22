@@ -37,7 +37,7 @@ function measureAlcohol() {
                 }
             })
             .to('#alcoholbottle', { duration: 2, x: 0, y: 0 })
-            .to('#alcoholCabottleCap', {})
+            .to('#alcoholCabottleCap', {y: 0})
             //  .to('#step-3 #arrowHand2', {x: -130})
             .to('#step3flask small', { opacity: 1 })
 
