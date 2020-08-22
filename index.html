@@ -41,12 +41,12 @@
                 <span class="tooltiptext">Burner</span>
               </span>
 
-              <span class="tooltip element" style="top: 130px; left: 500px; z-index: 0;">
-                <img src="./assets/burette/burette.png" />
+              <span class="tooltip element" style="top: 130px; left: 500px; z-index: 1;">
+                <img src="./assets/burette/ff0.png" />
                 <span class="tooltiptext">Burette</span>
               </span>
 
-              <img src="assets/burette/burette stand.png" class="element" style="top: 130px; left: 470px;z-index: 0;"> 
+              <img src="assets/burette/burette stand.png" class="element" style="top: 130px; left: 470px;z-index: 0;">
             </div>
 
           </div>
@@ -170,7 +170,7 @@
             <div class="instruments">
               <div class="element" id="step5flask" onclick="pourPhenolphthalein()"
                 style="top: 330px;left: 430px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                <img/>
+                <img />
                 <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
                   phenolphthalein</small>
               </div>
@@ -185,12 +185,13 @@
               with 0.1 N NaOH Solution.</p>
 
             <div class="instruments">
-              <img class="element" id="burettestep6" src="./assets/burette/ff16.png" style="left: 460px; top: 100px; font-weight: 600;" />
-              <img class="element" id="step-6-flask" src="./assets/full flask.png" style="left: 453px; top: 350px; font-weight: 600;" />
+              <img class="element" id="burettestep6" src="./assets/burette/ff0.png"
+                style="left: 460px; top: 100px; font-weight: 600;" />
+              <img class="element" id="step-6-flask" style="left: 446px; top: 370px; font-weight: 600;" />
 
-              <button class="element" style="top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
+              <button class="element" style="opacity: 0; top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
                 onclick="openKnob()">Open Knob</button>
-              <button class="element" style="top:250px;left: 550px;font-weight: 600; background: #000; color: #fff;"
+              <button class="element" style="opacity: 0; top:250px;left: 550px;font-weight: 600; background: #000; color: #fff;"
                 onclick="closeKnob()">Close Knob</button>
             </div>
 
@@ -199,6 +200,13 @@
                 id="readingSlider">
                 <p style="font-weight: 600; font-size: 28px; color:#fff" id="readingText">0 ml</p>
               </div>
+            </div>
+
+            <div class="element" id="naoh" onclick="buretteFill()"
+              style="top: 299px;left: 620px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+              <img src="./assets/NaOH Soln.png" />
+              <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
+                0.1N NaOH</small>
             </div>
 
           </div>
