@@ -1,12 +1,14 @@
 var prefferedReading = [
-    0.1,
-    0.5,
-    1.3,
-    2.2
+    2.8,
+    5.8,
+    9.6,
+    1.2
 ]
 
 var readingTitration = 0.0
 var handle = null
+
+var S1 = 0
 
 var currentFrame = 16
 var buretteFilled = false
@@ -41,8 +43,8 @@ function openKnob() {
     if (handle == null && !buretteFilled) {
         handle = setInterval(() => {
             if (readingTitration < 50.0) {
-                readingTitration += 0.1
-                document.querySelector('#readingSlider').style.width = `${100 - readingTitration * 20}%`
+                readingTitration += 0.2
+                document.querySelector('#readingSlider').style.width = `${100 - readingTitration * 5}%`
 
                 var drop = document.createElement("img")
                 drop.src = './assets/drop.png'
@@ -57,12 +59,7 @@ function openKnob() {
                 if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
                     text += '(Titration Complete) '
 
-                    document.querySelector('#step-6-flask').src = `./assets/titr1.png`
-                }
-                else if(Math.abs(prefferedReading[selectedSample] - readingTitration) > 0.2){
-                    text += '(Titration Complete) '
-
-                    document.querySelector('#step-6-flask').src = `./assets/titre2.png`
+                    document.querySelector('#step-6-flask').src = `./assets/white flask.png`
                 }
 
                 if (currentFrame > 0) {
@@ -85,17 +82,11 @@ function closeKnob() {
         clearInterval(handle);
         handle = null
 
-        if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2 && !task_done) {
+        if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
             task_done = true
-
-            document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)} ml`
-
-            var result = (readingTitration.toPrecision(2) * 0.0282 * 10) / 2
-
-            document.querySelector('#result').innerHTML = `<b>Result : ${result.toPrecision(4)}</b>`
-
+            S = readingTitration
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH Solution')
-            addTask('🎉 Experiment Complete 🎉')
+          //  addTask('🎉 Experiment Complete 🎉')
         }
     }
 }

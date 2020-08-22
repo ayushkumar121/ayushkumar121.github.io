@@ -2,7 +2,7 @@ var sampleImages = [
     './assets/Fresh Oil.png',
     './assets/1passoil.png',
     './assets/2passoil.png',
-    './assets/3passoil.png',
+    './assets/fresh ghee.png',
 ]
 
 var flaskSamples = [
@@ -26,8 +26,8 @@ function selectSample(sender, id) {
 
         document.querySelector('#sampleimage img').src = sampleImages[id]
         document.querySelector('#step3flask img').src = `./assets/${flaskSamples[id]}/3.png`
-        document.querySelector('#step-4-flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
-        document.querySelector('#step5flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
+        document.querySelector('#step-3-5-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
+        document.querySelector('#step-3-9-flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#step-6-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
 

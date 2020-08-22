@@ -37,8 +37,8 @@ function addSample() {
                     .to('#sampleimage', {
                         duration: 2, rotation: -60, onComplete: () => {
                             document.querySelector('#step-2 .instruments').appendChild(drop)
-                            reading += 1
-                            sample += 1
+                            reading += 2.5
+                            sample += 2.5
 
                             animating = true
                             common()
@@ -85,11 +85,11 @@ function zeroReading() {
 function common() {
     document.querySelector('#sample-reading').innerHTML = `${reading.toPrecision(2)}`
 
-    if (sample == 2.0) {
+    if (sample == 5.0) {
         gsap.to('#sampleimage', {
             duration: 2, x: 0, y: 0, rotation: 0, delay: "+3", onComplete: () => {
                 task_done = true
-                addTask('<b>Step 2</b> Weigh 2gms of Oil Sample in conical flask')
+                addTask('<b>Step 2</b> Weigh 5g of Oil/Fat sample in conical flask')
             }
         })
     }
