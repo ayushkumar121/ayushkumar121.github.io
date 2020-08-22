@@ -55,21 +55,22 @@
   #expriment{
     width: 960px;
     height: 500px;
-    border-radius: 8px;
     margin:30px 0;
   }
 
   #controls {
     display: none;
+    position: absolute;
+    margin-top: -120px;
+    left: 50px;
   }
 
   #controls.active{
     display: inline-block;
-    margin-left: 50px;
   }
 
   button {
-    padding: 8px;
+    padding: 8px 20px;
     border-radius: 0;
     border: 0;
     outline: 0;
@@ -166,7 +167,7 @@
 
   #sidebar{
     width: 400px;
-    height: 600px;
+    height: 560px;
     overflow-y: scroll;
   }
 
@@ -217,4 +218,9 @@
 
   th, td {
     padding: 15px;
+  }
+
+  .drop-step-6{
+    top: 327px;
+    left: 465px;
   }

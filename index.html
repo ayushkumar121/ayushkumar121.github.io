@@ -18,8 +18,9 @@
       <div class="hero">
         <div id="expriment" style="background-image: url('./assets/bg.png');">
           <div class="step active" id="step-0">
-            <p style="text-align: center; font-size: 28px; width: 100%; background: #fff;padding: 10px 0;">Make yourself
-              Familiar with the instrument</p>
+            <p style="text-align: center; font-size: 22px; width: 100%; background: #fff;padding: 10px 0;">Make yourself
+              Familiar with the instrument <small style="font-size: 14px;">(hover for more info)</small>
+            </p>
 
             <div class="instruments">
               <span class="tooltip element" style="top: 320px;left: 570px;">
@@ -27,12 +28,12 @@
                 <span class="tooltiptext">Measuring cylinder</span>
               </span>
               <span class="tooltip element" style="top: 370px;left: 510px;">
-                <img src="./assets/flask.png" />
+                <img src="./assets/empty flask.png" />
                 <span class="tooltiptext">Conical Flask</span>
               </span>
-              <span class="tooltip element" style="left: 250px;top: 350px;transform: rotateZ(75);">
-                <img src="./assets/pipette.png" />
-                <span class="tooltiptext" style="transform: rotateZ(-75deg);margin-bottom: 50px;">pipette</span>
+              <span class="tooltip element" style="left: 250px;top: 350px;">
+                <img src="./assets/weighing-scale.png" />
+                <span class="tooltiptext">Weighing Scale</span>
               </span>
 
               <span class="tooltip element" style="left: 650px;top: 350px;">
@@ -40,17 +41,18 @@
                 <span class="tooltiptext">Burner</span>
               </span>
 
-              <span class="tooltip element" style="top: 100px;left: 400px; z-index: 0;">
-                <img src="./assets/burette.png" />
+              <span class="tooltip element" style="top: 130px; left: 500px; z-index: 1;">
+                <img src="./assets/burette/ff0.png" />
                 <span class="tooltiptext">Burette</span>
               </span>
+
+              <img src="assets/burette/burette stand.png" class="element" style="top: 130px; left: 470px;z-index: 0;">
             </div>
 
           </div>
 
           <div class="step" id="step-1">
-            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 1: Select the Oil/fat
-              Sample
+            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 1: Select the Sample
             </p>
 
             <div class="instruments step1-tools">
@@ -67,23 +69,29 @@
                 <div class="tooltiptext">Select This Sample</div>
               </div>
               <div class="element tooltip" onclick="selectSample(this, 3)" style="left: 600px;top: 280px;">
-                <img src="./assets/fresh ghee.png" />
+                <img src="./assets/3passoil.png" />
                 <div class="tooltiptext">Select This Sample</div>
               </div>
             </div>
           </div>
 
           <div class="step" id="step-2">
-            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 2: Weigh 5g of Oil/Fat
-              sample in conical flask</p>
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 2: Weigh 2gms of Oil
+              Sample in conical flask.</p>
 
             <div class="instruments">
-              <img id="sampleimage" class="element" style="top: 260px;left: 600px;" />
+
+              <div id="sampleimage" onclick="hoverSample()" class="element"
+                style="top: 260px;left: 600px;display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img />
+                <small style="opacity: 0;background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to hold
+                  sample</small>
+              </div>
 
               <div class="element" id="placeflask" onclick="placeFlask()">
-                <img src="./assets/flask.png" />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
-                  flask</small>
+                <img src="./assets/empty flask.png" id="step-2-flask" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">
+                  click to place flask</small>
               </div>
 
               <img src="./assets/weighing-scale.png" class="element" style="top: 350px;left: 230px;" />
@@ -93,14 +101,14 @@
               <img src="./assets/add.svg">
             </button>
 
-            <button class="element" onclick="zeroReading()" style="top: 430px;left: 300px; opacity: 0;z-index: 5;">
+            <button class="element" onclick="zeroReading()"
+              style="top: 430px;left: 300px; opacity: 0;z-index: 5;font-size: 28px;font-weight: 400;font-family: monospace;">
               <img src="./assets/zero.svg">
             </button>
 
             <button class="element" onclick="removeSample()" style="top: 430px;left: 400px; opacity: 0;">
               <img src="./assets/remove.svg">
             </button>
-
 
             <div class="element reading-meter">
               <div id="sample-reading">0.0</div>
@@ -109,85 +117,77 @@
           </div>
 
           <div class="step" id="step-3">
-            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 3: Add 30 ml acetic
-              acid-chloroform solution in the sample flask and swirl to dissolve.</p>
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 3: Add 50 ml ethyl
+              alcohol in conical flask.</p>
 
             <div class="instruments">
-              <div class="element" id="step3flask" onclick="pourAcid()"
-                style="top: 350px; left: 283px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                <img src="./assets/flask.png" />
+              <div class="element" id="step3flask" onclick="pourAlcohol()"
+                style="top: 330px; left: 300px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img />
                 <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;opacity: 0;">click to pour
-                  acid solution</small>
+                  alcohol</small>
               </div>
 
-              <div class="element" id="measuring" onclick="measureAcid()"
-                style="top: 330px;left: 415px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                <img src="./assets/measuring cylinder.png" />
+              <div class="element" id="measuring" onclick="measureAlcohol()"
+                style="top: 300px;left: 430px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/cylinder/cylinder.png" />
                 <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
-                  acid solution</small>
+                  alcohol</small>
               </div>
 
-              <img src="./assets/bottle cap.png" id="acidBottleCap" class="element" style="top:290px;left: 635px;" />
-              <img src="./assets/bottle.png" id="acidBottle" class="element" style="top: 300px;left: 620px;" />
+              <img src="./assets/alcohol.png" id="alcoholbottle" class="element" style="top: 299px;left: 620px;" />
+              <img src="./assets/bottle cap.png" id="alcoholCabottleCap" class="element"
+                style="top: 290px; left: 635px;" />
+
             </div>
 
           </div>
 
           <div class="step" id="step-4">
             <div style="text-align: center; font-size: 28px;background: #fff;padding-top: 10px">
-              Step 4: Add 0.5 ml saturated KI solution and shake it for 1 min
+              Step 4: Heat the mixture upto boiling condition. <br />
+              <div style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px;">⚠
+                Please proceed with caution while working with burner</div>
             </div>
 
             <div class="instruments">
-              <img src="./assets/flask.png" class="element" style="top: 350px;left: 300px;" />
-              <img src="./assets/ki solution.png" class="element" style="top: 350px;left: 570px;" />
+              <img src="./assets/gas stove.png" class="element" style="top: 350px;left: 400px;" />
 
-              <div class="element" id="step-4-flask" onclick="suckitandsee()"
-                style="top: 250px;left: 400px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
-                <img src="./assets/pipette button.png" id="pipetteButton" />
-                <img src="./assets/pipette.png" style="z-index: 2;" />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to suck KI
-                  solution</small>
+              <div class="element" onclick="placeFlaskOnBurner()" id="step-4-flask"
+                style="top: 330px;left: 550px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
+                <img />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
+                  flask</small>
               </div>
             </div>
 
           </div>
 
           <div class="step" id="step-5">
-            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 5: Add 30 ml distil
-              water.</p>
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 5: Add 2-3 drops of
+              phenolpthalein indicator in hot condition.</p>
 
             <div class="instruments">
-              <div class="element" id="step5flask" onclick="pourWater()"
-                style="top: 350px; left: 283px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                <img src="./assets/flask.png" />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;opacity: 0;">click to pour
-                  distilled water</small>
-              </div>
-
-              <div class="element" id="measuring2" onclick="measureWater()"
-                style="top: 330px;left: 415px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                <img src="./assets/measuring cylinder.png" />
+              <div class="element" id="step5flask" onclick="pourPhenolphthalein()"
+                style="top: 330px;left: 430px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                <img />
                 <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
-                  distilled water</small>
+                  phenolphthalein</small>
               </div>
 
-              <img src="./assets/bottle cap water.png" id="waterBottleCap" class="element"
-                style="top:290px;left: 645px;" />
-              <img src="./assets/Distilled Water.png" id="waterBottle" class="element"
-                style="top: 300px;left: 620px;" />
+              <img src="./assets/Phenolphthalein.png" id="phenolphthalein" class="element"
+                style="top: 350px;left: 620px;" />
             </div>
-
           </div>
 
           <div class="step" id="step-6">
-            <p style="text-align: center; font-size: 20px;background: #fff;padding: 10px 0;">Step 6: Titrate the mixture
-              with 0.1 N sodium thio-sulphate solution until yellow color is almost gone.</p>
+            <p style="text-align: center; font-size: 28px;background: #fff;padding: 10px 0;">Step 6: Titrate the mixture
+              with 0.1 N NaOH Solution.</p>
 
             <div class="instruments">
-              <img class="element" src="./assets/funnel.png" style="left: 455px;top: 70px;" />
-              <img class="element" src="./assets/burette.png" style="left: 430px; top: 100px;" />
-              <img class="element" src="./assets/flask.png" style="left: 453px; top: 350px; " />
+              <img class="element" id="burettestep6" src="./assets/burette/ff0.png"
+                style="left: 460px; top: 100px; font-weight: 600;" />
+              <img class="element" id="step-6-flask" style="left: 446px; top: 370px; font-weight: 600;" />
 
               <button class="element" style="opacity: 0; top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
                 onclick="openKnob()">Open Knob</button>
@@ -196,18 +196,19 @@
             </div>
 
             <div class="element" style="bottom:0px; height:50px; width: 100%;  background: #ccc">
-              <div style="width:100%; height: 100%; background: yellow; display:grid; place-items: center;"
+              <div style="width:100%; height: 100%; background: hotpink; display:grid; place-items: center;"
                 id="readingSlider">
-                <p style="font-weight: 600; font-size: 28px; color:#000" id="readingText">0 ml</p>
+                <p style="font-weight: 600; font-size: 28px; color:#fff" id="readingText">0 ml</p>
               </div>
             </div>
 
-            <div class="element" id="thio-sulphate" onclick="pourSolution()"
-              style="top: 330px;left: 550px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-              <img src="./assets/0.1 N  Sodium  thio-sulphate.png" />
-              <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour this solution
-                </small>
+            <div class="element" id="naoh" onclick="buretteFill()"
+              style="top: 299px;left: 620px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+              <img src="./assets/NaOH Soln.png" />
+              <small style="background: #000; color:#fff; padding: 4px; margin-top: 5px;">click to pour
+                0.1N NaOH</small>
             </div>
+
           </div>
 
           <div class="step" id="step-7" style="background-image: unset; background-color: #fff;">
@@ -234,7 +235,7 @@
       </div>
 
       <div id="sidebar">
-        <h1>Completed Tasks</h1>
+        <h1>Task Completed</h1>
         <ul id="taskslist">
           <li><b>Step 0</b> Instruments Observation</li>
         </ul>
@@ -242,12 +243,8 @@
     </div>
 
     <div id="controls" class="active">
-      <button>
-        <img src="./assets/manual.svg">
-      </button>
-
-      <button onclick="next()">
-        <img src="./assets/forward.svg">
+      <button onclick="next()" style="font-size: 28px;background: #000;color: #fff;">
+        Next
       </button>
     </div>
   </main>
