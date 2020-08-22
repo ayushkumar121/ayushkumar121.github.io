@@ -1,23 +1,38 @@
-var flaskPlacedOnBurner = false
+var filled = false
 
-var frameObject6 = {i:1}
-
-function placeFlaskOnBurner() {
-    if (!flaskPlacedOnBurner) {
+function suckitandsee() {
+    if (!filled) {
         gsap.to('#step-4-flask small', { opacity: 0 })
 
         var anim = gsap.timeline()
         anim
-            .to('#step-4-flask', { duration: 1, x: -160, y: -60 })
-            .to('#step-4-flask', { duration: 1, y: -40 })
-            .to(frameObject6, {
-                duration: 4, i: 3, ease: new SteppedEase.config(2), onUpdate: () => {
-                    document.querySelector('#step-4-flask img').src = `./assets/${flaskSamples[selectedSample]}/boiling/${frameObject6.i}.png`
-                },
-                onComplete: () => {
-                    task_done = true
-                    addTask('<b>Step 4</b> Heat the mixture upto boiling condition')
-                }
-            })
+        .to('#step-4-flask', {duration: 1, x: 50, y: -50})
+        .to('#step-4-flask', {duration: 1, x: 120})
+        .to('#pipetteButton', {y:10})
+        .to('#step-4-flask', {duration: 1, y: -20})
+        .to('#pipetteButton', {y:0})
+        .to('#step-4-flask', {duration: 1, y: -50})
+        .to('#step-4-flask', {duration: 1, x: 50})
+        .to('#step-4-flask', { duration: 1,  x: 0, y: 0})
+        .to('#step-4-flask small', {opacity: 1, onComplete: () => {
+            filled = true
+            document.querySelector('#step-4-flask small').innerHTML = 'click to add KI solution'
+        }})
+    }
+    else{
+        gsap.to('#step-4-flask small', { opacity: 0 })
+
+        var anim = gsap.timeline()
+        anim
+        .to("#step-4-flask", {duration: 1, x: -100, y: -50})
+        .to("#step-4-flask", {duration: 1, x: -150})
+        .to('#pipetteButton', {y:10})
+        .to('#step-4-flask', {duration: 1, y: -20})
+        .to('#pipetteButton', {y:0})
+        .to('#step-4-flask', {duration: 1, y: -50})
+        .to('#step-4-flask', {duration: 1, x: 0, y: 0, onComplete: () => {
+            task_done = true
+            addTask('<b>Step 4</b> Add 0.5 ml saturated KI solution and shake it for 1 min')
+        }})
     }
 }

@@ -1,10 +1,9 @@
-var alcoholMeasured = false
+var acidMeasured = false
 
-var frameObject1 = { i: 1 }
-var frameObject2 = { i: 1 }
 
-function measureAlcohol() {
-    if (!alcoholMeasured) {
+function measureAcid() {
+    if (!acidMeasured) {
+
         var drop = document.createElement("img")
         drop.src = './assets/drop.png'
         drop.classList.add('element', 'drop-step-3')
@@ -15,37 +14,29 @@ function measureAlcohol() {
         var anim = gsap.timeline()
 
         anim
-            .to('#alcoholCabottleCap', { y: -50 })
-            .to('#alcoholbottle', { duration: 2, x: -100, y: -50 })
-            .to('#alcoholbottle', {
+            .to('#acidBottleCap', {duration: 1, y: -100})
+            .to('#acidBottle', { duration: 2, x: -100, y: -50 })
+            .to('#acidBottle', {
                 rotation: -45, onComplete: () => {
                     document.querySelector('#step-3 .instruments').appendChild(drop)
                 }
             })
-            .to(drop, {
-                repeat: 4, y: 50, opacity: 0, ease: Sine.easeIn, onStart: () => {
-                    gsap.to(frameObject1, {
-                        duration: 2, i: 5, ease: new SteppedEase.config(4), onUpdate: () => {
-                            document.querySelector('#measuring img').src = `./assets/cylinder/c${frameObject1.i}.png`
-                        }
-                    })
+            .to(drop, { y: 50, opacity: 0 })
+            .to('#acidBottle', { rotation: 0 })
+            .to('#acidBottle', {
+                duration: 2, x: 0, y: 0, onComplete: () => {
+                    acidMeasured = true
                 }
             })
-            .to('#alcoholbottle', {
-                rotation: 0, onStart: () => {
-                    alcoholMeasured = true
-                }
-            })
-            .to('#alcoholbottle', { duration: 2, x: 0, y: 0 })
-            .to('#alcoholCabottleCap', {y: 0})
-            //  .to('#step-3 #arrowHand2', {x: -130})
+            .to('#acidBottleCap', {duration: 1, y: 0})
             .to('#step3flask small', { opacity: 1 })
 
     }
 }
 
-function pourAlcohol() {
-    if (alcoholMeasured && !task_done) {
+function pourAcid() {
+    if (acidMeasured && !task_done) {
+
         var drop = document.createElement("img")
         drop.src = './assets/drop.png'
         drop.classList.add('element', 'drop-step-31')
@@ -60,28 +51,12 @@ function pourAlcohol() {
                     document.querySelector('#step-3 .instruments').appendChild(drop)
                 }
             })
-            .to(drop, {
-                repeat: 4, y: 50, opacity: 0, ease: Sine.easeIn, onStart: () => {
-                    frameObject1.i = 5
-
-                    gsap.to(frameObject1, {
-                        duration: 2, i: 1, ease: new SteppedEase.config(4), onUpdate: () => {
-                            document.querySelector('#measuring img').src = `./assets/cylinder/c${frameObject1.i}.png`
-                        }
-                    })
-
-                    gsap.to(frameObject2, {
-                        duration: 2, i: 2, ease: new SteppedEase.config(1), onUpdate: () => {
-                            document.querySelector('#step3flask img').src = `./assets/${flaskSamples[selectedSample]}/alcohol/${frameObject2.i}.png`
-                        }
-                    })
-                }
-            })
+            .to(drop, { y: 50, opacity: 0 })
             .to('#measuring', { rotation: 0 })
             .to('#measuring', {
                 duration: 1, x: 0, y: 0, onComplete: () => {
                     task_done = true
-                    addTask('<b>Step 3</b> Add 50 ml ethyl alcohol in conical flask')
+                    addTask('<b>Step 3</b> Add 30 ml acetic acid-chloroform solution in the sample flask and swirl to dissolve')
                 }
             })
             .to('#step3flask small', { opacity: 0 })
