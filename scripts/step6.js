@@ -62,7 +62,7 @@ function openKnob() {
                 else if(Math.abs(prefferedReading[selectedSample] - readingTitration) > 0.2){
                     text += '(Titration Complete) '
 
-                    document.querySelector('#step-6-flask').src = `./assets/titr2.png`
+                    document.querySelector('#step-6-flask').src = `./assets/titre2.png`
                 }
 
                 if (currentFrame > 0) {
