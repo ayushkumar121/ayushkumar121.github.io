@@ -1,6 +1,7 @@
 var alcoholMeasured = false
 
-//gsap.to('#step-3 #arrowHand2', { y: 5, yoyo: true, repeat: 1000 })
+var frameObject1 = { i: 1 }
+var frameObject2 = { i: 1 }
 
 function measureAlcohol() {
     if (!alcoholMeasured) {
@@ -21,15 +22,22 @@ function measureAlcohol() {
                     document.querySelector('#step-3 .instruments').appendChild(drop)
                 }
             })
-            .to(drop, { y: 50, opacity: 0 })
-            .to('#alcoholbottle', { rotation: 0 })
-            .to('#alcoholbottle', { duration: 2, x: 0, y: 0 })
-            .to('#alcoholCabottleCap', {
-                y: 0
-                , onComplete: () => {
+            .to(drop, {
+                repeat: 4, y: 50, opacity: 0, ease: Sine.easeIn, onStart: () => {
+                    gsap.to(frameObject1, {
+                        duration: 2, i: 5, ease: new SteppedEase.config(4), onUpdate: () => {
+                            document.querySelector('#measuring img').src = `./assets/cylinder/c${frameObject1.i}.png`
+                        }
+                    })
+                }
+            })
+            .to('#alcoholbottle', {
+                rotation: 0, onStart: () => {
                     alcoholMeasured = true
                 }
             })
+            .to('#alcoholbottle', { duration: 2, x: 0, y: 0 })
+            .to('#alcoholCabottleCap', {})
             //  .to('#step-3 #arrowHand2', {x: -130})
             .to('#step3flask small', { opacity: 1 })
 
@@ -38,7 +46,6 @@ function measureAlcohol() {
 
 function pourAlcohol() {
     if (alcoholMeasured && !task_done) {
-
         var drop = document.createElement("img")
         drop.src = './assets/drop.png'
         drop.classList.add('element', 'drop-step-31')
@@ -53,7 +60,23 @@ function pourAlcohol() {
                     document.querySelector('#step-3 .instruments').appendChild(drop)
                 }
             })
-            .to(drop, { y: 50, opacity: 0 })
+            .to(drop, {
+                repeat: 4, y: 50, opacity: 0, ease: Sine.easeIn, onStart: () => {
+                    frameObject1.i = 5
+
+                    gsap.to(frameObject1, {
+                        duration: 2, i: 1, ease: new SteppedEase.config(4), onUpdate: () => {
+                            document.querySelector('#measuring img').src = `./assets/cylinder/c${frameObject1.i}.png`
+                        }
+                    })
+
+                    gsap.to(frameObject2, {
+                        duration: 2, i: 2, ease: new SteppedEase.config(1), onUpdate: () => {
+                            document.querySelector('#step3flask img').src = `./assets/${flaskSamples[selectedSample]}/alcohol/${frameObject2.i}.png`
+                        }
+                    })
+                }
+            })
             .to('#measuring', { rotation: 0 })
             .to('#measuring', {
                 duration: 1, x: 0, y: 0, onComplete: () => {

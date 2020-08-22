@@ -5,11 +5,11 @@ var sampleImages = [
     './assets/3passoil.png',
 ]
 
-var sampleNames = [
+var flaskSamples = [
     'Fresh Oil',
-    '1st Pass Oil',
-    '2nd Pass Oil',
-    '3rd Pass Oil',
+    '1 pass',
+    '2 pass',
+    '3 pass'
 ]
 
 var selectedSample = null
@@ -25,6 +25,10 @@ function selectSample(sender, id) {
         })
 
         document.querySelector('#sampleimage img').src = sampleImages[id]
+        document.querySelector('#step3flask img').src = `./assets/${flaskSamples[id]}/3.png`
+        document.querySelector('#step-4-flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
+        document.querySelector('#step5flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
+        document.querySelector('#step-6-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
 
         addTask('<b>Step 1</b> Sample selection')

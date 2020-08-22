@@ -8,6 +8,8 @@ var prefferedReading = [
 var readingTitration = 0.0
 var handle = null
 
+var currentFrame = 16
+
 function openKnob() {
     if (handle == null) {
         handle = setInterval(() => {
@@ -20,12 +22,18 @@ function openKnob() {
                     text += '(Titration Complete) '
                 }
 
+                if(currentFrame > 0) {
+                    currentFrame-- 
+
+                    document.querySelector('#burettestep6').src = `./assets/burette/ff${currentFrame}.png`
+                }
+
                 text += `${readingTitration.toPrecision(2)} ml`
 
                 document.querySelector('#readingText').innerHTML = text
                 console.log(prefferedReading[selectedSample], readingTitration)
             }
-        }, 1000);
+        }, 2000);
     }
 }
 

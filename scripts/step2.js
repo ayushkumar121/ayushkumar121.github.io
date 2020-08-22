@@ -6,13 +6,6 @@ var flaskAdded = false
 var animating = false
 var sampleHovering = false
 
-var flaskFrames = [
-    './assets/flask.png',
-    './assets/thoda flask.png',
-    './assets/half flask.png',
-    './assets/full flask.png'
-]
-
 var frameObject = { i: 0 }
 
 function hoverSample() {
@@ -44,19 +37,19 @@ function addSample() {
                     .to('#sampleimage', {
                         duration: 2, rotation: -60, onComplete: () => {
                             document.querySelector('#step-2 .instruments').appendChild(drop)
-                            reading += .5
-                            sample += .5
+                            reading += 1
+                            sample += 1
 
                             animating = true
                             common()
                         }
                     })
                     .to(drop, {
-                        y: 50, opacity: 0, repeat: 5, ease: Sine.easeIn, onStart: () => {
+                        y: 50, opacity: 0, repeat: 2, ease: Sine.easeIn, onStart: () => {
                             if (frameObject.i == 0) {
                                 gsap.to(frameObject, {
                                     duration: 2, i: 3, ease: new SteppedEase.config(3), onUpdate: () => {
-                                        document.querySelector('#step-2-flask').src = flaskFrames[frameObject.i]
+                                        document.querySelector('#step-2-flask').src = `./assets/${flaskSamples[selectedSample]}/${frameObject.i}.png`
                                     }
                                 })
                             }
@@ -93,9 +86,12 @@ function common() {
     document.querySelector('#sample-reading').innerHTML = `${reading.toPrecision(2)}`
 
     if (sample == 2.0) {
-        task_done = true
-        addTask('<b>Step 2</b> Weigh 2gms of Oil Sample in conical flask')
-      //  gsap.to('#sampleimage', { duration: 2, x: 0, y: 0, rotation: 0 })
+        gsap.to('#sampleimage', {
+            duration: 2, x: 0, y: 0, rotation: 0, delay: "+3", onComplete: () => {
+                task_done = true
+                addTask('<b>Step 2</b> Weigh 2gms of Oil Sample in conical flask')
+            }
+        })
     }
     else
         task_done = false
