@@ -37,7 +37,7 @@ function suckitandsee2() {
 
             document.querySelector('#step-8-flask').src = './assets/blue bottle.png'
 
-            addTask('<b>Step 8</b> Add 0.5 ml saturated KI solution and shake it for 1 min')
+            addTask('<b>Step 7</b> Add 0.5 ml saturated KI solution and shake it for 1 min')
         }})
     }
 }

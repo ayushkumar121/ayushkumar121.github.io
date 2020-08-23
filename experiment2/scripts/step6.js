@@ -85,7 +85,7 @@ function closeKnob() {
         if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
             task_done = true
             S1 = readingTitration
-            addTask('<b>Step 7</b>Titrate the mixture with 0.1 N NaOH Solution')
+            addTask('<b>Step 6</b> Titrate the mixture with 0.1 N sodium thio-sulphate solution until yellow color is almost gone')
           //  addTask('🎉 Experiment Complete 🎉')
         }
     }
