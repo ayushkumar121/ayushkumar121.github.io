@@ -23,7 +23,7 @@ var handle = setInterval(() => {
         clearInterval(handle)
     }
 
-    document.querySelector('#step-5 .read-2').innerHTML = `${pad(value, 3)}°C`
+    document.querySelector('#step-5 .read-2').innerHTML = `PT${pad(value, 3)}°C`
 }, 400)
 
 function turnOn() {
@@ -34,7 +34,7 @@ function turnOn() {
 function increaseTemp() {
     if(machine_on) {
         target++
-        document.querySelector('#step-5 .read-1').innerHTML = `${pad(target, 3)}°C`
+        document.querySelector('#step-5 .read-1').innerHTML = `ST${pad(target, 3)}°C`
     }
 }
 
@@ -43,7 +43,7 @@ function reduceTemp() {
     if(machine_on) {
         if(machine_on) {
             target--
-            document.querySelector('#step-5 .read-1').innerHTML = `${pad(target, 3)}°C`
+            document.querySelector('#step-5 .read-1').innerHTML = `ST${pad(target, 3)}°C`
         }
     }
 }
