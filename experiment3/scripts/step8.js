@@ -1,4 +1,4 @@
-var R1 = 31 + Math.random() * .5
+var R1 = 32.5
 document.querySelector('#R1').innerHTML = `${R1.toFixed(1)} gm`
 
 function placeDish1() {
