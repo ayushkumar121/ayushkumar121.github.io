@@ -237,4 +237,11 @@
 
   .reading-indicator{
     font-family: monospace;
+    z-index: 2;
+  }
+
+  .title{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }

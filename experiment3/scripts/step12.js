@@ -15,6 +15,6 @@ function placeDish3() {
             }})
 
         task_done = true
-        addTask('<b>Step 12</b> Take out petri dish from desiccator and record the weight')
+        addTask('<b>Step 11</b> Take out petri dish from desiccator and record the weight')
     }
 }

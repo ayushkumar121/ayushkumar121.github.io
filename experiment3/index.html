@@ -10,7 +10,7 @@
 
 <body>
   <header>
-    <h1>Determination of moisture content of foods by oven drying</h1>
+    <h1>Exp 1: Determination of moisture content of food by oven drying</h1>
   </header>
 
   <main>
@@ -19,7 +19,7 @@
         <div id="expriment">
 
           <div class="step" id="step-1" style="background-image: url('./assets/step1/step1.png');">
-            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 1: Press ‘On’ button
+            <p class="title" style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 1: Press ‘On’ button
               of the analytical balance
             </p>
 
@@ -34,7 +34,7 @@
           </div>
 
           <div class="step" id="step-2" style="background-image: url('./assets/step1/step1.png');">
-            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 2: Place the Petri
+            <p class="title" style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 2: Place the Petri
               dish on weighing balance
             </p>
 
@@ -52,7 +52,7 @@
           </div>
 
           <div class="step" id="step-3" style="background-image: url('./assets/step3/step3.png');">
-            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 3: Press ‘Tare’
+            <p class="title" style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 3: Press ‘Tare’
               button of the analytical balance to make it zero
             </p>
 
@@ -66,7 +66,7 @@
           </div>
 
           <div class="step" id="step-4" style="background-image: url('./assets/step3/step3.png');">
-            <p style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 4: Weigh 5 g ground
+            <p class="title" style="text-align: center; font-size: 28px; background: #fff;padding: 10px 0;">Step 4: Weigh 5 g ground
               food sample
             </p>
 
@@ -88,7 +88,7 @@
           </div>
 
           <div class="step" id="step-5" style="background-image: url('./assets/step5/step5.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
               Step 5: press ‘On’ button of the convective hot air oven and set temperature to 105°
             </p>
 
@@ -104,20 +104,14 @@
           </div>
 
           <div class="step" id="step-6" style="background-image: url('./assets/background.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
               Step 6: Place sample Petri dish in oven once present temperature reaches 105°C
             </p>
 
             <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
 
-            <div class="instruments">
-              <button class="element" style="left: 220px;top: 88px;">ON</button>
-              <button class="element" style="left: 370px;top: 88px;">+</button>
-              <button class="element" style="left: 420px;top: 88px;">-</button>
-            </div>
-
-            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;opacity: 0;">105°C</span>
-            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;opacity: 0;">105°C</span>
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
 
             <div class="petri-dish element" onclick="placeInOven()" style="top:350px; left:600px; cursor: pointer;">
               <img src="./assets/step5/sample.png" />
@@ -125,18 +119,25 @@
             </div>
           </div>
 
-          <!--
-          <div class="step" id="step-7" style="background-image: url('./assets/background.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 7: Take out sample Petri dish after 2 hrs and put it in desiccators for cooling
-              <button onclick="desiccator()">complete task</button>
+          <div class="step" id="step-5-9" style="background-image: url('./assets/background.png');">
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+              <b>2 Hour later</b> Remove the petri dish from the 
             </p>
+
+            <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
+
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
+
+            <div class="petri-dish element" onclick="removeDish('step-5-9')"  style="top:200px; left:300px; cursor: pointer;">
+              <img src="./assets/step5/sample.png" />
+              <div class="small">click to remove petri dish oven</div>
+            </div>
           </div>
-          -->
 
           <div class="step" id="step-8" style="background-image: url('./assets/step1/step1.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 8: Take out petri dish from desiccator and record the weight
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
+              Step 7: Take out petri dish from desiccator and record the weight
 
               <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
                 Please note down this observation in your own practical notebook
@@ -157,20 +158,14 @@
           </div>
 
           <div class="step" id="step-9" style="background-image: url('./assets/background.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 6: Place sample Petri dish in oven once present temperature reaches 105°C
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+              Step 8: Place sample Petri dish in oven once present temperature reaches 105°C
             </p>
 
             <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
 
-            <div class="instruments">
-              <button class="element" style="left: 220px;top: 88px;">ON</button>
-              <button class="element" style="left: 370px;top: 88px;">+</button>
-              <button class="element" style="left: 420px;top: 88px;">-</button>
-            </div>
-
-            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;opacity: 0;">105°C</span>
-            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;opacity: 0;">105°C</span>
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
 
             <div class="petri-dish element" onclick="placeInOven1()" style="top:350px; left:600px; cursor: pointer;">
               <img src="./assets/step5/sample.png" />
@@ -178,43 +173,48 @@
             </div>
           </div>
 
+          <div class="step" id="step-5-10" style="background-image: url('./assets/background.png');">
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+              <b>30 minutes later</b> Remove the petri dish from the oven
+            </p>
+
+            <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
+
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
+
+            <div class="petri-dish element" onclick="removeDish('step-5-10')"  style="top:200px; left:300px; cursor: pointer;">
+              <img src="./assets/step5/sample.png" />
+              <div class="small">click to remove petri dish</div>
+            </div>
+          </div>
+
           <div class="step" id="step-10" style="background-image: url('./assets/step1/step1.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 10: Take out petri dish from desiccator and record the weight
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
+              Step 9: Take out petri dish from desiccator and record the weight
 
               <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
                 Please note down this observation in your own practical notebook
               </div>
             </p>
 
-            <div class="instruments">
-              <button class="element" style="left: 300px;top: 300px;">ON</button>
-              <button class="element" style="left: 570px;top: 300px;">TARE</button>
-            </div>
-
             <span class="element reading-indicator" style="font-size:18px;left: 450px;top: 350px;">0.0 gm</span>
 
             <div class="petri-dish element" onclick="placeDish2()" style="top:350px; left:600px; cursor: pointer;">
-              <img src="./assets/petri dish with ash.png" />
+              <img src="./assets/step5/sample.png" />
               <div class="small">click to place petri dish</div>
             </div>
           </div>
 
           <div class="step" id="step-11" style="background-image: url('./assets/background.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 6: Place sample Petri dish in oven once present temperature reaches 105°C
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+              Step 10: Place sample Petri dish in oven once present temperature reaches 105°C
             </p>
 
             <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
-
-            <div class="instruments">
-              <button class="element" style="left: 220px;top: 88px;">ON</button>
-              <button class="element" style="left: 370px;top: 88px;">+</button>
-              <button class="element" style="left: 420px;top: 88px;">-</button>
-            </div>
             
-            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;opacity: 0;">105°C</span>
-            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;opacity: 0;">105°C</span>
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
 
             <div class="petri-dish element" onclick="placeInOven2()" style="top:350px; left:600px; cursor: pointer;">
               <img src="./assets/step5/sample.png" />
@@ -222,9 +222,25 @@
             </div>
           </div>
 
+          <div class="step" id="step-5-11" style="background-image: url('./assets/background.png');">
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
+              <b>30 minutes later</b> Remove the petri dish from the oven
+            </p>
+
+            <img src="./assets/step5/hot air oven open.png" class="element oven-image" style="left: 160px;top: 70px;" />
+
+            <span class="element reading-indicator read-1" style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;">105°C</span>
+            <span class="element reading-indicator read-2" style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;">105°C</span>
+
+            <div class="petri-dish element" onclick="removeDish('step-5-11')"  style="top:200px; left:300px; cursor: pointer;">
+              <img src="./assets/step5/sample.png" />
+              <div class="small">click to remove petri dish</div>
+            </div>
+          </div>
+
           <div class="step" id="step-12" style="background-image: url('./assets/step1/step1.png');">
-            <p style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 10: Take out petri dish from desiccator and record the weight
+            <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
+              Step 11: Take out petri dish from desiccator and record the weight
 
               <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
                 Please note down this observation in your own practical notebook
@@ -245,9 +261,8 @@
           </div>
 
           <div class="step" id="step-complete" style="background-image: unset; background-color: #fff;">
-            <div style="padding: 0 50px;">
-              <br />
-              <p style="font-size: 28px; text-align: center;">Observation Table</p>
+            <h1>Observation & Result</h1>
+            <div id="observation" class="tabcontent">
               <p><b>Weight of sample</b> 5 gm</p>
               <p><b>Weight of petri dish</b> 30 gm</p>
               <br />
@@ -270,8 +285,12 @@
                   <th id="R3"></th>
                 </tr>
               </table>
-              <h1 id="result" style="text-align: center;"></h1>
             </div>
+
+            <div id="resultTable" class="tabcontent">
+              <h1 id="result" style="text-align: center;">88% moisture content</h1>
+            </div>
+
           </div>
 
         </div>
@@ -298,8 +317,8 @@
   <script src="./scripts/step3.js"></script>
   <script src="./scripts/step4.js"></script>
   <script src="./scripts/step5.js"></script>
+  <script src="./scripts/step5.9.js"></script> 
   <script src="./scripts/step6.js"></script>
-  <script src="./scripts/step7.js"></script> 
   <script src="./scripts/step8.js"></script>
   <script src="./scripts/step9.js"></script>
   <!--Decicator-->

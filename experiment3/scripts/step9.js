@@ -9,7 +9,7 @@ function placeInOven1() {
             document.querySelector('#step-9 .petri-dish').style.display = 'none'
 
             task_done = true
-            addTask('<b>Step 9</b> Place sample Petri dish in oven once more')
+            addTask('<b>Step 8</b> Place sample Petri dish in oven once more')
         }})
     }
 }

@@ -33,4 +33,3 @@ setInterval(() => {
         controls.classList.remove('active')
 
 }, 100)
-
