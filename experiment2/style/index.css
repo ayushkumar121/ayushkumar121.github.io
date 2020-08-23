@@ -174,7 +174,7 @@
   .super-container{
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
+    margin-top: 10px;
     font-size: 12px;
   }
 
