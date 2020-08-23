@@ -18,7 +18,7 @@ function suckitandsee2() {
         .to('#starchCap', {y: 0})
         .to('#step-8-pipette small', {opacity: 1, onComplete: () => {
             filled5 = true
-            document.querySelector('#step-8-pipette small').innerHTML = 'click to add KI solution'
+            document.querySelector('#step-8-pipette small').innerHTML = 'click to add solution'
         }})
     }
     else{
@@ -37,7 +37,7 @@ function suckitandsee2() {
 
             document.querySelector('#step-8-flask').src = './assets/blue bottle.png'
 
-            addTask('<b>Step 7</b> Add 0.5 ml saturated KI solution and shake it for 1 min')
+            addTask('<b>Step 7</b>Add 0.5 ml 1% starch solution')
         }})
     }
 }
