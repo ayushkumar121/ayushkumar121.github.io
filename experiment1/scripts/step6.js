@@ -81,6 +81,7 @@ function closeKnob() {
         handle = null
 
         if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2 && !task_done) {
+            document.querySelector('#nextbutton').innerHTML = 'Observations'
             task_done = true
 
             document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)} ml`
