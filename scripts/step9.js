@@ -1,66 +1,15 @@
-var readingTitration1 = 0.0
-var handle1 = null
+function placeInOven1() {
+    if(!task_done) {
+        var anim = gsap.timeline()
+        anim
+        .to('#step-9 .petri-dish .small', { opacity: 0 })
+        .to('#step-9 .petri-dish', {duration: 1, y: -150})
+        .to('#step-9 .petri-dish', {duration: 1, x: -300, onComplete: () => {
+            document.querySelector('#step-9 .oven-image').src = './assets/step5/hot air oven.png'
+            document.querySelector('#step-9 .petri-dish').style.display = 'none'
 
-var currentFrame1 = 16
-
-var S2 = 0
-
-function openKnob1() {
-    if (handle1 == null && !buretteFilled) {
-        handle1 = setInterval(() => {
-            if (readingTitration1 < 50.0) {
-                readingTitration1 += 0.1
-                document.querySelector('#readingSlider1').style.width = `${100 - readingTitration1 * 20}%`
-
-                var drop = document.createElement("img")
-                drop.src = './assets/drop.png'
-                drop.classList.add('element', 'drop-step-6')
-                drop.style.zIndex = 5
-
-                document.querySelector('#step-6 .instruments').appendChild(drop)
-
-                gsap.to(drop, { y: 50, opacity: 0, ease: Sine.easeIn })
-
-                var text = ''
-                if (Math.abs(prefferedReading[selectedSample] - readingTitration1) <= 0.2) {
-                    text += '(Titration Complete) '
-
-                    document.querySelector('#step-9-flask').src = `./assets/white flask.png`
-                }
-
-                if (currentFrame1 > 0) {
-                    currentFrame1--
-
-                    document.querySelector('#burettestep6').src = `./assets/burette/ff${currentFrame1}.png`
-                }
-
-                text += `${readingTitration1.toPrecision(2)} ml`
-
-                document.querySelector('#readingText1').innerHTML = text
-                console.log(prefferedReading[selectedSample], readingTitration1)
-            }
-        }, 2000);
-    }
-}
-
-function closeKnob1() {
-    if (handle1 != null) {
-        clearInterval(handle1);
-        handle1 = null
-
-        if (Math.abs(prefferedReading[selectedSample] - readingTitration1) <= 0.2 && !task_done) {
             task_done = true
-
-            var S2 = readingTitration1
-
-            document.querySelector('#observationReading').innerHTML = `${(S1+S2).toPrecision(2)} ml`
-
-            var peroxide = ((S1 + S2) * .1 * 1000) / 5
-
-            document.querySelector('#result').innerHTML = `<b>Result : ${peroxide.toPrecision(4)}</b>`
-
-            addTask('<b>Step 9</b>Titrate the mixture with 0.1 N NaOH Solution')
-            addTask('🎉 Experiment Complete 🎉')
-        }
+            addTask('<b>Step 9</b> Place sample Petri dish in oven once more')
+        }})
     }
 }

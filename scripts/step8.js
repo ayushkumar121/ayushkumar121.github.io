@@ -1,43 +1,20 @@
-var filled5 = false
+var R1 = 31 + Math.random() * .5
+document.querySelector('#R1').innerHTML = `${R1.toFixed(1)} gm`
 
-function suckitandsee2() {
-    if (!filled5) {
-        gsap.to('#step-8-pipette small', { opacity: 0 })
-
-        var anim = gsap.timeline()
-        anim
-        .to('#starchCap', {y: -50})
-        .to('#step-8-pipette', {duration: 1, x: 50, y: -50})
-        .to('#step-8-pipette', {duration: 1, x: 120})
-        .to('#pipetteButton2', {y:10})
-        .to('#step-8-pipette', {duration: 1, y: -20})
-        .to('#pipetteButton2', {y:0})
-        .to('#step-8-pipette', {duration: 1, y: -50})
-        .to('#step-8-pipette', {duration: 1, x: 50})
-        .to('#step-8-pipette', { duration: 1,  x: 0, y: 0})
-        .to('#starchCap', {y: 0})
-        .to('#step-8-pipette small', {opacity: 1, onComplete: () => {
-            filled5 = true
-            document.querySelector('#step-8-pipette small').innerHTML = 'click to add KI solution'
-        }})
-    }
-    else{
-        gsap.to('#step-8-pipette small', { opacity: 0 })
+function placeDish1() {
+    if (!task_done) {
+        var obj = {i:0}
 
         var anim = gsap.timeline()
         anim
-        .to("#step-8-pipette", {duration: 1, x: -100, y: -50})
-        .to("#step-8-pipette", {duration: 1, x: -150})
-        .to('#pipetteButton2', {y:10})
-        .to('#step-8-pipette', {duration: 1, y: -20})
-        .to('#pipetteButton2', {y:0})
-        .to('#step-8-pipette', {duration: 1, y: -50})
-        .to('#step-8-pipette', {duration: 1, x: 0, y: 0, onComplete: () => {
-            task_done = true
+            .to('#step-8 .petri-dish .small', { opacity: 0 })
+            .to('#step-8 .petri-dish', {duration: 1, y: -100 })
+            .to('#step-8 .petri-dish', {duration: 1, x: -180, y: -70 })
+            .to(obj, {i:R1, onUpdate: () => {
+                document.querySelector('#step-8 .reading-indicator').innerHTML = `${obj.i.toFixed(1)} gm`
+            }})
 
-            document.querySelector('#step-8-flask').src = './assets/blue bottle.png'
-
-            addTask('<b>Step 4</b> Add 0.5 ml saturated KI solution and shake it for 1 min')
-        }})
+        task_done = true
+        addTask('<b>Step 8</b> Take out petri dish from desiccator and record the weight')
     }
 }

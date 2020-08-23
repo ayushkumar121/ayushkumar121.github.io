@@ -1,32 +1,49 @@
-var poured = false
+var target = 0
+var value = 0
 
-function pourPhenolphthalein(params) {
-    if(!poured)  {
-        var drop = document.createElement("img")
-        drop.src = './assets/pink drop.png'
-        drop.classList.add('element', 'drop-step-5')
-        drop.style.zIndex = 5
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
 
-        gsap.to('#step5flask small', {opacity: 0})
+var machine_on = false
 
-        var anim = gsap.timeline()
+var handle = setInterval(() => {
+    if(value < target){
+        value ++
+    }
+    else if(value > target){
+        value --
+    }
 
-        anim
-            .to('#phenolphthalein', { duration: 2, x: -80, y: -70 })
-            .to('#phenolphthalein', {
-                rotation: -45, onComplete: () => {
-                    document.querySelector('#step-5 .instruments').appendChild(drop)
-                }
-            })
-            .to(drop, { y: 30, opacity: 0 })
-            .to('#phenolphthalein', { rotation: 0 })
-            .to('#phenolphthalein', {
-                duration: 2, x: 0, y: 0, onComplete: () => {
-                    poured = true
-                    task_done = true
+    if(value == 105){
+        task_done = true
+        addTask('<b>Step 5</b> press ‘On’ button of the convective hot air oven and set temperature to 105°')
+        clearInterval(handle)
+    }
 
-                    addTask('<b>Step 5</b> Add 2-3 drops of phenolpthalein indicator in hot condition')
-                }
-            })
+    document.querySelector('#step-5 .read-2').innerHTML = `${pad(value, 3)}°C`
+}, 400)
+
+function turnOn() {
+    machine_on = true
+    gsap.to('#step-5 .reading-indicator', {opacity: 1})
+}
+
+function increaseTemp() {
+    if(machine_on) {
+        target++
+        document.querySelector('#step-5 .read-1').innerHTML = `${pad(target, 3)}°C`
+    }
+}
+
+
+function reduceTemp() {
+    if(machine_on) {
+        if(machine_on) {
+            target--
+            document.querySelector('#step-5 .read-1').innerHTML = `${pad(target, 3)}°C`
+        }
     }
 }
