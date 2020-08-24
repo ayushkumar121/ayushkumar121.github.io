@@ -90,7 +90,7 @@ function closeKnob() {
 
             document.querySelector('#result').innerHTML = `<b>Result : ${result.toPrecision(4)}</b>`
 
-            addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH Solution')
+            addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH solution')
             addTask('🎉 Experiment Complete 🎉')
         }
     }
