@@ -17,6 +17,6 @@ function placeDish4() {
         document.querySelector('#nextbutton').innerHTML = 'Observations'
 
         task_done = true
-        addTask('<b>Step 14</b> Take out petri dish from desiccator and record the weight')
+        addTask('<b>Step 13</b> Take out petri dish from desiccator and record the weight')
     }
 }
