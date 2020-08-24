@@ -48,7 +48,6 @@
   .hero {
     display: flex;
     justify-content: center;
-    padding: 30px;
   }
 
   #expriment{
@@ -174,7 +173,7 @@
   .super-container{
     display: flex;
     justify-content: space-around;
-    margin-top: 50px;
+    margin-top: 10px;
   }
 
   #taskslist{
@@ -182,8 +181,8 @@
   }
 
   #taskslist li{
-    padding: 20px 0;
-    font-size: 22px;
+    padding: 5px 0;
+    font-size: 12px;
   }
 
   b{
