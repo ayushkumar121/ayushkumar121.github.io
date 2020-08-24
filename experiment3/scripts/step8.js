@@ -1,5 +1,5 @@
 var R1 = 32.5
-document.querySelector('#R1').innerHTML = `${R1.toFixed(1)} gm`
+document.querySelector('#R1').innerHTML = `${R1.toFixed(1)}`
 
 function placeDish1() {
     if (!task_done) {
