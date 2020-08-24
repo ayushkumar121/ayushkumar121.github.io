@@ -89,7 +89,7 @@ function common() {
         gsap.to('#sampleimage', {
             duration: 2, x: 0, y: 0, rotation: 0, delay: "+3", onComplete: () => {
                 task_done = true
-                addTask('<b>Step 2</b> Weigh 2gms of Oil Sample in conical flask')
+                addTask('<b>Step 2</b> Weigh 2gms of oil sample in conical flask')
             }
         })
     }
