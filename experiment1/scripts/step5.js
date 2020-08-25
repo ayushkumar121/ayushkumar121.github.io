@@ -3,7 +3,7 @@ var poured = false
 function pourPhenolphthalein(params) {
     if(!poured)  {
         var drop = document.createElement("img")
-        drop.src = './assets/pink drop.png'
+        drop.src = './assets/drop.png'
         drop.classList.add('element', 'drop-step-5')
         drop.style.zIndex = 5
 
@@ -18,7 +18,7 @@ function pourPhenolphthalein(params) {
                     document.querySelector('#step-5 .instruments').appendChild(drop)
                 }
             })
-            .to(drop, { y: 30, opacity: 0 })
+            .to(drop, { y: 30, repeat: 2, opacity: 0 })
             .to('#phenolphthalein', { rotation: 0 })
             .to('#phenolphthalein', {
                 duration: 2, x: 0, y: 0, onComplete: () => {

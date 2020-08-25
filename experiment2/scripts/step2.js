@@ -104,7 +104,7 @@ function placeFlask() {
 
         var anim1 = gsap.timeline()
         anim1
-            .to('#placeflask', { duration: 2, y: -100, x: -180, onStart: () => animating = true })
+            .to('#placeflask', { duration: 2, y: -100, x: -160, onStart: () => animating = true })
             .to('#placeflask', { duration: 1, y: -40 })
             .to('#sampleimage > small', { duration: .25, opacity: 1 })
             .to('#step-2 button.element', { duration: 1, opacity: 1 })

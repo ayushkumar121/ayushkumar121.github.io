@@ -22,7 +22,7 @@ function buretteFill() {
         anim
             .to('#naoh small', { opacity: 0 })
             .to('#naoh', { duration: 2, y: -220 })
-            .to('#naoh', { duration: 2, x: -170 })
+            .to('#naoh', { duration: 2, x: -150 })
             .to('#naoh', {
                 duration: 2, rotation: -20, onComplete: () => {
                     gsap.to(frameObject5, {
@@ -57,7 +57,7 @@ function openKnob() {
 
                 var text = ''
                 if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
-                    text += '(Titration Complete) '
+                    text += '(Titration Completed) '
 
                     document.querySelector('#step-6-flask').src = `./assets/white flask.png`
                 }

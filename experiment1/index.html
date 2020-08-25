@@ -19,7 +19,7 @@
         <div id="expriment" style="background-image: url('./assets/bg.png');">
           <div class="step active" id="step-0">
             <p style="text-align: center; font-size: 22px; width: 100%; background: #fff;padding: 10px 0;">Make yourself
-              Familiar with the instrument <small style="font-size: 14px;">(hover for more info)</small>
+              familiar with the instruments & glassware <small style="font-size: 14px;">(hover for more info)</small>
             </p>
 
             <div class="instruments">
@@ -36,9 +36,9 @@
                 <span class="tooltiptext">Weighing Scale</span>
               </span>
 
-              <span class="tooltip element" style="left: 650px;top: 350px;">
-                <img src="./assets/gas stove.png" />
-                <span class="tooltiptext">Burner</span>
+              <span class="tooltip element" style="left: 600px;top: 350px;">
+                <img src="./assets/hot plate off.png" />
+                <span class="tooltiptext">Hot plate</span>
               </span>
 
               <span class="tooltip element" style="top: 130px; left: 500px; z-index: 1;">
@@ -146,17 +146,23 @@
           <div class="step" id="step-4">
             <p style="text-align: center; font-size: 28px;background: #fff;padding-top: 10px">
               Step 4: Heat the mixture upto boiling condition <br />
-              <div style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px;">⚠
-                Please proceed with caution while working with burner</div>
-              </p>
+            <div
+              style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px; text-align: center;">
+              ⚠
+              Please proceed with caution while working with burner</div>
+            </p>
 
             <div class="instruments">
-              <img src="./assets/gas stove.png" class="element" style="top: 350px;left: 400px;" />
+              <div class="element" onclick="turnOnHotPlate()" id="hotplate1"
+                style="top: 350px;left: 373px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/hot plate off.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to turn on hot plate</small>
+              </div>
 
               <div class="element" onclick="placeFlaskOnBurner()" id="step-4-flask"
                 style="top: 330px;left: 550px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
                 <img />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
+                <small style="background: #000;opacity:0; color:#fff; padding: 4px; margin-top: 10px;">click to place
                   flask</small>
               </div>
             </div>
@@ -187,6 +193,8 @@
             <div class="instruments">
               <img class="element" id="burettestep6" src="./assets/burette/ff0.png"
                 style="left: 460px; top: 100px; font-weight: 600;" />
+              <img class="element" src="./assets/burette stand.png"
+                style="left: 430px; top: 130px; font-weight: 600;" />
               <img class="element" id="step-6-flask" style="left: 446px; top: 370px; font-weight: 600;" />
 
               <button class="element"
@@ -213,15 +221,15 @@
 
           </div>
 
-          <div class="step" id="step-7" style="background-image: unset; background-color: #fff;">
+          <div class="step" id="step-7" style="background-image: unset; background-color: #d4dbff;">
 
             <div id="observation">
               <p style="font-size: 28px; text-align: center;">Observation Table</p>
               <br />
               <table style="width: 100%;">
                 <tr>
-                  <th>Selected sample</th>
-                  <th>Titrant used</th>
+                  <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample</th>
+                  <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used (ml)</th>
                 </tr>
                 <tr>
                   <th id="observationSample"></th>
@@ -230,14 +238,22 @@
               </table>
             </div>
 
-            <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 150px">
+            <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 20px">
               Result
             </button>
           </div>
 
           <div class="step" id="step-8" style="background-image: unset; background-color: #fff;">
-            <img src="./assets/calculation.png" width="800" />
-            <h1 id="result" style="text-align: center;"></h1>
+            <div style="display: grid; place-items: center;">
+              <img src="./assets/calculation.png" width="800" />
+            </div>
+            <br />
+            <p>Volume of NaOH used = <span id="reading1"></span> ml</p>
+            <p>Normal of NaOH = 0.1 N</p>
+            <p>Weight of sample = 2.0 gm</p>
+            <br />
+            <h1 id="result" style="text-align: center;">
+            </h1>
           </div>
 
         </div>

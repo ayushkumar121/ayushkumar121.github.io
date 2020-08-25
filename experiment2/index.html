@@ -209,13 +209,15 @@
           </div>
 
           <div class="step" id="step-6">
-            <p style="text-align: center; font-size: 22px;background: #fff;padding: 10px 0;">Step 6: Titrate the mixture
+            <p style="text-align: center; font-size: 18px;background: #fff;padding: 10px 0;">Step 6: Titrate the mixture
               with 0.1 N sodium thio-sulphate solution until yellow color is almost gone</p>
 
             <div class="instruments">
               <img class="element" id="burettestep6" src="./assets/burette/ff0.png"
-                style="left: 460px; top: 100px; font-weight: 600;" />
-              <img class="element" id="step-6-flask" style="left: 446px; top: 370px; font-weight: 600;" />
+                style="left: 460px; top: 100px; " />
+                <img class="element" src="./assets/burette stand.png"
+                style="left: 430px; top: 140px;" />
+              <img class="element" id="step-6-flask" style="left: 446px; top: 370px;" />
 
               <button class="element"
                 style="opacity: 0; top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
@@ -267,9 +269,11 @@
 
             <div class="instruments">
               <img class="element" id="burettestep9" src="./assets/burette/ff16.png"
-                style="left: 460px; top: 100px; font-weight: 600;" />
+                style="left: 460px; top: 100px;" />
+                <img class="element" src="./assets/burette stand.png"
+                style="left: 430px; top: 140px;" />
               <img class="element" id="step-9-flask" src="./assets/blue bottle.png"
-                style="left: 446px; top: 370px; font-weight: 600;" />
+                style="left: 446px; top: 370px; " />
 
               <button class="element" style="top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
                 onclick="openKnob1()">Open Knob</button>
@@ -287,14 +291,14 @@
 
           </div>
 
-          <div class="step" id="step-7" style="background-image: unset; background-color: #fff;">
+          <div class="step" id="step-7" style="background-image: unset; background-color: #45d5b1;">
             <br />
             <p style="font-size: 28px; text-align: center;">Observation Table</p>
             <br />
             <table style="width: 100%;">
               <tr>
-                <th>Selected Sample</th>
-                <th>Titration Reading</th>
+                <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample</th>
+                <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used (ml)</th>
               </tr>
               <tr>
                 <th id="observationSample"></th>
@@ -302,7 +306,7 @@
               </tr>
             </table>
 
-            <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 13next0px">
+            <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 20px">
               Result
             </button>
           </div>

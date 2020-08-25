@@ -13,9 +13,9 @@ var buretteFilled = false
 
 var frameObject5 = { i: 0 }
 
-var tl = gsap.timeline({repeat: -1})
-tl.to('#step-6-flask', {rotation: -10}).to('#step-6-flask', {rotation: 10})
-tl.pause()
+//var tl = gsap.timeline({repeat: -1})
+//tl.to('#step-6-flask', {rotation: -10}).to('#step-6-flask', {rotation: 10})
+//tl.pause()
 
 function buretteFill() {
     if (!buretteFilled) {
@@ -43,7 +43,7 @@ function buretteFill() {
 
 function openKnob() {
     if (handle == null && !buretteFilled) {
-        tl.resume()
+       // tl.resume()
         handle = setInterval(() => {
             if (readingTitration < 50.0) {
                 readingTitration += 0.1
@@ -60,7 +60,7 @@ function openKnob() {
 
                 var text = ''
                 if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2) {
-                    text += '(Titration Complete) '
+                    text += '(Titration Completed) '
 
                     document.querySelector('#step-6-flask').src = `./assets/titr1.png`
                 }
@@ -82,8 +82,8 @@ function openKnob() {
 
 function closeKnob() {
     if (handle != null) {
-        tl.restart()
-        tl.pause()
+      //  tl.restart()
+     //   tl.pause()
         clearInterval(handle);
         handle = null
 
@@ -91,14 +91,17 @@ function closeKnob() {
             document.querySelector('#nextbutton').innerHTML = 'Observations'
             task_done = true
 
-            document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)} ml`
+            document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)}`
+            document.querySelector('#reading1').innerHTML = `${readingTitration.toPrecision(2)}`
 
             var result = (readingTitration.toPrecision(2) * 0.0282 * 10) / 2
 
-            document.querySelector('#result').innerHTML = `<b>Result : ${result.toPrecision(4)}</b>`
+            document.querySelector('#result').innerHTML = `<b>FFA(%) = ( ${readingTitration.toPrecision(2)} * 0.1 * 0.0282 * 100 ) / 2 =  ${result.toPrecision(4)}</b>`
 
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH solution')
             addTask('🎉 Experiment Completed 🎉')
+        } else{
+            
         }
     }
 }

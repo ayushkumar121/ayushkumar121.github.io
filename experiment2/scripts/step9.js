@@ -23,7 +23,7 @@ function openKnob1() {
 
                 var text = ''
                 if (Math.abs(prefferedReading[selectedSample] - readingTitration1) <= 0.2) {
-                    text += '(Titration Complete) '
+                    text += '(Titration Completed) '
 
                     document.querySelector('#step-9-flask').src = `./assets/white flask.png`
                 }
@@ -54,11 +54,11 @@ function closeKnob1() {
 
             var S2 = readingTitration1
 
-            document.querySelector('#observationReading').innerHTML = `${(S1+S2).toPrecision(2)} ml`
+            document.querySelector('#observationReading').innerHTML = `${(S1+S2).toPrecision(2)}`
 
-            var peroxide = ((S1 + S2) * .1 * 1000) / 5
+            var peroxide = ((S1 + S2).toPrecision(2) * .1 * 1000) / 5
 
-            document.querySelector('#result').innerHTML = `<b>Result : ${peroxide.toPrecision(4)}</b>`
+            document.querySelector('#result').innerHTML = `<b>Peroxide value : ${peroxide.toPrecision(4)}</b>`
 
             addTask('<b>Step 8</b> Titrate the mixture with 0.1 N sodium thio-sulphate solution until yellow color is almost gone.')
             addTask('🎉 Experiment Completed 🎉')

@@ -16,7 +16,7 @@ function measureAlcohol() {
 
         anim
             .to('#alcoholCabottleCap', { y: -50 })
-            .to('#alcoholbottle', { duration: 2, x: -100, y: -50 })
+            .to('#alcoholbottle', { duration: 2, x: -120, y: -50 })
             .to('#alcoholbottle', {
                 rotation: -45, onComplete: () => {
                     document.querySelector('#step-3 .instruments').appendChild(drop)
