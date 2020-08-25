@@ -82,6 +82,7 @@ function openKnob() {
 
 function closeKnob() {
     if (handle != null) {
+        tl.restart()
         tl.pause()
         clearInterval(handle);
         handle = null
