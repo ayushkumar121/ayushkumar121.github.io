@@ -43,7 +43,7 @@ function buretteFill() {
 
 function openKnob() {
     if (handle == null && !buretteFilled) {
-        tl.resume()()
+        tl.resume()
         handle = setInterval(() => {
             if (readingTitration < 50.0) {
                 readingTitration += 0.1
