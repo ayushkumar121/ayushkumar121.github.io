@@ -13,6 +13,10 @@ var buretteFilled = false
 
 var frameObject5 = { i: 0 }
 
+var tl = gsap.timeline({repeat: -1})
+tl.to('#step-6-flask', {rotation: -10}).to('#step-6-flask', {rotation: 10})
+tl.pause()
+
 function buretteFill() {
     if (!buretteFilled) {
         var anim = gsap.timeline()
@@ -39,6 +43,7 @@ function buretteFill() {
 
 function openKnob() {
     if (handle == null && !buretteFilled) {
+        tl.resume()()
         handle = setInterval(() => {
             if (readingTitration < 50.0) {
                 readingTitration += 0.1
@@ -77,6 +82,7 @@ function openKnob() {
 
 function closeKnob() {
     if (handle != null) {
+        tl.pause()
         clearInterval(handle);
         handle = null
 
