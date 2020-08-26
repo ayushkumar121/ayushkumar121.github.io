@@ -48,7 +48,13 @@ function addSample() {
                         y: 50, opacity: 0, repeat: 2, ease: Sine.easeIn, onStart: () => {
                             if (frameObject.i == 0) {
                                 gsap.to(frameObject, {
-                                    duration: 2, i: 3, ease: new SteppedEase.config(3), onUpdate: () => {
+                                    duration: 2, i: 2, ease: new SteppedEase.config(2), onUpdate: () => {
+                                        document.querySelector('#step-2-flask').src = `./assets/${flaskSamples[selectedSample]}/${frameObject.i}.png`
+                                    }
+                                })
+                            } else if (frameObject.i == 2) {
+                                gsap.to(frameObject, {
+                                    i: 3, ease: new SteppedEase.config(1), onUpdate: () => {
                                         document.querySelector('#step-2-flask').src = `./assets/${flaskSamples[selectedSample]}/${frameObject.i}.png`
                                     }
                                 })

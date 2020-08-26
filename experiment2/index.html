@@ -78,17 +78,24 @@
           <div id="potential-step" class="potential-step">
             <p style="text-align: center; font-size: 28px;background: #fff;padding-top: 10px">
               Step 1-1: Melt the solid Mixture <br />
-              <div style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px;">⚠
-                Please proceed with caution while working with burner</div>
-              </p>
+            <div
+              style="margin-top:5px;background:lightyellow;font-weight:600; padding: 5px 0; font-size: 18px; text-align: center;">
+              ⚠
+              Please proceed with caution while working with burner</div>
+            </p>
 
             <div class="instruments">
-              <img src="./assets/gas stove.png" class="element" style="top: 350px;left: 400px;" />
+              <div class="element" onclick="turnOnHotPlate()" id="hotplate1"
+                style="top: 350px;left: 373px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
+                <img src="./assets/hot plate off.png" />
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to turn on hot
+                  plate</small>
+              </div>
 
               <div class="element" onclick="placeFlaskOnBurner()" id="step-1-5-flask"
                 style="top: 250px;left: 550px;display: flex; justify-content: center;align-items: center;flex-direction: column;">
                 <img src="./assets/ghee melting/0.png" />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to place
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;opacity: 0;">click to place
                   flask</small>
               </div>
             </div>
@@ -213,10 +220,8 @@
               with 0.1 N sodium thio-sulphate solution until yellow color is almost gone</p>
 
             <div class="instruments">
-              <img class="element" id="burettestep6" src="./assets/burette/ff0.png"
-                style="left: 460px; top: 100px; " />
-                <img class="element" src="./assets/burette stand.png"
-                style="left: 430px; top: 140px;" />
+              <img class="element" id="burettestep6" src="./assets/burette/ff0.png" style="left: 460px; top: 100px; " />
+              <img class="element" src="./assets/burette stand.png" style="left: 430px; top: 140px;" />
               <img class="element" id="step-6-flask" style="left: 446px; top: 370px;" />
 
               <button class="element"
@@ -268,12 +273,9 @@
               until blue color just disappears</p>
 
             <div class="instruments">
-              <img class="element" id="burettestep9" src="./assets/burette/ff16.png"
-                style="left: 460px; top: 100px;" />
-                <img class="element" src="./assets/burette stand.png"
-                style="left: 430px; top: 140px;" />
-              <img class="element" id="step-9-flask" src="./assets/blue bottle.png"
-                style="left: 446px; top: 370px; " />
+              <img class="element" id="burettestep9" src="./assets/burette/ff16.png" style="left: 460px; top: 100px;" />
+              <img class="element" src="./assets/burette stand.png" style="left: 430px; top: 140px;" />
+              <img class="element" id="step-9-flask" src="./assets/blue bottle.png" style="left: 446px; top: 370px; " />
 
               <button class="element" style="top:250px;left: 300px;font-weight: 600; background: #000; color: #fff;"
                 onclick="openKnob1()">Open Knob</button>
