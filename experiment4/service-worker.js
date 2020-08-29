@@ -28,8 +28,8 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
             .then((response) => {
                 if (response) {
-                    return response;
                     console.log('returning from cache')
+                    return response;
                 }
                 return fetch(event.request);
             })
