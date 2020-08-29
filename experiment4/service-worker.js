@@ -1,6 +1,5 @@
-var CACHE_NAME = 'my-site-cache-v1';
+var CACHE_NAME = 'images-v2';
 var urlsToCache = [
-    '/',
     'assets/step1/juice/0.svg',
     'assets/step1/juice/1.svg',
     'assets/step1/juice/2.svg',
