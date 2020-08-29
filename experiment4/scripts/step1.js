@@ -1,5 +1,14 @@
 task_done = false
 
+let beakerAnimation = bodymovin.loadAnimation({
+        container: document.querySelector('.bodymovinanim'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        path: "https://assets3.lottiefiles.com/packages/lf20_R2nqIv.json"
+});
+
+
 function juice() {
     if (!task_done) {
         var tl = gsap.timeline()
@@ -19,8 +28,12 @@ function juice() {
             })
             .to('#step-1 .apple', {
                 duration: 1,
-                y: -100
+                y: -100,
+                onComplete: () => {
+                    beakerAnimation.play()
+                }
             })
+            /*
             .to(obj, {
                 i: 11,
                 delay: "+1",
@@ -28,7 +41,8 @@ function juice() {
                 ease: new SteppedEase.config(11),
                 onUpdate: () => {
                     document.querySelector('#step-1 .juice').src = `assets/step1/juice/${obj.i}.svg`
-                }
-            })
+                },
+               
+            })*/
     }
 }
