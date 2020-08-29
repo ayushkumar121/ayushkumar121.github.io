@@ -1,8 +1,27 @@
 var curent_step = 0
+
+var task_done = true
+var sidebarToggle = false
+
 var steps = document.querySelectorAll('.step')
-var taskslist = document.querySelector('#taskslist')
 var controls = document.querySelector('#controls')
-var task_done = false
+
+
+function toggleSidebar() {
+    if(!sidebarToggle) {
+        gsap.to('#sidebar', {
+            right: 0
+        })
+
+        sidebarToggle = true
+    } else {
+        gsap.to('#sidebar', {
+            right: -500
+        })
+
+        sidebarToggle = false
+    }
+}
 
 function next() {
     if (curent_step < steps.length - 1) {
@@ -11,15 +30,9 @@ function next() {
     }
 }
 
-function addTask(task) {
-    var taskli = document.createElement('li')
-    taskli.innerHTML = task
-
-    taskslist.appendChild(taskli)
-}
-
-
 setInterval(() => {
+    steps = document.querySelectorAll('.step')
+
     for (let i = 0; i < steps.length; i++) {
         if (i == curent_step)
             steps[i].classList.add('active')
