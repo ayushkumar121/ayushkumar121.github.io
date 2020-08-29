@@ -27,7 +27,7 @@ function juice() {
                 duration: 0.5,
                 ease: new SteppedEase.config(11),
                 onUpdate: () => {
-                    document.querySelector('#step-1 .juice').src = `./assets/step1/juice/${obj.i}Asset 1.svg`
+                    document.querySelector('#step-1 .juice').src = `/assets/step1/juice/${obj.i}.svg`
                 }
             })
     }
