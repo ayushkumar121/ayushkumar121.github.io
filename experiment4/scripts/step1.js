@@ -5,14 +5,13 @@ let beakerAnimation = bodymovin.loadAnimation({
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: "https://assets3.lottiefiles.com/packages/lf20_R2nqIv.json"
+        path: 'assets/step1/juice_in_beaker.json'
 });
 
 
 function juice() {
     if (!task_done) {
         var tl = gsap.timeline()
-        var obj = { i: 0 }
 
         tl
             .to('#step-1 .apple small', {
