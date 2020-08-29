@@ -29,6 +29,7 @@ self.addEventListener('fetch', (event) => {
             .then((response) => {
                 if (response) {
                     return response;
+                    console.log('returning from cache')
                 }
                 return fetch(event.request);
             })
