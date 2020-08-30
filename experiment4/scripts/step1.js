@@ -24,7 +24,7 @@ function juice() {
             })
             .to('#step-1 .apple', {
                 duration: 2,
-                x: 150
+                x: 250
             })
             .to('#step-1 .apple', {
                 duration: 1,
