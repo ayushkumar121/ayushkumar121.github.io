@@ -2,7 +2,7 @@ var curent_step = 0
 var steps = document.querySelectorAll('.step')
 var taskslist = document.querySelector('#taskslist')
 var controls = document.querySelector('#controls')
-var task_done = false
+var task_done = true
 
 function next() {
     if (curent_step < steps.length - 1) {
