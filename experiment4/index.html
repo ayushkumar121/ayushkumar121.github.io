@@ -168,12 +168,13 @@
 
                 <div class="element pipette" onclick="suckPour()"
                     style="left: 300px; top: 100px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
-                    <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg" style="margin-top: 50px; margin-left: 10px;z-index: 0" width="18" />
+                    <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg"
+                        style="margin-top: 50px; margin-left: 10px;z-index: 0" width="18" />
                     <img src="assets/step3/empty pipetteAsset 3.svg" width="60" />
                     <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">click to suck
                         juice</small>
 
-                    <span class="ppReading" style="position: absolute;position: absolute;
+                    <span class="ppReading" style="position: absolute;
                     font-size: 8px;
                     transform: rotateZ(-90deg);
                     margin-top: 30px;
@@ -182,7 +183,34 @@
                     margin-left: 20px;">0000uL</span>
                 </div>
 
-                <img class="ppCap" src="assets/step3/pp tube capAsset 6.svg" style="position: absolute; top: 320px;left: 190px;" width="30" />
+                <img class="ppCap" src="assets/step3/pp tube capAsset 6.svg"
+                    style="position: absolute; top: 320px;left: 190px;" width="30" />
+            </div>
+
+            <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Add 5ml of 95% Ethyl alcohol</h1>
+
+                <div class="bodymovinanim_4" style="top:0; left:-300px;width:800px; position: absolute; "></div>
+
+                <div class="element pipette" onclick="suckPourAlcohol()"
+                    style="left: 300px; top: 100px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg"
+                        style="margin-top: 50px; margin-left: 10px;z-index: 0" width="18" />
+                    <img src="assets/step3/empty pipetteAsset 3.svg" width="60" />
+                    <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">click to suck
+                        alcohol</small>
+
+                    <span class="ppReading" style="position: absolute;
+                font-size: 8px;
+                transform: rotateZ(-90deg);
+                margin-top: 30px;
+                color: white;
+                font-weight: 800;
+                margin-left: 20px;">0000uL</span>
+                </div>
+
+                <img src="assets/step4/ethyl alcoholAsset 12.svg" style="position: absolute; left: 550px;top: 300px;" width="75" />
+
             </div>
         </div>
 
@@ -204,6 +232,7 @@
     <script src="scripts/step1.js"></script>
     <script src="scripts/step2.js"></script>
     <script src="scripts/step3.js"></script>
+    <script src="scripts/step4.js"></script>
 </body>
 
 </html>
