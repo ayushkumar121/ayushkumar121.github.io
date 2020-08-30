@@ -5,7 +5,7 @@ let beakerAnimation = bodymovin.loadAnimation({
         renderer: 'svg',
         loop: false,
         autoplay: false,
-        path: 'assets/step1/juice_in_beaker.json'
+        path: 'https://gist.githubusercontent.com/ayushkumar121/a7752f4fafe7f39163dc570128ccdcc9/raw/03e801d65ed9dff32d67f5cd890a8a8b22105786/mixer_and_beaker.json'
 });
 
 
@@ -15,33 +15,24 @@ function juice() {
 
         tl
             .to('#step-1 .apple small', {
-                opacity: 0
+                opacity: 0,
             })
             .to('#step-1 .apple', {
                 duration: 2,
-                y: -250
+                y: -250,
+                zIndex: 0
             })
             .to('#step-1 .apple', {
                 duration: 2,
-                x: 300
+                x: 200
             })
             .to('#step-1 .apple', {
                 duration: 1,
                 y: -100,
                 onComplete: () => {
                     beakerAnimation.play()
+                    task_done = true
                 }
-            })
-            /*
-            .to(obj, {
-                i: 11,
-                delay: "+1",
-                duration: 1,
-                ease: new SteppedEase.config(11),
-                onUpdate: () => {
-                    document.querySelector('#step-1 .juice').src = `assets/step1/juice/${obj.i}.svg`
-                },
-               
-            })*/
+            })     
     }
 }
