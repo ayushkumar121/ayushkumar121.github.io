@@ -1,11 +1,11 @@
 var curent_step = 0
 
-var task_done = true
+var task_done = false
 var sidebarToggle = false
 
 var steps = document.querySelectorAll('.step')
 var controls = document.querySelector('#controls')
-
+var taskslist = document.querySelector('#taskslist')
 
 function toggleSidebar() {
     if(!sidebarToggle) {
@@ -28,6 +28,13 @@ function next() {
         curent_step++
         task_done = false
     }
+}
+
+function addTask(task) {
+    var taskli = document.createElement('li')
+    taskli.innerHTML = task
+
+    taskslist.appendChild(taskli)
 }
 
 setInterval(() => {

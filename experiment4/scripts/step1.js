@@ -1,13 +1,10 @@
-task_done = false
-
 let beakerAnimation = bodymovin.loadAnimation({
-        container: document.querySelector('.bodymovinanim'),
+        container: document.querySelector('#step-1 .bodymovinanim'),
         renderer: 'svg',
         loop: false,
         autoplay: false,
         path: 'https://gist.githubusercontent.com/ayushkumar121/a7752f4fafe7f39163dc570128ccdcc9/raw/03e801d65ed9dff32d67f5cd890a8a8b22105786/mixer_and_beaker.json'
 });
-
 
 function juice() {
     if (!task_done) {
@@ -42,6 +39,7 @@ function juice() {
                 },
                 onComplete: () => {
                     task_done = true
+                    addTask('Extraction of Juice')
                 }
             })     
     }
