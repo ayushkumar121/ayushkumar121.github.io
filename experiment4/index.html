@@ -113,9 +113,7 @@
             font-size: 22px;
         }
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.3/lottie.min.js"
-        integrity="sha512-35O/v2b9y+gtxy3HK+G3Ah60g1hGfrxv67nL6CJ/T56easDKE2TAukzxW+/WOLqyGE7cBg0FR2KhiTJYs+FKrw=="
-        crossorigin="anonymous"></script>
+    <script src="scripts/lottie.min.js"></script>
 </head>
 
 <body style="background: #eee">
@@ -148,11 +146,11 @@
             <div class="step" id="step-2" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Filtration of Juice</h1>
 
-
                 <div class="bodymovinanim" style="top:0; left:0;width:800px; position: absolute; "></div>
-                
-                <img src="assets/step2/particlesAsset 2.svg" class="filtrate" style="opacity:0; position: absolute; top: 380px;left: 170px;width: 60px;"/>
-                
+
+                <img src="assets/step2/particlesAsset 2.svg" class="filtrate"
+                    style="opacity:0; position: absolute; top: 380px;left: 170px;width: 60px;" />
+
                 <div class="element filter" onclick="filterJuice()"
                     style="z-index: 2; left: 300px; top: 350px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
                     <img class="strainer" src="assets/step2/strainer.png" width="220" />
@@ -162,10 +160,30 @@
 
             </div>
 
-            <div class="step">
-                <h1 class="title">To determine NeBl</h1>
-            </div>
+            <div class="step" id="step-3" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Measure 5ml in 16ml screw cap PP Tube</h1>
 
+                <div class="bodymovinanim_31" style="top:0; left:-300px;width:800px; position: absolute; "></div>
+                <div class="bodymovinanim_32" style="top:100px; left:100px;width:800px; position: absolute; "></div>
+
+                <div class="element pipette" onclick="suckPour()"
+                    style="left: 300px; top: 100px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg" style="margin-top: 50px; margin-left: 10px;z-index: 0" width="18" />
+                    <img src="assets/step3/empty pipetteAsset 3.svg" width="60" />
+                    <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">click to suck
+                        juice</small>
+
+                    <span class="ppReading" style="position: absolute;position: absolute;
+                    font-size: 8px;
+                    transform: rotateZ(-90deg);
+                    margin-top: 30px;
+                    color: white;
+                    font-weight: 800;
+                    margin-left: 20px;">0000uL</span>
+                </div>
+
+                <img class="ppCap" src="assets/step3/pp tube capAsset 6.svg" style="position: absolute; top: 320px;left: 190px;" width="30" />
+            </div>
         </div>
 
         <div id="controls">
@@ -185,6 +203,7 @@
     <script src="scripts/index.js"></script>
     <script src="scripts/step1.js"></script>
     <script src="scripts/step2.js"></script>
+    <script src="scripts/step3.js"></script>
 </body>
 
 </html>

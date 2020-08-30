@@ -19,7 +19,7 @@ function filterJuice() {
             beakerAnimation_2.play()
         }})
         .to('#step-2 .filtrate', {
-            duration: 3.5,
+            duration: 4.5,
             opacity: 1,
             onComplete: () => {
                 task_done = true
