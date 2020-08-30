@@ -19,18 +19,28 @@ function juice() {
             })
             .to('#step-1 .apple', {
                 duration: 2,
-                y: -250,
+                y: -300,
                 zIndex: 0
             })
             .to('#step-1 .apple', {
                 duration: 2,
-                x: 200
+                x: 150
             })
             .to('#step-1 .apple', {
                 duration: 1,
+                rotation: 90,
+            })   
+            .to('#step-1 .apple', {
+                duration: 1,
                 y: -100,
-                onComplete: () => {
+            })   
+            .to('#step-1 .juicerHandle', {
+                duration: 2,
+                y: 40,
+                onStart: () => {
                     beakerAnimation.play()
+                },
+                onComplete: () => {
                     task_done = true
                 }
             })     
