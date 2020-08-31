@@ -9,16 +9,22 @@ let beakerAnimation_7 = bodymovin.loadAnimation({
 var part1done = false
 
 function step71() {
-    if(!part1done) {
+    if (!part1done) {
         beakerAnimation_7.playSegments([0, 300], true)
-        gsap.to('#step-7 .controlCentrifuge', {delay: "+10", onComplete: () => {
-            part1done = true
-            document.querySelector('#step-7 .controlCentrifuge').innerHTML = `click to pour blue solution`
-        }})
+        gsap.to('#step-7 .controlCentrifuge', {
+            delay: "+10", onComplete: () => {
+                part1done = true
+                document.querySelector('#step-7 .controlCentrifuge small').innerHTML = `click to pour blue solution`
+            }
+        })
     } else {
         beakerAnimation_7.playSegments([300, 800], true)
-        gsap.to('#step-7 .controlCentrifuge', {delay: "+17", opacity: 0, onComplete: () => {
-            task_done = true
-        }})
+        gsap
+            .to('#step-7 .controlCentrifuge', { delay: "+17", x: 100 })
+            .to('#step-7 .controlCentrifuge', {
+                opacity: 0, onComplete: () => {
+                    task_done = true
+                }
+            })
     }
 }

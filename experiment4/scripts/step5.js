@@ -36,7 +36,7 @@ function animateSegment() {
             beakerAnimation_5.playSegments([0, 70], true)
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+2",
+                delay: "+4",
                 duration: 2, x: 300, y: 100, opacity: 1, onComplete: () => {
                     document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Juice'
                     animateSegment1++
@@ -48,7 +48,7 @@ function animateSegment() {
             beakerAnimation_5.playSegments([70, 250], true)
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+4",
+                delay: "+5",
                 duration: 1, x: 360, opacity: 1, onComplete: () => {
                     document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Water'
                     animateSegment1++
@@ -120,7 +120,7 @@ function SET() {
             rpmLocked = true
         else {
             timLocked = true
-            
+
             setTimeout(() => {
                 gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
                 humming.stop()
