@@ -25,8 +25,8 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-4 .pipette', { duration: 1, y: -150, delay: "+1.5" })
-                .to('#step-4 .pipette .pipetteTop', { y: 0 })
+                .to('#step-4 .pipette .pipetteTop', { y: 0 , delay: "+1.5"})
+                .to('#step-4 .pipette', { duration: 1, y: -150 })
                 .to('#step-4 .pipette', {
                     duration: 2,
                     y: 0, x: 0,
@@ -58,8 +58,8 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-4 .pipette', { duration: 1, delay: "+2", y: -110 })
-                .to('#step-4 .pipette .pipetteTop', { y: 0 })
+                .to('#step-4 .pipette .pipetteTop', { y: 0, delay: "+2" })
+                .to('#step-4 .pipette', { duration: 1, y: -110 })
                 .to('#step-4 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {
                         task_done = true

@@ -6,37 +6,63 @@ let beakerAnimation_5 = bodymovin.loadAnimation({
     path: 'https://assets4.lottiefiles.com/packages/lf20_9caEPE.json'
 });
 
-var animateSegment1 = 1
+var machineON = false
+
+var animateSegment1 = 0
 var rpmVal = 100
 var timVal = 1
 var rpmLocked = false
 var timLocked = false
 
+function ON() {
+    if (!machineON) {
+        machineON = true
+        gsap.to('#step-5 .rmpVal', { opacity: 1 })
+        gsap.to('#step-5 .timVal', { opacity: 1 })
+        gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
+        gsap.to('#step-6 .onbutton', {background : 'green'})
+        animateSegment1++
+    }
+}
+
 function animateSegment() {
     if (!task_done) {
         if (animateSegment1 == 1) {
             beakerAnimation_5.playSegments([0, 70], true)
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Juice'
-            animateSegment1++
+
+            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                duration: 2, x: 300, y: 100, opacity: 1, onComplete: () => {
+                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Juice'
+                    animateSegment1++
+                }
+            })
         }
 
         else if (animateSegment1 == 2) {
             beakerAnimation_5.playSegments([70, 250], true)
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Water'
-            animateSegment1++
+
+            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                duration: 1, x: 360, opacity: 1, onComplete: () => {
+                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Water'
+                    animateSegment1++
+                }
+            })
         }
 
         else if (animateSegment1 == 3) {
             beakerAnimation_5.playSegments([250, 390], true)
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Close Lid'
-            animateSegment1++
+
+            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                duration: 1, x: 0, y: 0, opacity: 1, onComplete: () => {
+                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Close Lid'
+                    animateSegment1++
+                }
+            })
         }
 
         else if (animateSegment1 == 4) {
             beakerAnimation_5.playSegments([390, 470], true)
             gsap.to('#step-5 .controlCentrifuge', { opacity: 0, delay: "+3", })
-            gsap.to('#step-5 .rmpVal', { opacity: 1 })
-            gsap.to('#step-5 .timVal', { opacity: 1 })
             animateSegment1++
         }
 
@@ -74,9 +100,12 @@ function SET() {
             rpmLocked = true
         else {
             timLocked = true
-            animateSegment1++
-            gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
+
+            setTimeout(() => {
+                animateSegment1++
+                gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
+                document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
+            }, timVal * 1000)
         }
     }
 }
