@@ -16,6 +16,7 @@ function suckPourAlcohol() {
 
             tl
                 .to('#step-4 .pipette small', { opacity: 0 })
+                .to('#step-4 .cap', {y: -50})
                 .to('#step-4 .pipette', { duration: 2, y: -150, x: 220 })
                 .to('#step-4 .pipette .pipetteTop', { zIndex: -1 })
                 .to('#step-4 .pipette .pipetteTop', { y: 50 })
@@ -34,6 +35,7 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .pipette small').innerHTML = 'click to pour alcohol'
                     }
                 })
+                .to('#step-4 .cap', {y: 0})
                 .to('#step-4 .pipette small', {
                     opacity: 1, onComplete: () => {
                         suckedAlcohol = true
