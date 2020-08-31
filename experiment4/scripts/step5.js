@@ -14,6 +14,9 @@ var timVal = 1
 var rpmLocked = false
 var timLocked = false
 
+var beep = new sound('assets/sounds/beep.wav')
+var humming = new sound('assets/sounds/humming.wav')
+
 function ON() {
     if (!machineON) {
         machineON = true
@@ -22,6 +25,8 @@ function ON() {
         gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
         gsap.to('#step-6 .onbutton', {background : 'green'})
         animateSegment1++
+
+        beep.play()
     }
 }
 
@@ -90,7 +95,7 @@ function animateSegment() {
 
 function MEN() {
     if (animateSegment1 == 5) {
-
+        beep.play()
     }
 }
 
@@ -102,11 +107,16 @@ function SET() {
             timLocked = true
 
             setTimeout(() => {
+                humming.stop()
                 animateSegment1++
                 gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
                 document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
             }, timVal * 1000)
+
+            humming.play()
         }
+
+        beep.play()
     }
 }
 
@@ -119,6 +129,8 @@ function ADD() {
 
         document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
         document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}`
+
+        beep.play()
     }
 }
 
@@ -131,5 +143,7 @@ function SUB() {
 
         document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
         document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}`
+
+        beep.play()
     }
 }

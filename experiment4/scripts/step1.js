@@ -6,8 +6,11 @@ let beakerAnimation = bodymovin.loadAnimation({
         path: 'https://gist.githubusercontent.com/ayushkumar121/a7752f4fafe7f39163dc570128ccdcc9/raw/03e801d65ed9dff32d67f5cd890a8a8b22105786/mixer_and_beaker.json'
 });
 
+var juicerSound = new sound('assets/sounds/juicer.wav')
+var juicerSet = false
+
 function juice() {
-    if (!task_done) {
+    if (!juicerSet) {
         var tl = gsap.timeline()
 
         tl
@@ -31,16 +34,33 @@ function juice() {
                 duration: 1,
                 y: -100,
             })   
-            .to('#step-1 .juicerHandle', {
-                duration: 2,
-                y: 40,
-                onStart: () => {
-                    beakerAnimation.play()
-                },
+            .to('#step-1 .juicer', {
+                opacity: 1,
                 onComplete: () => {
-                    task_done = true
-                    addTask('Extraction of Juice')
+                    juicerSet = true
                 }
-            })     
+            })
+    }
+}
+
+function juicer() {
+    if(juicerSet) {
+        var tl = gsap.timeline()
+
+        tl
+        .to('#step-1 .juicer', {opacity: 0})
+        .to('#step-1 .juicerHandle', {
+            duration: 5,
+            y: 40,
+            onStart: () => {
+                juicerSound.play()
+                beakerAnimation.play()
+            },
+            onComplete: () => {
+                task_done = true
+                juicerSound.stop()
+                addTask('Extraction of Juice')
+            }
+        }) 
     }
 }
