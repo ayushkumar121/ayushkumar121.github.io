@@ -14,7 +14,6 @@ function step8() {
         gsap.to('#step-8 .controlCentrifuge', {
             delay: "+10", onComplete: () => {
                 part81done = true
-               // document.querySelector('#step-7 .controlCentrifuge small').innerHTML = `click to pour `
             }
         })
     } else {
