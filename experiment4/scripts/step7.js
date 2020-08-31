@@ -8,22 +8,31 @@ let beakerAnimation_7 = bodymovin.loadAnimation({
 
 var part1done = false
 
-function step71() {
+function step7() {
     if (!part1done) {
+        var tl = gsap.timeline()
         beakerAnimation_7.playSegments([0, 300], true)
-        gsap.to('#step-7 .controlCentrifuge', {
-            delay: "+10", onComplete: () => {
-                part1done = true
-                document.querySelector('#step-7 .controlCentrifuge small').innerHTML = `click to pour blue solution`
-            }
-        })
-    } else {
-        beakerAnimation_7.playSegments([300, 800], true)
-        gsap
-            .to('#step-7 .controlCentrifuge', { delay: "+17", x: 100 })
+
+        tl
+            .to('#step-7 .controlCentrifuge', { opacity: 0 })
             .to('#step-7 .controlCentrifuge', {
-                opacity: 0, onComplete: () => {
+                delay: "+10", onComplete: () => {
+                    part1done = true
+                    document.querySelector('#step-7 .controlCentrifuge small').innerHTML = `click to pour ethyl alcohol`
+                }
+            })
+            .to('#step-7 .controlCentrifuge', {x: 100, opacity: 1})
+
+    } else {
+        var tl = gsap.timeline()
+        beakerAnimation_7.playSegments([300, 800], true)
+
+        tl
+            .to('#step-7 .controlCentrifuge', { opacity: 0 })
+            .to('#step-7 .controlCentrifuge', {
+                delay: "+15", onComplete: () => {
                     task_done = true
+                    addTask('Take absorbance at 420nm')
                 }
             })
     }

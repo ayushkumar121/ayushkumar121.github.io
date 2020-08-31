@@ -16,6 +16,7 @@ var timLocked = false
 
 var beep = new sound('assets/sounds/beep.wav')
 var humming = new sound('assets/sounds/humming.wav')
+var hydrolics = new sound('assets/sounds/hydrolics.mp3')
 
 function ON() {
     if (!machineON) {
@@ -34,6 +35,8 @@ function animateSegment() {
     if (!task_done) {
         if (animateSegment1 == 1) {
             beakerAnimation_5.playSegments([0, 70], true)
+
+            hydrolics.play()
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
                 delay: "+4",
@@ -69,12 +72,14 @@ function animateSegment() {
         }
 
         else if (animateSegment1 == 4) {
+            hydrolics.play()
             beakerAnimation_5.playSegments([390, 470], true)
             gsap.to('#step-5 .controlCentrifuge', { opacity: 0, delay: "+3", })
             animateSegment1++
         }
 
         else if (animateSegment1 == 6) {
+            hydrolics.play()
             beakerAnimation_5.playSegments([470, 520], true)
 
             gsap.to('#step-5 .controlCentrifuge', {
@@ -99,6 +104,7 @@ function animateSegment() {
         }
 
         else if (animateSegment1 == 8) {
+            hydrolics.play()
             beakerAnimation_5.playSegments([620, 760], true)
             gsap.to('#step-5 .controlCentrifuge', { opacity: 0 })
 
@@ -143,7 +149,7 @@ function ADD() {
             timVal += 1
 
         document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
-        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}`
+        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}min`
 
         beep.play()
     }
@@ -157,7 +163,7 @@ function SUB() {
             timVal -= 1
 
         document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
-        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}`
+        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}min`
 
         beep.play()
     }
