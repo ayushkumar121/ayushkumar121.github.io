@@ -23,7 +23,7 @@ function ON() {
         gsap.to('#step-5 .rmpVal', { opacity: 1 })
         gsap.to('#step-5 .timVal', { opacity: 1 })
         gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
-        gsap.to('#step-6 .onbutton', { background: 'green' })
+        gsap.to('#step-5 .onbutton', { background: 'green' })
         animateSegment1++
 
         beep.play()
