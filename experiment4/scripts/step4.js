@@ -25,7 +25,7 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-4 .pipette', { duration: 1, y: -150, delay: "+1" })
+                .to('#step-4 .pipette', { duration: 1, y: -150, delay: "+1.5" })
                 .to('#step-4 .pipette .pipetteTop', { y: 0 })
                 .to('#step-4 .pipette', {
                     duration: 2,
@@ -46,7 +46,6 @@ function suckPourAlcohol() {
 
             tl
                 .to('#step-4 .pipette small', { opacity: 0 })
-                .to('#step-4 .ppCap', { duration: 2, x: -100, y: 150 })
                 .to('#step-4 .pipette', { duration: 2, y: -110, x: -170 })
                 .to('#step-4 .pipette .pipetteTop', { y: 50 })
                 .to('#step-4 .pipette', {

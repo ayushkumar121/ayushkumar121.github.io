@@ -33,7 +33,7 @@ function suckPour() {
                 .to(obj, {i: 5,  ease: new SteppedEase.config(5), onUpdate: () => {
                     document.querySelector('#step-3 .ppReading').innerHTML = `${obj.i}000uL`
                 }})
-                .to('#step-3 .pipette', { duration: 1,  y: -150, delay: "+1"})
+                .to('#step-3 .pipette', { duration: 1,  y: -150, delay: "+1.5"})
                 .to('#step-3 .pipette .pipetteTop', {y: 0})
                 .to('#step-3 .pipette', {
                     duration: 2,
@@ -67,7 +67,7 @@ function suckPour() {
                 .to('#step-3 .pipette .pipetteTop', {y: 0})
                 .to('#step-3 .pipette', { duration: 2, y: 0, x: 0, onComplete: () => {
                     task_done = true
-                    addTask('Filtration of Juice')
+                    addTask('Measure 5ml in 16ml screw cap PP Tube')
                 } })
         }
     }
