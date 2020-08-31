@@ -120,9 +120,9 @@ function SET() {
             rpmLocked = true
         else {
             timLocked = true
-            gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
-
+            
             setTimeout(() => {
+                gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
                 humming.stop()
                 animateSegment1++
                 document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
