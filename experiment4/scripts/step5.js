@@ -23,7 +23,7 @@ function ON() {
         gsap.to('#step-5 .rmpVal', { opacity: 1 })
         gsap.to('#step-5 .timVal', { opacity: 1 })
         gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
-        gsap.to('#step-6 .onbutton', {background : 'green'})
+        gsap.to('#step-6 .onbutton', { background: 'green' })
         animateSegment1++
 
         beep.play()
@@ -36,6 +36,7 @@ function animateSegment() {
             beakerAnimation_5.playSegments([0, 70], true)
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                delay: "+2",
                 duration: 2, x: 300, y: 100, opacity: 1, onComplete: () => {
                     document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Juice'
                     animateSegment1++
@@ -47,6 +48,7 @@ function animateSegment() {
             beakerAnimation_5.playSegments([70, 250], true)
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                delay: "+4",
                 duration: 1, x: 360, opacity: 1, onComplete: () => {
                     document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Water'
                     animateSegment1++
@@ -58,6 +60,7 @@ function animateSegment() {
             beakerAnimation_5.playSegments([250, 390], true)
 
             gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                delay: "+3",
                 duration: 1, x: 0, y: 0, opacity: 1, onComplete: () => {
                     document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Close Lid'
                     animateSegment1++
@@ -73,13 +76,25 @@ function animateSegment() {
 
         else if (animateSegment1 == 6) {
             beakerAnimation_5.playSegments([470, 520], true)
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Juice'
+
+            gsap.to('#step-5 .controlCentrifuge', {
+                opacity: 1, onComplete: () => {
+                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Juice'
+                }
+            })
+
             animateSegment1++
         }
 
         else if (animateSegment1 == 7) {
             beakerAnimation_5.playSegments([520, 620], true)
-            document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Water'
+            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
+                delay: "+3",
+                duration: 1, x: 0, y: 0, opacity: 1, onComplete: () => {
+                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Water'
+                }
+            })
+
             animateSegment1++
         }
 
@@ -105,11 +120,11 @@ function SET() {
             rpmLocked = true
         else {
             timLocked = true
+            gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
 
             setTimeout(() => {
                 humming.stop()
                 animateSegment1++
-                gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
                 document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
             }, timVal * 1000)
 
