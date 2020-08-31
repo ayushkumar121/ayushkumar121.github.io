@@ -73,7 +73,7 @@ function animateSegment() {
 
         else if (animateSegment1 == 4) {
             hydrolics.play()
-            beakerAnimation_5.playSegments([390, 470], true)
+            beakerAnimation_5.playSegments([440, 470], true)
             gsap.to('#step-5 .controlCentrifuge', { opacity: 0, delay: "+3", })
             animateSegment1++
         }

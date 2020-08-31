@@ -155,7 +155,7 @@
                 <div class="bodymovinanim" style="top:0; left:0;width:800px; position: absolute; "></div>
 
                 <img src="assets/step2/particlesAsset 2.svg" class="filtrate"
-                    style="opacity:0; position: absolute; top: 380px;left: 170px;width: 60px;" />
+                    style="opacity:0; position: absolute; top: 360px;left: 170px;width: 60px;z-index: 3" />
 
                 <div class="element filter" onclick="filterJuice()"
                     style="z-index: 2; left: 300px; top: 330px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
@@ -287,9 +287,13 @@
 
                 <div class="bodymovinanim_8" style="top:0; left: 0px;width:800px; position: absolute; "></div>
 
-                <div class="element controlCentrifuge" onclick="step8()" style="left: 570px;top: 450px;">
+                <div class="element controlCentrifuge" onclick="step8()" style="opacity:0; left: 570px;top: 450px;">
                     <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">Click to pour
                         cubits</small>
+                </div>
+
+                <div>
+                    <button onclick="lidOpenFunc(this)" class="element" style="padding: 12px;left: 300px;top: 450px">ON</button>
                 </div>
             </div>
         </div>
