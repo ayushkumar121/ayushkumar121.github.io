@@ -104,7 +104,6 @@ function animateSegment() {
         }
 
         else if (animateSegment1 == 8) {
-            hydrolics.play()
             beakerAnimation_5.playSegments([620, 760], true)
             gsap.to('#step-5 .controlCentrifuge', { opacity: 0 })
 
