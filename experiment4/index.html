@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <title>HBTU vLab</title>
     <style>
+        button{
+            outline: 0;
+            border: 0;
+            font-weight: 600;
+        }
         * {
             box-sizing: border-box;
             margin: 0;
@@ -142,7 +147,9 @@
 
                 <div class="bodymovinanim" style=" left: 120px;top: 100px;width: 600px;position: absolute;"></div>
 
-                <div class="element juicer" onclick="juicer()" style="left: 383px; top: 400px;opacity: 0;">
+                <button class="element onbutton" onclick="juicer()" style="padding: 12px;left: 430px;top: 380px">ON</button>
+
+                <div class="element juicer" onclick="juicer()" style="left: 383px; top: 430px;opacity: 0;">
                     <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">Click turn on
                         juicer</small>
                 </div>
@@ -290,6 +297,11 @@
                 <div class="element controlCentrifuge" onclick="step8()" style="opacity:0; left: 570px;top: 450px;">
                     <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">Click to pour
                         cubits</small>
+                </div>
+
+                <div class="element closeLid" onclick="closeLidFunc()" style="opacity:0; left: 300px;top: 300px;">
+                    <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">
+                        Close Lid</small>
                 </div>
 
                 <div>
