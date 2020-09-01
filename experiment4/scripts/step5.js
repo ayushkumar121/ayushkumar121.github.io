@@ -14,6 +14,9 @@ var timVal = 1
 var rpmLocked = false
 var timLocked = false
 
+var weightRPM = 400
+var weightTIM = 400
+
 var beep = new sound('assets/sounds/beep.wav')
 var humming = new sound('assets/sounds/humming.wav')
 var hydrolics = new sound('assets/sounds/hydrolics.mp3')
@@ -23,7 +26,7 @@ function ON() {
         machineON = true
         gsap.to('#step-5 .rmpVal', { opacity: 1 })
         gsap.to('#step-5 .timVal', { opacity: 1 })
-        gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
+        gsap.to('#step-5 .controlCentrifuge1', { opacity: 1 })
         gsap.to('#step-5 .onbutton', { background: 'green' })
         animateSegment1++
 
@@ -37,44 +40,52 @@ function animateSegment() {
             beakerAnimation_5.playSegments([0, 70], true)
 
             hydrolics.play()
+            var tl = gsap.timeline()
 
-            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+4",
-                duration: 2, x: 300, y: 100, opacity: 1, onComplete: () => {
-                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Juice'
-                    animateSegment1++
-                }
-            })
+            tl
+                .to('#step-5 .controlCentrifuge1', { opacity: 0 })
+                .to('#step-5 .controlCentrifuge2', {
+                    delay: "+4",
+                    opacity: 1, onComplete: () => {
+                        animateSegment1++
+                    }
+                })
         }
 
         else if (animateSegment1 == 2) {
             beakerAnimation_5.playSegments([70, 250], true)
 
-            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+5",
-                duration: 1, x: 360, opacity: 1, onComplete: () => {
-                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Place Water'
-                    animateSegment1++
-                }
-            })
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-5 .controlCentrifuge2', { opacity: 0 })
+                .to('#step-5 .controlCentrifuge3', {
+                    delay: "+4",
+                    opacity: 1, onComplete: () => {
+                        animateSegment1++
+                    }
+                })
         }
 
         else if (animateSegment1 == 3) {
             beakerAnimation_5.playSegments([250, 390], true)
 
-            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+3",
-                duration: 1, x: 0, y: 0, opacity: 1, onComplete: () => {
-                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Close Lid'
-                    animateSegment1++
-                }
-            })
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-5 .controlCentrifuge3', { opacity: 0 })
+                .to('#step-5 .controlCentrifuge4', {
+                    delay: "+3",
+                    opacity: 1, onComplete: () => {
+                        animateSegment1++
+                    }
+                })
         }
 
         else if (animateSegment1 == 4) {
             hydrolics.play()
             beakerAnimation_5.playSegments([440, 470], true)
-            gsap.to('#step-5 .controlCentrifuge', { opacity: 0, delay: "+3", })
+            gsap.to('#step-5 .controlCentrifuge4', { opacity: 0, delay: "+3", })
             animateSegment1++
         }
 
@@ -82,30 +93,46 @@ function animateSegment() {
             hydrolics.play()
             beakerAnimation_5.playSegments([470, 520], true)
 
-            gsap.to('#step-5 .controlCentrifuge', {
-                opacity: 1, onComplete: () => {
-                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Juice'
-                }
-            })
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-5 .controlCentrifuge1', { opacity: 0 })
+                .to('#step-5 .controlCentrifuge2', {
+                    delay: "+3",
+                    opacity: 1,
+                    onStart: () => {
+                        document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Juice'
+                    },
+                    onComplete: () => {
+                        animateSegment1++
+                    }
+                })
 
             animateSegment1++
         }
 
         else if (animateSegment1 == 7) {
             beakerAnimation_5.playSegments([520, 620], true)
-            gsap.fromTo('#step-5 .controlCentrifuge', { duration: 1, opacity: 0 }, {
-                delay: "+3",
-                duration: 1, x: 0, y: 0, opacity: 1, onComplete: () => {
-                    document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Remove Water'
-                }
-            })
+
+            tl
+                .to('#step-5 .controlCentrifuge2', { opacity: 0 })
+                .to('#step-5 .controlCentrifuge3', {
+                    delay: "+3",
+                    opacity: 1,
+                    onStart: () => {
+                        document.querySelector('#step-5 .controlCentrifuge3 small').innerHTML = 'Remove Water'
+                    },
+                    onComplete: () => {
+                        animateSegment1++
+                    }
+                })
 
             animateSegment1++
         }
 
         else if (animateSegment1 == 8) {
             beakerAnimation_5.playSegments([620, 760], true)
-            gsap.to('#step-5 .controlCentrifuge', { opacity: 0 })
+            gsap.to('#step-5 .controlCentrifuge3', { opacity: 0 })
 
             task_done = true
             addTask('Centrifuge of juice for 10 min at 5000rpm')
@@ -116,6 +143,17 @@ function animateSegment() {
 function MEN() {
     if (animateSegment1 == 5) {
         beep.play()
+        if (!rpmLocked) {
+            weightRPM = 800
+            weightTIM = 400
+        }
+        else {
+            weightRPM = 400
+            weightTIM = 800
+        }
+
+        document.querySelector('#step-5 .rmpVal').innerHTML = `<span style="font-weight: ${weightRPM}">RPM ${rpmVal}</span>`
+        document.querySelector('#step-5 .timVal').innerHTML = `<span style="font-weight: ${weightTIM}">TIM ${timVal}min</span>`
     }
 }
 
@@ -127,10 +165,9 @@ function SET() {
             timLocked = true
 
             setTimeout(() => {
-                gsap.to('#step-5 .controlCentrifuge', { opacity: 1 })
+                gsap.to('#step-5 .controlCentrifuge1', { opacity: 1 })
                 humming.stop()
                 animateSegment1++
-                document.querySelector('#step-5 .controlCentrifuge small').innerHTML = 'Open Lid'
             }, timVal * 1000)
 
             humming.play()
@@ -147,8 +184,8 @@ function ADD() {
         else if (!timLocked)
             timVal += 1
 
-        document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
-        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}min`
+        document.querySelector('#step-5 .rmpVal').innerHTML = `<span style="font-weight: ${weightRPM}">RPM ${rpmVal}</span>`
+        document.querySelector('#step-5 .timVal').innerHTML = `<span style="font-weight: ${weightTIM}">TIM ${timVal}min</span>`
 
         beep.play()
     }
@@ -161,8 +198,8 @@ function SUB() {
         else if (!timLocked)
             timVal -= 1
 
-        document.querySelector('#step-5 .rmpVal').innerHTML = `RPM ${rpmVal}`
-        document.querySelector('#step-5 .timVal').innerHTML = `TIM ${timVal}min`
+        document.querySelector('#step-5 .rmpVal').innerHTML = `<span style="font-weight: ${weightRPM}">RPM ${rpmVal}</span>`
+        document.querySelector('#step-5 .timVal').innerHTML = `<span style="font-weight: ${weightTIM}">TIM ${timVal}min</span>`
 
         beep.play()
     }
