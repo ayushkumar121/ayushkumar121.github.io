@@ -3,7 +3,7 @@ let beakerAnimation_31 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://gist.githubusercontent.com/ayushkumar121/57ce20e4e3e4343540f041118cdc09bb/raw/03d0e472b2ae472aebee8f7aa6417abc955daa0d/pp_tube_filling.json'
+    path: 'https://assets7.lottiefiles.com/packages/lf20_NCEiyO.json'
 });
 
 let beakerAnimation_32 = bodymovin.loadAnimation({
@@ -11,7 +11,7 @@ let beakerAnimation_32 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://gist.githubusercontent.com/ayushkumar121/57ce20e4e3e4343540f041118cdc09bb/raw/03d0e472b2ae472aebee8f7aa6417abc955daa0d/beaker_reducing.json'
+    path: 'https://assets9.lottiefiles.com/packages/lf20_zOaiCd.json'
 });
 
 var sucked = false
@@ -25,19 +25,17 @@ function suckPour() {
             tl
                 .to('#step-3 .pipette small', { opacity: 0 })
                 .to('#step-3 .pipette', { duration: 2, y: -150, x: 220 })
-                .to('#step-3 .pipette .pipetteTop', { zIndex: -1 })
                 .to('#step-3 .pipette', {
                     duration: 1, y: -20, x: 220, onComplete: () => {
                         beakerAnimation_32.play()
                     }
                 })
-                .to('#step-3 .pipette .pipetteTop', { y: 50 })
+                .to('#step-3 .pipette .pipetteTop', { y: -30 })
                 .to(obj, {
                     i: 5, ease: new SteppedEase.config(5), onUpdate: () => {
                         document.querySelector('#step-3 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-3 .pipette .pipetteTop', { y: 0, delay: "+1.5" })
                 .to('#step-3 .pipette', { duration: 1, y: -150 })
                 .to('#step-3 .pipette', {
                     duration: 2,
@@ -60,7 +58,7 @@ function suckPour() {
                 .to('#step-3 .pipette small', { opacity: 0 })
                 .to('#step-3 .ppCap', { duration: 2, x: -100, y: 150 })
                 .to('#step-3 .pipette', { duration: 2, y: -110, x: -160 })
-                .to('#step-3 .pipette .pipetteTop', { y: 50 })
+                .to('#step-3 .pipette .pipetteTop', { y: 0})
                 .to('#step-3 .pipette', {
                     duration: 3, y: -30, onStart: () => {
                         beakerAnimation_31.play()
@@ -71,7 +69,6 @@ function suckPour() {
                         document.querySelector('#step-3 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-3 .pipette .pipetteTop', { y: 0, delay: "+2" })
                 .to('#step-3 .pipette', { duration: 1, y: -110 })
                 .to('#step-3 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {

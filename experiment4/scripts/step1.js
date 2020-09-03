@@ -45,7 +45,7 @@ function juice() {
 
 function juicer() {
     if(juicerSet) {
-        document.querySelector('#step-1 .onbutton').style.background = "green"
+      //  document.querySelector('#step-1 .onbutton').style.background = "green"
 
         var tl = gsap.timeline()
 

@@ -3,7 +3,7 @@ let beakerAnimation_2 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://gist.githubusercontent.com/ayushkumar121/2c5aa360bed3de1a8359cf5564e2605f/raw/39c02d0d5d865b7982a84176e4edf74b50c1c6a4/beaker_animation.json'
+    path: 'https://assets1.lottiefiles.com/packages/lf20_uQxiTh.json'
 });
 
 var step21done = false

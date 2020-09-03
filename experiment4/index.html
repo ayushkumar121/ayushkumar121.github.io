@@ -189,19 +189,22 @@
                 <div class="bodymovinanim_32" style="top:100px; left:100px;width:800px; position: absolute; "></div>
 
                 <div class="element pipette" onclick="suckPour()"
-                    style="left: 300px; top: 100px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    style="left: 300px; top: 200px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
                     <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg"
-                        style="margin-top: 50px; margin-left: 10px;z-index: 0" width="18" />
-                    <img src="assets/step3/empty pipetteAsset 3.svg" width="60" />
-                    <small style="background: #000; color:#fff; padding: 4px; margin-top: -50px;">click to suck
+                    style="position: absolute;top: -20px;margin-left: 10px;z-index: 0" width="18" />
+                
+                    <img src="assets/step3/empty pipetteAsset 3.svg" style="z-index: 1;" width="60" />
+
+                    <small style="z-index: 1;background: #000; color:#fff; padding: 4px; margin-top: -50px;">click to suck
                         juice</small>
 
                     <span class="ppReading" style="position: absolute;
                     font-size: 8px;
                     transform: rotateZ(-90deg);
-                    margin-top: 30px;
+                    margin-top: -85px;
                     color: white;
                     font-weight: 800;
+                    z-index: 1;
                     margin-left: 20px;">0000uL</span>
                 </div>
 

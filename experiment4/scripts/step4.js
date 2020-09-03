@@ -3,7 +3,7 @@ let beakerAnimation_4 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://gist.githubusercontent.com/ayushkumar121/715ccd4ba894c272e9789683b06db3c6/raw/54e166d3512c9e3e383d84d58c9555994f2fee26/pp_tube_ethyl_alcohol.json'
+    path: 'https://assets3.lottiefiles.com/packages/lf20_q04HJy.json'
 });
 
 var suckedAlcohol = false
