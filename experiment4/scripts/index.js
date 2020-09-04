@@ -8,7 +8,7 @@ var controls = document.querySelector('#controls')
 var taskslist = document.querySelector('#taskslist')
 
 function toggleSidebar() {
-    if(!sidebarToggle) {
+    if (!sidebarToggle) {
         gsap.to('#sidebar', {
             right: 0
         })
@@ -61,10 +61,15 @@ function sound(src) {
     this.sound.setAttribute("controls", "none");
     this.sound.style.display = "none";
     document.body.appendChild(this.sound);
-    this.play = function(){
-      this.sound.play();
+    this.play = function () {
+        this.sound.play();
     }
-    this.stop = function(){
-      this.sound.pause();
+    this.stop = function () {
+        this.sound.pause();
     }
-  }
+}
+
+var beep = new sound('assets/sounds/beep.wav')
+var humming = new sound('assets/sounds/humming.wav')
+var hydrolics = new sound('assets/sounds/hydrolics.mp3')
+var juicerSound = new sound('assets/sounds/juicer.wav')

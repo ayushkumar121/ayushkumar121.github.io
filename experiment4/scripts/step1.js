@@ -6,7 +6,6 @@ let beakerAnimation = bodymovin.loadAnimation({
         path: 'https://assets10.lottiefiles.com/packages/lf20_OEMHMF.json'
 });
 
-var juicerSound = new sound('assets/sounds/juicer.wav')
 var juicerSet = false
 
 function juice() {
@@ -45,8 +44,6 @@ function juice() {
 
 function juicer() {
     if(juicerSet) {
-      //  document.querySelector('#step-1 .onbutton').style.background = "green"
-
         var tl = gsap.timeline()
 
         tl

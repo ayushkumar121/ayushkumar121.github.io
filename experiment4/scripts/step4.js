@@ -18,15 +18,13 @@ function suckPourAlcohol() {
                 .to('#step-4 .pipette small', { opacity: 0 })
                 .to('#step-4 .cap', {y: -50})
                 .to('#step-4 .pipette', { duration: 2, y: -150, x: 220 })
-                .to('#step-4 .pipette .pipetteTop', { zIndex: -1 })
-                .to('#step-4 .pipette .pipetteTop', { y: 50 })
                 .to('#step-4 .pipette', {duration: 3, y: -30})
+                .to('#step-4 .pipette .pipetteTop', { y: -30 })
                 .to(obj, {
                     i: 5, ease: new SteppedEase.config(5), onUpdate: () => {
                         document.querySelector('#step-4 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-4 .pipette .pipetteTop', { y: 0 , delay: "+1.5"})
                 .to('#step-4 .pipette', { duration: 1, y: -150 })
                 .to('#step-4 .pipette', {
                     duration: 2,
@@ -49,7 +47,7 @@ function suckPourAlcohol() {
             tl
                 .to('#step-4 .pipette small', { opacity: 0 })
                 .to('#step-4 .pipette', { duration: 2, y: -110, x: -170 })
-                .to('#step-4 .pipette .pipetteTop', { y: 50 })
+                .to('#step-4 .pipette .pipetteTop', { y: 0})
                 .to('#step-4 .pipette', {
                     duration: 3, y: -30, onStart: () => {
                         beakerAnimation_4.play()
@@ -60,7 +58,6 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-4 .pipette .pipetteTop', { y: 0, delay: "+2" })
                 .to('#step-4 .pipette', { duration: 1, y: -110 })
                 .to('#step-4 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {

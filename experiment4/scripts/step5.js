@@ -17,10 +17,6 @@ var timLocked = false
 var weightRPM = 400
 var weightTIM = 400
 
-var beep = new sound('assets/sounds/beep.wav')
-var humming = new sound('assets/sounds/humming.wav')
-var hydrolics = new sound('assets/sounds/hydrolics.mp3')
-
 function ON() {
     if (!machineON) {
         machineON = true
@@ -101,25 +97,26 @@ function animateSegment() {
                     delay: "+3",
                     opacity: 1,
                     onStart: () => {
+                        document.querySelector('#step-5 .controlCentrifuge2').style.left = '225px'
                         document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Juice'
                     },
                     onComplete: () => {
                         animateSegment1++
                     }
                 })
-
-            animateSegment1++
         }
 
         else if (animateSegment1 == 7) {
             beakerAnimation_5.playSegments([520, 620], true)
+            var tl = gsap.timeline()
 
             tl
                 .to('#step-5 .controlCentrifuge2', { opacity: 0 })
                 .to('#step-5 .controlCentrifuge3', {
-                    delay: "+3",
+                    delay: "+5",
                     opacity: 1,
                     onStart: () => {
+                        document.querySelector('#step-5 .controlCentrifuge3').style.left = '225px'
                         document.querySelector('#step-5 .controlCentrifuge3 small').innerHTML = 'Remove Water'
                     },
                     onComplete: () => {
@@ -127,7 +124,6 @@ function animateSegment() {
                     }
                 })
 
-            animateSegment1++
         }
 
         else if (animateSegment1 == 8) {

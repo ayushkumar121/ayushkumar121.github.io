@@ -3,7 +3,7 @@ let beakerAnimation_7 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_uEhOwo.json'
+    path: 'https://assets7.lottiefiles.com/packages/lf20_39qyma.json'
 });
 
 var part1done = false
@@ -32,7 +32,7 @@ function step7() {
             .to('#step-7 .controlCentrifuge', {
                 delay: "+15", onComplete: () => {
                     task_done = true
-                    addTask('Take absorbance at 420nm')
+                    addTask('Take out the supernatant')
                 }
             })
     }
