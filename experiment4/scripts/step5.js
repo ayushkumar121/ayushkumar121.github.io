@@ -163,6 +163,9 @@ function SET() {
         else {
             timLocked = true
 
+            weightRPM = 400
+            weightTIM = 400
+
             setTimeout(() => {
                 gsap.to('#step-5 .controlCentrifuge1', { opacity: 1 })
                 humming.stop()
