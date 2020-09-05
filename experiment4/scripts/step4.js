@@ -60,6 +60,7 @@ function suckPourAlcohol() {
                     }
                 })
                 .to('#step-4 .pipette', { duration: 1, y: -110 })
+                .to('#step-4 .ppCap', { duration: 2, x: 0, y: 0 })
                 .to('#step-4 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {
                         task_done = true
