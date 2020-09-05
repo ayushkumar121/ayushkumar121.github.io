@@ -98,7 +98,7 @@ function animateSegment() {
                     opacity: 1,
                     onStart: () => {
                         document.querySelector('#step-5 .controlCentrifuge2').style.left = '225px'
-                        document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Juice'
+                        document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Sample'
                     },
                     onComplete: () => {
                         animateSegment1++
@@ -128,10 +128,13 @@ function animateSegment() {
 
         else if (animateSegment1 == 8) {
             beakerAnimation_5.playSegments([620, 760], true)
+
             gsap.to('#step-5 .controlCentrifuge3', { opacity: 0 })
+            gsap.to('#step-5 .controlCentrifuge2', { opacity: 0 })
+            gsap.to('#step-5 .controlCentrifuge1', { opacity: 0 })
 
             task_done = true
-            addTask('Centrifuge of juice for 10 min at 5000rpm')
+            addTask('Step5: Centrifuge sample for 10 min at 5000 rpm')
         }
     }
 }
@@ -164,7 +167,44 @@ function SET() {
                 gsap.to('#step-5 .controlCentrifuge1', { opacity: 1 })
                 humming.stop()
                 animateSegment1++
+
+                var obj = { i: rpmVal }
+
+                gsap.to(obj, {
+                    i: 0,
+                    duration: 1,
+                    ease: new SteppedEase.config(rpmVal),
+                    onUpdate: () => {
+                        document.querySelector('#step-5 .rmpVal').innerHTML
+                            = `<span style="font-weight: ${weightRPM}">RPM ${obj.i}</span`
+                    }
+                })
+
             }, timVal * 1000)
+
+            var obj = { i: 0 }
+
+            gsap.to(obj, {
+                i: rpmVal,
+                duration: 1,
+                ease: new SteppedEase.config(rpmVal),
+                onUpdate: () => {
+                    document.querySelector('#step-5 .rmpVal').innerHTML
+                        = `<span style="font-weight: ${weightRPM}">RPM ${obj.i}</span`
+                }
+            })
+
+            var obj1 = { i: timVal }
+
+            gsap.to(obj1, {
+                i: 0,
+                duration: 1 * timVal,
+                ease: new SteppedEase.config(timVal),
+                onUpdate: () => {
+                    document.querySelector('#step-5 .timVal').innerHTML = 
+                        `<span style="font-weight: ${weightTIM}">TIM ${obj1.i}min</span>`
+                }
+            })
 
             humming.play()
         }

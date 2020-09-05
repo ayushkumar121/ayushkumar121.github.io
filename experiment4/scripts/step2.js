@@ -33,13 +33,14 @@ function filterJuice2() {
             duration: 4.5,
             onStart: () =>{
                 beakerAnimation_2.play()
+                gsap.to('#step-2 .filtrate', { delay: 2, opacity: 1 })
             },
             onComplete: () => {
                 task_done = true
-                addTask('Filtration of Juice')
+                addTask('Step2: Filtration of juice sample')
             }
         })
-        .to('#step-2 .filtrate', {opacity: 1})
+        
     }
 }
 

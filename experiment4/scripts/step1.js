@@ -58,7 +58,7 @@ function juicer() {
             onComplete: () => {
                 task_done = true
                 juicerSound.stop()
-                addTask('Extraction of Juice')
+                addTask('Step1: Extraction of juice from selected fruit/vegetable')
             }
         }) 
     }

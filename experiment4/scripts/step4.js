@@ -16,8 +16,8 @@ function suckPourAlcohol() {
 
             tl
                 .to('#step-4 .pipette small', { opacity: 0 })
-                .to('#step-4 .cap', {y: -50})
-                .to('#step-4 .pipette', { duration: 2, y: -150, x: 220 })
+                .to('#step-4 .cap', {duration: 2, y: 150, x: 150})
+                .to('#step-4 .pipette', { duration: 2, y: -150, x: 195 })
                 .to('#step-4 .pipette', {duration: 3, y: -30})
                 .to('#step-4 .pipette .pipetteTop', { y: -30 })
                 .to(obj, {
@@ -33,7 +33,7 @@ function suckPourAlcohol() {
                         document.querySelector('#step-4 .pipette small').innerHTML = 'click to pour alcohol'
                     }
                 })
-                .to('#step-4 .cap', {y: 0})
+                .to('#step-4 .cap', {duration: 2, y: 0, x: 0})
                 .to('#step-4 .pipette small', {
                     opacity: 1, onComplete: () => {
                         suckedAlcohol = true
@@ -46,6 +46,7 @@ function suckPourAlcohol() {
 
             tl
                 .to('#step-4 .pipette small', { opacity: 0 })
+                .to('#step-4 .ppCap', { duration: 2, x: -100, y: 150 })
                 .to('#step-4 .pipette', { duration: 2, y: -110, x: -170 })
                 .to('#step-4 .pipette .pipetteTop', { y: 0})
                 .to('#step-4 .pipette', {
@@ -62,7 +63,7 @@ function suckPourAlcohol() {
                 .to('#step-4 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {
                         task_done = true
-                        addTask('Add 5ml of 95% Ethyl alcohol')
+                        addTask('Step4: Add 5 ml of 95% ethyl alcohol in the centrifuge Tube')
                     }
                 })
         }

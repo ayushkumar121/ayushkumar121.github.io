@@ -9,9 +9,9 @@ let beakerAnimation_8 = bodymovin.loadAnimation({
 var machineon = false
 var machineset = false
 var lambda = 280
-var absval = 20
 
 var part81done = false
+var read1done = false
 
 function turnOnMachine() {
     beep.play()
@@ -26,6 +26,8 @@ function turnOnMachine() {
 function menu() {
     if (machineon) {
         beep.play()
+
+        document.querySelector('#step-8 .read-1').style.fontWeight = '600'
     }
 }
 
@@ -33,8 +35,14 @@ function read() {
     if (machineon) {
         beep.play()
 
-        if (machineset)
-            document.querySelector('#step-8 .read-2').innerHTML = `Abs = ${absval++}`
+        if (machineset) {
+            if(!read1done) {
+                document.querySelector('#step-8 .read-2').innerHTML = `Abs=0.1275`
+                read1done = true
+            } else{
+                document.querySelector('#step-8 .read-2').innerHTML = `Abs=0.7312`
+            }
+        }
     }
 }
 
@@ -47,7 +55,7 @@ function inc() {
                 lambda++
             }
 
-            document.querySelector('#step-8 .read-1').innerHTML = `λ = ${lambda}`
+            document.querySelector('#step-8 .read-1').innerHTML = `λ=${lambda}`
         }
     }
 }
@@ -61,7 +69,7 @@ function dec() {
                 lambda--
             }
 
-            document.querySelector('#step-8 .read-1').innerHTML = `λ = ${lambda}`
+            document.querySelector('#step-8 .read-1').innerHTML = `λ=${lambda}`
         }
     }
 }
@@ -82,7 +90,7 @@ function step8() {
                 .to('#step-8 .control-1', {
                     delay: "+17", onComplete: () => {
                         task_done = true
-                        addTask('step-8')
+                        addTask('Step8: Measure absorbance of sample in spectrophotometer at 420 nm')
                     }
                 })
         }

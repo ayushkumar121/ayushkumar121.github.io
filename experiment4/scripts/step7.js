@@ -21,7 +21,7 @@ function step7() {
                     document.querySelector('#step-7 .controlCentrifuge small').innerHTML = `click to pour ethyl alcohol`
                 }
             })
-            .to('#step-7 .controlCentrifuge', {x: 100, opacity: 1})
+            .to('#step-7 .controlCentrifuge', {x: 150, opacity: 1})
 
     } else {
         var tl = gsap.timeline()
@@ -32,7 +32,7 @@ function step7() {
             .to('#step-7 .controlCentrifuge', {
                 delay: "+15", onComplete: () => {
                     task_done = true
-                    addTask('Take out the supernatant')
+                    addTask('Step6: Take out the supernatant from the centrifuge tube')
                 }
             })
     }

@@ -36,7 +36,7 @@ function suckPour() {
                         document.querySelector('#step-3 .ppReading').innerHTML = `${obj.i}000uL`
                     }
                 })
-                .to('#step-3 .pipette', { duration: 1, y: -150 })
+                .to('#step-3 .pipette', { delay: 2, duration: 2, y: -150 })
                 .to('#step-3 .pipette', {
                     duration: 2,
                     y: 0, x: 0,
@@ -58,7 +58,7 @@ function suckPour() {
                 .to('#step-3 .pipette small', { opacity: 0 })
                 .to('#step-3 .ppCap', { duration: 2, x: -100, y: 150 })
                 .to('#step-3 .pipette', { duration: 2, y: -110, x: -160 })
-                .to('#step-3 .pipette .pipetteTop', { y: 0})
+                .to('#step-3 .pipette .pipetteTop', {duration: 1, y: 0})
                 .to('#step-3 .pipette', {
                     duration: 3, y: -30, onStart: () => {
                         beakerAnimation_31.play()
@@ -73,7 +73,7 @@ function suckPour() {
                 .to('#step-3 .pipette', {
                     duration: 2, y: 0, x: 0, onComplete: () => {
                         task_done = true
-                        addTask('Measure 5ml in 16ml screw cap PP Tube')
+                        addTask('Step3: Pipette out 5ml juice and pour it into the centrifuge tube')
                     }
                 })
         }
