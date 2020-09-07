@@ -1,7 +1,7 @@
 var step6Lottie = [
-    'https://assets7.lottiefiles.com/packages/lf20_cEXM7X.json',
-    'https://assets9.lottiefiles.com/packages/lf20_H3uvfw.json',
-    'https://assets2.lottiefiles.com/packages/lf20_9bW7Rk.json'
+    'https://assets8.lottiefiles.com/packages/lf20_YJ2hxB.json',
+    'https://assets4.lottiefiles.com/packages/lf20_JDNyqs.json',
+    'https://assets2.lottiefiles.com/packages/lf20_x8yRdY.json'
 ]
 
 var step7Lottie = [
