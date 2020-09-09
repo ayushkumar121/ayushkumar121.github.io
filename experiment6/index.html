@@ -133,6 +133,7 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
+<!--
             <div class="step" id="step-1" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step1: Chemical reagents/solutions required</h1>
 
@@ -157,9 +158,12 @@
             </div>
 
             <div class="step">
-                <div style="width:100%; height: 100%; display: grid; background: #000; color: #fff; place-items: center;">
+                <div
+                    style="width:100%; height: 100%; display: grid; background: #000; color: #fff; place-items: center;">
                     <h1>Standardization of DCPIP Dye solution</h1>
-                    <button onclick="task_done=true" style="border: 0; border-radius: 0; font-size: 28px; background: #000; color: #fff">Click to continue</button>
+                    <button onclick="task_done=true"
+                        style="border: 0; border-radius: 0; font-size: 28px; background: #000; color: #fff">Click to
+                        continue</button>
                 </div>
             </div>
 
@@ -180,55 +184,70 @@
 
                 </div>
             </div>
-            
+
             <div class="step" id="step-3" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step3: Add 5 ml of HPO<sup>3</sup> solution in the conical flask</h1>
+                <h1 class="title">Step3: Add 5 ml of HPO<sub>3</sub> solution in the conical flask</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
-                    <small class="control-1 element" onclick="platySegments2()"
+                    <small class="control-1 element" onclick="platySegments3()"
                         style="left: 380px; top: 400px; background: #000; color:#fff; padding: 4px;">
-                        click to suck HPO<sup>3</sup>
+                        click to suck HPO<sub>3</sub>
                     </small>
 
-                    <small class="control-2 element" onclick="platySegments2()"
+                    <small class="control-2 element" onclick="platySegments3()"
                         style="left: 530px; top: 300px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
                         click to pour in conical flasks
                     </small>
 
                 </div>
             </div>
-
+-->
             <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step3: Selection of sample </h1>
+                <h1 class="title">Step4: Titrate the mixture with DCPIP dye solution</h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
-                <div class="instruments step1-tools">
-                    <div class="element tooltip" onclick="selectSample(this, 0)" style="left: 160px;top: 320px;">
-                        <img src="./assets/step4/Apple juiceAsset 10.svg" width="80" />
-                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
-                            select this sample
-                        </div>
-                    </div>
-                    <div class="element tooltip" onclick="selectSample(this, 1)" style="left: 350px;top: 320px;">
-                        <img src="./assets/step4/lemon juiceAsset 10.svg" width="80" />
-                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
-                            select this sample</div>
-                    </div>
-                    <div class="element tooltip" onclick="selectSample(this, 2)" style="left: 530px;top: 320px;">
-                        <img src="./assets/step4/mosambi juiceAsset 11.svg" width="80" />
-                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
-                            select this sample</div>
-                    </div>
+                <div class="controls">
+                    <small class="control-1 element" onclick="platySegments4()"
+                        style="left: 300px;top: 450px; background: #000; color:#fff; padding: 4px;">
+                        click to place funnel
+                    </small>
+
+                    <small class="control-2 element" onclick="platySegments4()"
+                        style="left: 570px;top: 320px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to pour in dye
+                    </small>
+
+                    <small class="control-3 element" onclick="platySegments4()"
+                        style="left: 230px;top: 70px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to remove funnel
+                    </small>
+
+                    <small class="control-4 element" onclick="platySegments4()"
+                        style="left: 530px; top: 300px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to place flask
+                    </small>
+
+                    <small class="control-5 element" onclick="startTitration()"
+                        style="left: 250px; top: 380px;opacity:0; background: #000; color:#fff; padding: 12px;">
+                        start titration
+                    </small>
+
+
+                    <small class="control-6 element" onclick="stopTitration()"
+                        style="left: 250px; top: 150px;opacity:0; background: #000; color:#fff; padding: 12px;">
+                        stop titration
+                    </small>
                 </div>
             </div>
 
-<!--
+            <!--
             Step 7: Take out 50 ml juice in four different conical flasks marked as J1, J2, J3, J4
             Step 8: Heat the J2, J3, J4 sample at 60, 75, 90°C respectively
             Step 9: Pipette out 10 ml juice from each sample flask and pour to the four different conical flask
             Step 10: Add 90 ml of 3% HPO3 solution in each conical flask
 -->
-            
+
             <div class="step" id="step-6" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step 6</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
@@ -255,7 +274,7 @@
                     </small>
                 </div>
             </div>
-<!--
+            <!--
             // Observation & result
 -->
             <div class="step" id="step-7" style="background: url('./assets/bgAsset.svg');">

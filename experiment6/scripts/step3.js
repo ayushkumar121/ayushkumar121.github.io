@@ -3,28 +3,28 @@ let lottie3 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_dJuf8t.json'
+    path: 'https://assets3.lottiefiles.com/packages/lf20_MTYFcc.json'
 })
 
-var currentSegment2 = 1;
+var currentSegment3 = 1;
 
-function platySegments2() {
+function platySegments3() {
     if (!task_done) {
-        if (currentSegment2 == 1) {
+        if (currentSegment3 == 1) {
             lottie3.playSegments([0, 190], true)
             
             gsap.to('#step-3 .control-1', {opacity: 0})
             gsap.to('#step-3 .control-2', {delay: 6, opacity: 1, onComplete: () => {
-                currentSegment2++
+                currentSegment3++
             }})
         }
-        else if (currentSegment2 == 2) {
+        else if (currentSegment3 == 2) {
             lottie3.playSegments([190, 508], true)
             
             gsap.to('#step-3 .control-2', {opacity: 0})
-            gsap.to('#step-3 .control-2', {delay: 6, opacity: 0, onComplete: () => {
+            gsap.to('#step-3 .control-2', {delay: 6, onComplete: () => {
                 task_done = true
-                addTask('Step2: Add 5 ml of HPO<sup>3</sup> solution in the conical flask')
+                addTask('Step3: Add 5 ml of HPO<sub>3</sub> solution in the conical flask')
             }})
         }
     }

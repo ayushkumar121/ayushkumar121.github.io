@@ -35,7 +35,6 @@ function startTitration() {
         handle = setInterval(() => {
             currentValue++
         }, 1000);
-        console.log('blewh')
     }
 }
 

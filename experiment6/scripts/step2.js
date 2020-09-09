@@ -1,4 +1,4 @@
-let lottie3 = bodymovin.loadAnimation({
+let lottie2 = bodymovin.loadAnimation({
     container: document.querySelector('#step-2 .bodymovinanim'),
     renderer: 'svg',
     loop: false,
@@ -11,7 +11,7 @@ var currentSegment2 = 1;
 function platySegments2() {
     if (!task_done) {
         if (currentSegment2 == 1) {
-            lottie3.playSegments([0, 190], true)
+            lottie2.playSegments([0, 190], true)
             
             gsap.to('#step-2 .control-1', {opacity: 0})
             gsap.to('#step-2 .control-2', {delay: 6, opacity: 1, onComplete: () => {
@@ -19,7 +19,7 @@ function platySegments2() {
             }})
         }
         else if (currentSegment2 == 2) {
-            lottie3.playSegments([190, 508], true)
+            lottie2.playSegments([190, 508], true)
             
             gsap.to('#step-2 .control-2', {opacity: 0})
             gsap.to('#step-2 .control-2', {delay: 6, opacity: 0, onComplete: () => {
