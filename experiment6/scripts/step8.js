@@ -8,7 +8,6 @@ let lottie8 = bodymovin.loadAnimation({
 
 var currentSegment8 = 1;
 
-task_done = false
 locked = false
 machine_on = false
 
