@@ -248,8 +248,33 @@
                         continue</button>
                 </div>
             </div>
+            <div class="step" id="step-6" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Step6: Selection of sample </h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+                
+                <div class="controls">
+                    <small class="control-1 element" onclick="selectSample(3)"
+                        style="left: 590px; top: 420px; background: #000; color:#fff; padding: 4px;">
+                        Select this sample
+                    </small>
 
-            <div class="step" id="step-8">
+                    <small class="control-2 element" onclick="selectSample(2)"
+                        style="left: 430px; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Select this sample
+                    </small>
+
+                    <small class="control-3 element" onclick="selectSample(1)"
+                        style="left: 260px; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Select this sample
+                    </small>
+
+                    <small class="control-4 element" onclick="selectSample(0)"
+                        style="left: 90px; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Select this sample
+                    </small>
+            </div>
+
+            <div class="step" id="step-8" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step8: Heat the J2, J3, J4 sample at 60, 75, 90°C respectively </h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
@@ -301,7 +326,7 @@
                 </div>
             </div>
 
-            <div class="step" id="step-9">
+            <div class="step" id="step-9" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step9: Pipette out 10 ml juice from each sample flask and pour to the four different
                     conical flask</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
@@ -325,6 +350,35 @@
                     <small class="control-4 element" onclick="platySegments9()"
                         style="left: 370px; top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
                         Pipette out J4
+                    </small>
+
+                </div>
+            </div>
+
+            <div class="step" id="step-10" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Step10: Add 90 ml of 3% HPO<sub>3</sub> solution in each conical flask
+                    conical flask</h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+
+                <div class="controls">
+                    <small class="control-1 element" onclick="platySegments10()"
+                        style="left: 390px; top: 420px; background: #000; color:#fff; padding: 4px;">
+                        Add in J1
+                    </small>
+
+                    <small class="control-2 element" onclick="platySegments10()"
+                        style="left: 310px; top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Add in J2
+                    </small>
+
+                    <small class="control-3 element" onclick="platySegments10()"
+                        style="left: 220px; top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Add in J3
+                    </small>
+
+                    <small class="control-4 element" onclick="platySegments10()"
+                        style="left: 120px; top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Add in J4
                     </small>
 
                 </div>
@@ -358,12 +412,13 @@
     <script src="scripts/step3.js"></script>
     <script src="scripts/step4.js"></script>
 
-    <!--  
     <script src="scripts/step6.js"></script>
+<!-- 
     <script src="scripts/step7.js"></script>
 -->
     <script src="scripts/step8.js"></script>
     <script src="scripts/step9.js"></script>
+    <script src="scripts/step10.js"></script>
 
 </body>
 
