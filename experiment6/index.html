@@ -133,7 +133,6 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
-<!--
             <div class="step" id="step-1" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step1: Chemical reagents/solutions required</h1>
 
@@ -202,7 +201,7 @@
 
                 </div>
             </div>
--->
+
             <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step4: Titrate the mixture with DCPIP dye solution</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
@@ -233,11 +232,75 @@
                         start titration
                     </small>
 
-
                     <small class="control-6 element" onclick="stopTitration()"
                         style="left: 250px; top: 150px;opacity:0; background: #000; color:#fff; padding: 12px;">
                         stop titration
                     </small>
+                </div>
+            </div>
+
+            <div class="step">
+                <div
+                    style="width:100%; height: 100%; display: grid; background: #000; color: #fff; place-items: center;">
+                    <h1>Analysis of sample</h1>
+                    <button onclick="task_done=true"
+                        style="border: 0; border-radius: 0; font-size: 28px; background: #000; color: #fff">Click to
+                        continue</button>
+                </div>
+            </div>
+
+            <div class="step" id="step-8">
+                <h1 class="title">Step8: Heat the J2, J3, J4 sample at 60, 75, 90°C respectively </h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+
+                <div class="controls">
+                    <small class="control-1 element" onclick="platySegments8()"
+                        style="left: 640px;top: 420px; background: #000; color:#fff; padding: 4px;">
+                        Turn on
+                    </small>
+
+                    <small class="control-2 element" onclick="platySegments8()"
+                        style="left: 230px;top: 450px; opacity: 0; background: #000; color:#fff; padding: 4px;">
+                        Place J2
+                    </small>
+
+                    <small class="control-3 element" onclick="platySegments8()"
+                        style="left: 150px;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Place J3
+                    </small>
+
+                    <small class="control-4 element" onclick="platySegments8()"
+                        style="left: 70;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Place J4
+                    </small>
+
+                    <button class="element" 
+                    style="left: 442px;
+                        top: 365px;
+                        width: 30px;
+                        font-size: 18px;
+                        height: 30px;
+                        background: #000;
+                        color: #fff;" onclick="incTemp()">+</button>
+                    <button class="element"
+                    style="left: 442px;
+                        top: 398px;
+                        width: 30px;
+                        font-size: 18px;
+                        height: 30px;
+                        background: #000;
+                        color: #fff;" onclick="decTemp()">-</button>
+                    <button class="element" 
+                    style="left: 510px;
+                        top: 420px;
+                        width: 50px;
+                        font-size: 18px;
+                        height: 30px;
+                        background: #000;
+                        color: #fff;" onclick="set()">SET</button>
+
+                    <div class="element reading"
+                        style="left: 500px;font-family: monospace;top: 375px;font-size: 28px; opacity: 0;">00℃</div>
                 </div>
             </div>
 
@@ -309,8 +372,13 @@
     <script src="scripts/step2.js"></script>
     <script src="scripts/step3.js"></script>
     <script src="scripts/step4.js"></script>
+
+    <!--  
     <script src="scripts/step6.js"></script>
     <script src="scripts/step7.js"></script>
+-->
+    <script src="scripts/step8.js"></script>
+
 </body>
 
 </html>

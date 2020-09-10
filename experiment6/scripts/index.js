@@ -67,4 +67,15 @@ function sound(src) {
     this.stop = function(){
       this.sound.pause();
     }
-  }
+}
+
+function pad(num, size) {
+    var s = num+"";
+    while (s.length < size) s = "0" + s;
+    return s;
+}
+
+var beep = new sound('assets/sounds/beep.wav')
+var humming = new sound('assets/sounds/humming.wav')
+var hydrolics = new sound('assets/sounds/hydrolics.mp3')
+var juicerSound = new sound('assets/sounds/juicer.wav')
