@@ -70,6 +70,8 @@ function stopTitration() {
         
         if(currentValue >= 4) {
             task_done = true
+            lottie4.goToAndStop(863, true)
+            document.querySelector('#step-4 .read-1').innerHTML = '<b>11 ml</b>'
             addTask('Step4: Titrate the mixture with DCPIP dye solution')
         }
     }

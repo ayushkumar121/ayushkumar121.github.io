@@ -219,7 +219,7 @@
             </div>
 
             <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step4: Titrate the mixture with DCPIP dye solution</h1>
+                <h1 class="title" style="z-index: 5;position: absolute;width: 100%;">Step4: Titrate the mixture with DCPIP dye solution</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
@@ -239,7 +239,7 @@
                     </small>
 
                     <small class="control-4 element" onclick="platySegments4()"
-                        style="left: 530px; top: 300px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        style="left: 410px;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
                         click to place flask
                     </small>
 
@@ -253,6 +253,26 @@
                         stop titration
                     </small>
                 </div>
+
+                <div class="readings" 
+                style="
+                position: absolute;
+                left: 300px;
+                width: 300px;
+                top: 100px;
+                background: #fff;
+                z-index: 0;
+            ">
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Sample</th>
+                        <th>Titrant used</th>
+                    </tr>
+                    <tr>
+                        <th>standard sample</th>
+                        <th class="read-1"> </th>
+                    </tr>
+                </table>
             </div>
 
             <div class="step step-title">
