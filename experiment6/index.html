@@ -6,6 +6,10 @@
     <title>HBTU vLab</title>
     <meta name='viewport' content='user-scalable=0' />
     <style>
+        .bodymovinanim{
+            z-index: 1;
+        }
+
         button {
             outline: 0;
             border: 0;
@@ -34,6 +38,16 @@
             box-shadow: 0 10px 10px rgba(0, 0, 0, .3);
 
             height: 50px;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
         }
 
         .clear {
@@ -119,6 +133,10 @@
             padding: 5px 0;
             font-size: 22px;
         }
+
+        .element{
+            z-index: 2;
+        }
     </style>
     <script src="scripts/lottie.min.js"></script>
 </head>
@@ -156,13 +174,10 @@
                 </div>
             </div>
 
-            <div class="step">
+            <div class="step step-title">
                 <div
                     style="width:100%; height: 100%; display: grid; background: #000; color: #fff; place-items: center;">
                     <h1>Standardization of DCPIP Dye solution</h1>
-                    <button onclick="task_done=true"
-                        style="border: 0; border-radius: 0; font-size: 28px; background: #000; color: #fff">Click to
-                        continue</button>
                 </div>
             </div>
 
@@ -239,13 +254,10 @@
                 </div>
             </div>
 
-            <div class="step">
+            <div class="step step-title">
                 <div
                     style="width:100%; height: 100%; display: grid; background: #000; color: #fff; place-items: center;">
                     <h1>Analysis of sample</h1>
-                    <button onclick="task_done=true"
-                        style="border: 0; border-radius: 0; font-size: 28px; background: #000; color: #fff">Click to
-                        continue</button>
                 </div>
             </div>
 
@@ -272,6 +284,34 @@
                     <small class="control-4 element" onclick="selectSample(0)"
                         style="left: 90px; top: 420px;  background: #000; color:#fff; padding: 4px;">
                         Select this sample
+                    </small>
+                </div>
+            </div>
+
+            <div class="step" id="step-7" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Step7: Take out 50 ml juice in four different conical flasks marked as J1, J2, J3, J4
+                </h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+
+                <div class="controls">
+                    <small class="control-1 element" onclick="platySegments7()"
+                        style="left: 320px;top: 420px; background: #000; color:#fff; padding: 4px;">
+                        Fill J1
+                    </small>
+
+                    <small class="control-2 element" onclick="platySegments7()"
+                        style="left: 235px;top: 420px; opacity: 0; background: #000; color:#fff; padding: 4px;">
+                        Fill J2
+                    </small>
+
+                    <small class="control-3 element" onclick="platySegments7()"
+                        style="left: 155px;top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Fill J3
+                    </small>
+
+                    <small class="control-4 element" onclick="platySegments7()"
+                        style="left: 85px;top: 420px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        Fill J4
                     </small>
                 </div>
             </div>
@@ -386,12 +426,72 @@
                 </div>
             </div>
 
-            <!--
-            Step 7: Take out 50 ml juice in four different conical flasks marked as J1, J2, J3, J4
-            Step 8: Heat the J2, J3, J4 sample at 60, 75, 90°C respectively
-            Step 9: Pipette out 10 ml juice from each sample flask and pour to the four different conical flask
-            Step 10: Add 90 ml of 3% HPO3 solution in each conical flask
-            -->
+            <div class="step" id="step-11" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Step11: Titrate each sample with DCPIP dye solution to a pink color which persists for
+                    15s
+                    Observation</h1>
+                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+
+                <div class="controls">
+                    <small class="control-1 element" onclick="platySegments11()"
+                        style="left: 680px; top: 400px; background: #000; color:#fff; padding: 4px;">
+                        Pour Die
+                    </small>
+
+                    <small class="control-2 element" onclick="platySegments11()"
+                        style="left: 310px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Tirate J1
+                    </small>
+
+                    <small class="control-3 element" onclick="platySegments11()"
+                        style="left: 380px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Tirate J2
+                    </small>
+
+                    <small class="control-4 element" onclick="platySegments11()"
+                        style="left: 460px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Tirate J3
+                    </small>
+
+                    <small class="control-5 element" onclick="platySegments11()"
+                        style="left: 540px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
+                        Tirate J4
+                    </small>
+                </div>
+
+                <div class="readings" 
+                    style="
+                    position: absolute;
+                    left: 300px;
+                    width: 300px;
+                    top: 100px;
+                    background: #fff;
+                    z-index: 0;
+                ">
+                    <table style="width: 100%;">
+                        <tr>
+                            <th>Sample</th>
+                            <th>Titrant used</th>
+                        </tr>
+                        <tr>
+                            <th>J1</th>
+                            <th class="read-1"> </th>
+                        </tr>
+                        <tr>
+                            <th>J2</th>
+                            <th class="read-2"> </th>
+                        </tr>
+                        <tr>
+                            <th>J3</th>
+                            <th class="read-3"> </th>
+                        </tr>
+                        <tr>
+                            <th>J4</th>
+                            <th class="read-4"> </th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
 
         </div>
 
@@ -415,12 +515,12 @@
     <script src="scripts/step4.js"></script>
 
     <script src="scripts/step6.js"></script>
-    <!-- 
     <script src="scripts/step7.js"></script>
--->
+
     <script src="scripts/step8.js"></script>
     <script src="scripts/step9.js"></script>
     <script src="scripts/step10.js"></script>
+    <script src="scripts/step11.js"></script>
 
 </body>
 
