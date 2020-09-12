@@ -10,6 +10,7 @@ var selectedSample = null
 
 var lottie7 = null
 var lottie8 = null
+var lottie9 = null
 
 function selectSample(id) {
     if (selectedSample == null) {
@@ -31,6 +32,13 @@ function selectSample(id) {
             'https://assets2.lottiefiles.com/packages/lf20_v7qiis.json', // Lemon
             'https://assets4.lottiefiles.com/packages/lf20_DTn4i9.json'  // Amla
         ]
+
+        var exp9 = [
+            'https://assets6.lottiefiles.com/packages/lf20_1UANSb.json', // Apple
+            'https://assets2.lottiefiles.com/packages/lf20_WLNZ7q.json', // Mosambi
+            'https://assets3.lottiefiles.com/packages/lf20_gPAHSo.json', // Lemon
+            'https://assets7.lottiefiles.com/packages/lf20_8EsV8T.json'  // Amla
+        ]
         
         
         lottie7 = bodymovin.loadAnimation({
@@ -49,9 +57,15 @@ function selectSample(id) {
             autoplay: false,
             path: exp8[selectedSample]
         })
-        
-        
 
+        lottie9 = bodymovin.loadAnimation({
+            container: document.querySelector('#step-9 .bodymovinanim'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: exp9[selectedSample]
+        })
+        
         addTask('Step6: Selection of sample')
     }
 }
