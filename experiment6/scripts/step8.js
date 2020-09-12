@@ -1,11 +1,3 @@
-let lottie8 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-8 .bodymovinanim'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'https://assets9.lottiefiles.com/packages/lf20_fe0XUs.json'
-})
-
 var currentSegment8 = 1;
 
 locked = false

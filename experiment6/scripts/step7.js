@@ -1,12 +1,3 @@
-let lottie7 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-7 .bodymovinanim'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_OMWnNx.json'
-})
-lottie7.setSpeed(2)
-
 var currentSegment7 = 1;
 
 function platySegments7() {
