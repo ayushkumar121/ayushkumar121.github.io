@@ -29,10 +29,10 @@ function selectSample(className, id) {
         ]
 
         var exp8 = [
-            'https://assets10.lottiefiles.com/packages/lf20_g5o9YT.json', // Apple
-            'https://assets9.lottiefiles.com/packages/lf20_OFmZMb.json', // Mosambi
-            'https://assets1.lottiefiles.com/packages/lf20_I2f785.json', // Lemon
-            'https://assets5.lottiefiles.com/packages/lf20_PHITPj.json'  // Amla
+            'https://assets10.lottiefiles.com/packages/lf20_PexXcT.json', // Apple
+            'https://assets6.lottiefiles.com/packages/lf20_Tx03Ab.json', // Mosambi
+            'https://assets5.lottiefiles.com/packages/lf20_QI7kUe.json', // Lemon
+            'https://assets4.lottiefiles.com/packages/lf20_9aSGgN.json'  // Amla
         ]
 
         var exp9 = [

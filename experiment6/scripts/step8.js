@@ -18,7 +18,6 @@ function platySegments8() {
                 }
             })
         }
-
         else if (currentSegment8 == 2) {
             lottie8.playSegments([50, 567], true)
 
@@ -48,7 +47,6 @@ function platySegments8() {
                 }
             })
         }
-
         else if (currentSegment8 == 3) {
             lottie8.playSegments([567, 1063], true)
 
@@ -79,7 +77,7 @@ function platySegments8() {
             })
         }
         else if (currentSegment8 == 4) {
-            lottie8.playSegments([1063, 1328], true)
+            lottie8.playSegments([1063, 1650], true)
 
             gsap.to('#step-8', {delay: 2, onComplete: () => {
                 humming.play()
