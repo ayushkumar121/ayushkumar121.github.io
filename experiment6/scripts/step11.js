@@ -13,7 +13,6 @@ var j2results = [0.36, 4.1, 1.6, 66]
 var j3results = [0.32, 3.8, 1.4, 62]
 var j4results = [0.24, 3.6, 1.2, 56]
 
-task_done = false
 function platySegments11() {
     if (!task_done) {
         if (currentSegment11 == 1) {
