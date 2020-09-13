@@ -152,6 +152,34 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
+
+            <div class="step step-title" id="step-0" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step0: Familiar yourself with the instruments & glassware</h1>
+                <img src="./assets/bgArtboard 1.png" style="position: absolute;top: 0;left: 0" />
+
+                <div class="controls">
+                    <small class="control-1 element"
+                        style="left: 200px;top: 400px;background: #000;color:#fff;padding: 4px;">Burette</small>
+
+                    <small class="control-2 element"
+                        style="left: 290px;top: 450px;background: #000;color:#fff;padding: 4px;">
+                        Conical flask </small>
+                    <small class="control-3 element"
+                        style="left: 430px;top: 400px;background: #000;color:#fff;padding: 4px;">
+                        Volumetric flask </small>
+                    <small class="control-4 element"
+                        style="left: 490px;top: 450px;background: #000;color:#fff;padding: 4px;">Measuring
+                        Cylinder</small>
+
+                    <small class="control-5 element"
+                        style="left: 620px;top: 470px;background: #000;color:#fff;padding: 4px;">Measuring
+                        Cylinder</small>
+
+                    <small class="control-6 element"
+                        style="left: 580px;top: 300px;background: #000;color:#fff;padding: 4px;">Micro Pipette</small>
+                </div>
+            </div>
+
             <div class="step step-title" id="step-1" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step1: Chemical reagents/solutions required</h1>
 
@@ -269,24 +297,23 @@
                 </div>
             </div>
 
-                <div class="step step-title" style="background:#fff">
-                    <h1 class="title">Calculation of Dye factor</h1>
-                    <img src="assets/formula1.png" alt="formula" />
+            <div class="step step-title" style="background:#fff">
+                <h1 class="title">Calculation of Dye factor</h1>
+                <img src="assets/formula1.png" alt="formula" />
 
-                    <table style="width: 100%;">
-                        <tr>
-                            <th>Sample</th>
-                            <th>Titrant used</th>
-                        </tr>
-                        <tr>
-                            <th>standard sample</th>
-                            <th>6.1 ml</th>
-                        </tr>
-                    </table>
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Sample</th>
+                        <th>Titrant used</th>
+                    </tr>
+                    <tr>
+                        <th>standard sample</th>
+                        <th class="result-1"></th>
+                    </tr>
+                </table>
 
-                    <p style="font-size: 18px;text-align: center;font-weight: 600">Dye Factor = 0.5 / 6.1
-                        = 0.081</p>
-                </div>
+                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;" class="result-11"></p>
+            </div>
 
             <div class="step step-title">
                 <div
@@ -297,28 +324,33 @@
 
             <div class="step" id="step-6" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step6: Selection of sample </h1>
-                <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
+                <div class="instruments step1-tools">
+                    <div class="element tooltip sample-1" onclick="selectSample('.sample-1', 0)"
+                        style="left: 120px;top: 320px;">
+                        <img src="./assets/step6/apple juiceAsset 10.png" />
+                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
+                            select this sample
+                        </div>
+                    </div>
+                    <div class="element tooltip sample-2" onclick="selectSample('.sample-2', 1)"
+                        style="left: 280px;top: 320px;">
+                        <img src="./assets/step6/mosambi juiceAsset 11.png" />
+                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
+                            select this sample</div>
+                    </div>
+                    <div class="element tooltip sample-3" onclick="selectSample('.sample-3', 2)"
+                        style="left: 440px;top: 320px;">
+                        <img src="./assets/step6/lemon juiceAsset 12.png" />
+                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
+                            select this sample</div>
+                    </div>
 
-                <div class="controls">
-                    <small class="control-1 element" onclick="selectSample(3)"
-                        style="left: 590px; top: 420px; background: #000; color:#fff; padding: 4px;">
-                        Select this sample
-                    </small>
-
-                    <small class="control-2 element" onclick="selectSample(2)"
-                        style="left: 430px; top: 420px;  background: #000; color:#fff; padding: 4px;">
-                        Select this sample
-                    </small>
-
-                    <small class="control-3 element" onclick="selectSample(1)"
-                        style="left: 260px; top: 420px;  background: #000; color:#fff; padding: 4px;">
-                        Select this sample
-                    </small>
-
-                    <small class="control-4 element" onclick="selectSample(0)"
-                        style="left: 90px; top: 420px;  background: #000; color:#fff; padding: 4px;">
-                        Select this sample
-                    </small>
+                    <div class="element tooltip sample-4" onclick="selectSample('.sample-4', 3)"
+                        style="left: 600px;top: 320px;">
+                        <img src="./assets/step6/amla juiceAsset 13.png" />
+                        <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
+                            select this sample</div>
+                    </div>
                 </div>
             </div>
 
@@ -372,7 +404,7 @@
                     </small>
 
                     <small class="control-4 element" onclick="platySegments8()"
-                        style="left: 70;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        style="left: 70px;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
                         Place J4
                     </small>
 
@@ -401,6 +433,17 @@
                     <div class="element reading"
                         style="left: 500px;font-family: monospace;top: 375px;font-size: 28px; opacity: 0;">00℃</div>
                 </div>
+
+                <img src="./assets/clockAsset 1.png"
+                    style="position: absolute; width: 100px; top: 450px;z-index: 2; left: 400px;" />
+                <div style="position: absolute;
+                width: 100px;
+                top: 470px;
+                z-index: 2;
+                left: 425px;
+                font-family: monospace;
+                font-size: 18px;
+                color: #fff;" class="clock-read">10:00</div>
             </div>
 
             <div class="step" id="step-9" style="background: url('./assets/bgAsset.png');">
@@ -528,6 +571,49 @@
                     </table>
                 </div>
             </div>
+
+            <div class="step step-title" style="background:#fff">
+                <h1 class="title">Calculation & Result </h1>
+                <img src="assets/formula2.png" alt="formula" />
+
+                <table style="width: 100%;">
+                    <tr>
+                        <th>Sample Name</th>
+                        <th>Treatment</th>
+                        <th>Titrant Used</th>
+                    </tr>
+                    <tr>
+                        <th>J1</th>
+                        <th>Fresh</th>
+                        <th class="result-observation-j1"></th>
+                    </tr>
+                    <tr>
+                        <th>J2</th>
+                        <th>Heated at 60C for 10 min</th>
+                        <th class="result-observation-j2"></th>
+                    </tr>
+                    <tr>
+                        <th>J3</th>
+                        <th>Heated at 75C for 10 min</th>
+                        <th class="result-observation-j3"></th>
+                    </tr>
+                    <tr>
+                        <th>J4</th>
+                        <th>Heated at 90C for 10 min</th>
+                        <th class="result-observation-j4"></th>
+                    </tr>
+                </table>
+
+                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                    class="result-final-j1"></p>
+                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                    class="result-final-j2"></p>
+                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                    class="result-final-j3"></p>
+                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                    class="result-final-j4"></p>
+            </div>
+
         </div>
 
         <div id="controls" style="z-index: 5;">

@@ -20,61 +20,92 @@ function platySegments8() {
         }
 
         else if (currentSegment8 == 2) {
-            lottie8.playSegments([50, 310], true)
+            lottie8.playSegments([50, 567], true)
 
             gsap.to('#step-8', {delay: 2, onComplete: () => {
                 humming.play()
             }})
 
-            gsap.to('#step-8', {delay: 6, onComplete: () => {
+            gsap.to('#step-8', {delay: 12, onComplete: () => {
                 humming.stop()
             }})
 
             gsap.to('#step-8 .control-2', { opacity: 0 })
             gsap.to('#step-8 .control-2', {
-                delay: 8, onComplete: () => {
+                delay: 14, onComplete: () => {
                     locked = true
+                }
+            })
+
+            var obj = {i:10}
+            gsap.to(obj, {
+                i: 0,
+                ease: new SteppedEase.config(10),
+                delay: 2,
+                duration: 10,
+                onUpdate: () => {
+                    document.querySelector('#step-8 .clock-read').innerHTML = `${pad(obj.i,2)}:00`
                 }
             })
         }
 
         else if (currentSegment8 == 3) {
-            lottie8.playSegments([310, 510], true)
+            lottie8.playSegments([567, 1063], true)
 
             gsap.to('#step-8', {delay: 2, onComplete: () => {
                 humming.play()
             }})
 
-            gsap.to('#step-8', {delay: 6, onComplete: () => {
+            gsap.to('#step-8', {delay: 12, onComplete: () => {
                 humming.stop()
             }})
 
             gsap.to('#step-8 .control-3', { opacity: 0 })
             gsap.to('#step-8 .control-3', {
-                delay: 8, onComplete: () => {
+                delay: 14, onComplete: () => {
                     locked = true
+                }
+            })
+
+            var obj = {i:10}
+            gsap.to(obj, {
+                i: 0,
+                ease: new SteppedEase.config(10),
+                delay: 2,
+                duration: 10,
+                onUpdate: () => {
+                    document.querySelector('#step-8 .clock-read').innerHTML = `${pad(obj.i,2)}:00`
                 }
             })
         }
         else if (currentSegment8 == 4) {
-            lottie8.playSegments([510, 760], true)
-
-            lottie8.playSegments([310, 510], true)
+            lottie8.playSegments([1063, 1328], true)
 
             gsap.to('#step-8', {delay: 2, onComplete: () => {
                 humming.play()
             }})
 
-            gsap.to('#step-8', {delay: 6, onComplete: () => {
+            gsap.to('#step-8', {delay: 12, onComplete: () => {
                 humming.stop()
             }})
 
             gsap.to('#step-8 .control-4', { opacity: 0 })
             gsap.to('#step-8 .control-4', {
-                delay: 8, onComplete: () => {
+                delay: 14, onComplete: () => {
                     locked = true
                     task_done = true
                     addTask('Step8: Heat the J2, J3, J4 sample at 60, 75, 90°C respectively ')
+                }
+            })
+
+            var obj = {i:10}
+            gsap.to(obj, {
+                i: 0,
+                ease: new SteppedEase.config(10),
+                delay: 2,
+                duration: 10,
+                onUpdate: () => {
+                    document.querySelector('#step-8 .clock-read').innerHTML = `${pad(obj.i,2)}:00`
                 }
             })
         }

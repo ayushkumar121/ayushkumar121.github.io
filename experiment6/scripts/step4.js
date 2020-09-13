@@ -3,7 +3,7 @@ let lottie4 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_V3DrWK.json'
+    path: 'https://assets5.lottiefiles.com/packages/lf20_UNKGw0.json'
 })
 
 var currentSegment4 = 1;
@@ -13,6 +13,8 @@ var titrating = false
 
 var currentValue = 0
 var handle = null
+
+var dyeFactor = 0
 
 function platySegments4() {
     if (!part41done) {
@@ -53,23 +55,28 @@ function platySegments4() {
 
 function startTitration() {
     if(part41done && !titrating) {
-        lottie4.playSegments([500, 1228], true)
+        lottie4.playSegments([500, 4129], true)
         titrating = true
         handle = setInterval(() => {
-            currentValue++
+            currentValue += 0.2
+            document.querySelector('#step-4 .read-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
         }, 1000);
     }
 }
 
 function stopTitration() {
-    if(part41done && titrating) {
+    if(part41done) {
         lottie4.pause()
         titrating = false
         clearInterval(handle)
         
-        if(currentValue >= 6) {
+        if(Math.abs(currentValue - 6.0) <= 0.4) {
             task_done = true
-            document.querySelector('#step-4 .read-1').innerHTML = '<b>6.1 ml</b>'
+            dyeFactor = (0.5/currentValue).toFixed(2)
+            
+            document.querySelector('.result-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
+            document.querySelector('.result-11').innerHTML = `Dye Factor = 0.5/${currentValue.toFixed(1)} = ${dyeFactor}`
+
             addTask('Step4: Titrate the mixture with DCPIP dye solution')
         }
     }

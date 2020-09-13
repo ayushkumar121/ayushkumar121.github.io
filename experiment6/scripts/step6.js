@@ -1,11 +1,3 @@
-let lottie6 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-6 .bodymovinanim'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'https://assets8.lottiefiles.com/packages/lf20_ff8g8V.json'
-})
-
 var selectedSample = null
 
 var lottie7 = null
@@ -13,12 +5,21 @@ var lottie8 = null
 var lottie9 = null
 var lottie10 = null
 
-function selectSample(id) {
+function selectSample(className, id) {
     if (selectedSample == null) {
         selectedSample = id
         task_done = true
 
-        gsap.to('#step-6 .controls', { opacity: 0 })
+        list = ['.sample-1', '.sample-2', '.sample-3', '.sample-4']
+        var selectedFlasks = []
+
+        list.forEach(sample => {
+            if(className !=  sample)
+                selectedFlasks.push(sample) 
+        });
+
+        gsap.to(selectedFlasks.join(', '), { opacity: 0 })
+        gsap.to('.tooltiptext', { opacity: 0 })
 
         var exp7 = [
             'https://assets5.lottiefiles.com/packages/lf20_RFyEsH.json', // apple
@@ -28,10 +29,10 @@ function selectSample(id) {
         ]
 
         var exp8 = [
-            'https://assets9.lottiefiles.com/packages/lf20_fe0XUs.json', // Apple
-            'https://assets6.lottiefiles.com/packages/lf20_1CDiBz.json', // Mosambi
-            'https://assets2.lottiefiles.com/packages/lf20_v7qiis.json', // Lemon
-            'https://assets4.lottiefiles.com/packages/lf20_DTn4i9.json'  // Amla
+            'https://assets10.lottiefiles.com/packages/lf20_g5o9YT.json', // Apple
+            'https://assets9.lottiefiles.com/packages/lf20_OFmZMb.json', // Mosambi
+            'https://assets1.lottiefiles.com/packages/lf20_I2f785.json', // Lemon
+            'https://assets5.lottiefiles.com/packages/lf20_PHITPj.json'  // Amla
         ]
 
         var exp9 = [
