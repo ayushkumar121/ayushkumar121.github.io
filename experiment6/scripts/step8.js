@@ -128,7 +128,7 @@ function set() {
             gsap.to(obj, {
                 i: temp,
                 ease: new SteppedEase.config(temp - last_temp),
-                duration: 1,
+                duration: 5,
                 onUpdate: () => {
                     document.querySelector('#step-8 .reading-1').innerHTML = `PT ${pad(obj.i, 2)}℃`
                 }, onComplete: () => {

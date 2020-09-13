@@ -11,7 +11,7 @@ var currentSegment3 = 1;
 function platySegments3() {
     if (!task_done) {
         if (currentSegment3 == 1) {
-            lottie3.playSegments([0, 190], true)
+            lottie3.playSegments([0, 180], true)
             
             gsap.to('#step-3 .control-1', {opacity: 0})
             gsap.to('#step-3 .control-2', {delay: 6, opacity: 1, onComplete: () => {
@@ -19,7 +19,7 @@ function platySegments3() {
             }})
         }
         else if (currentSegment3 == 2) {
-            lottie3.playSegments([190, 508], true)
+            lottie3.playSegments([180, 508], true)
             
             gsap.to('#step-3 .control-2', {opacity: 0})
             gsap.to('#step-3 .control-2', {delay: 6, onComplete: () => {

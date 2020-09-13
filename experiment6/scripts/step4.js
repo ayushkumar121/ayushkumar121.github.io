@@ -67,10 +67,12 @@ function startTitration() {
                 document.querySelector('.titration-status h1').innerHTML = 'Over Titrated'
                 stopTitration()
 
-                gsap.to('.controls-2', {display: 'block'})
+                gsap.to('#controls-2', {display: 'block'})
                 document.querySelector('.back-button').onclick = () => {
                     previous()
                     previous()
+
+                    gsap.to('#controls-2', {display: 'none'})
                 }
             }
 

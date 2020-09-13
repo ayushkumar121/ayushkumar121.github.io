@@ -29,30 +29,30 @@ function selectSample(className, id) {
         ]
 
         var exp8 = [
-            'https://assets5.lottiefiles.com/packages/lf20_jJUobf.json', // Apple
-            'https://assets1.lottiefiles.com/packages/lf20_FXoywY.json', // Mosambi
-            'https://assets6.lottiefiles.com/packages/lf20_bGQ1GX.json', // Lemon
-            'https://assets7.lottiefiles.com/packages/lf20_IslGvV.json'  // Amla
+            'https://assets4.lottiefiles.com/packages/lf20_MTAoxG.json', // Apple
+            'https://assets2.lottiefiles.com/packages/lf20_G7bDYX.json', // Mosambi
+            'https://assets4.lottiefiles.com/packages/lf20_RCugRH.json', // Lemon
+            'https://assets1.lottiefiles.com/packages/lf20_d7ayV8.json'  // Amla
         ]
 
         var exp9 = [
-            'https://assets8.lottiefiles.com/packages/lf20_c5aLoW.json', // Apple
-            'https://assets5.lottiefiles.com/packages/lf20_VL2DyZ.json', // Mosambi
-            'https://assets1.lottiefiles.com/packages/lf20_3Q8hF8.json', // Lemon
-            'https://assets7.lottiefiles.com/packages/lf20_fwEGL2.json'  // Amla
+            'https://assets10.lottiefiles.com/packages/lf20_jdNRfv.json', // Apple
+            'https://assets2.lottiefiles.com/packages/lf20_UHUsvv.json', // Mosambi
+            'https://assets8.lottiefiles.com/packages/lf20_C2ERxf.json', // Lemon
+            'https://assets3.lottiefiles.com/packages/lf20_IHXjW0.json'  // Amla
         ]
 
         var exp10 = [
-            'https://assets3.lottiefiles.com/packages/lf20_GfMq0E.json', // Apple
-            'https://assets2.lottiefiles.com/packages/lf20_NBsHSS.json', // Mosambi
-            'https://assets1.lottiefiles.com/packages/lf20_1OK8XB.json', // Lemon
-            'https://assets9.lottiefiles.com/packages/lf20_vsv9q5.json'  // Amla
+            'https://assets5.lottiefiles.com/packages/lf20_nt7eON.json', // Apple
+            'https://assets5.lottiefiles.com/packages/lf20_hURgiW.json', // Mosambi
+            'https://assets8.lottiefiles.com/packages/lf20_BTJOeL.json', // Lemon
+            'https://assets3.lottiefiles.com/packages/lf20_vCwc6p.json'  // Amla
         ]
 
         var exp11 = [
             'https://assets8.lottiefiles.com/packages/lf20_rWokBD.json',
-            '',
-            '',
+            'https://assets10.lottiefiles.com/packages/lf20_wJIzm4.json',
+            'https://assets8.lottiefiles.com/packages/lf20_XZILwo.json',
             ''
         ]
         

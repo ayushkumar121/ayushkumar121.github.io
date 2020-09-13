@@ -144,6 +144,50 @@
         .step-title td {
             border: 0;
         }
+
+        #controls-2 {
+            display: none;
+            position: absolute;
+            margin-top: 490px;
+            margin-left: -700px;
+        }
+
+        #controls-2 button {
+            background: #000;
+            font-size: 28px;
+            color: #fff;
+            border: 0;
+            outline: 0;
+            padding: 8px 20px;
+            border-radius: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+
+        #controls-2.active {
+            display: block;
+        }
+
+
+        .tooltip .tooltiptext {
+            width: 120px;
+            visibility: hidden;
+            background-color: #000;
+            color: #fff;
+            font-weight: 600;
+            text-align: center;
+            padding: 8px 0;
+
+            position: absolute;
+            z-index: 2;
+
+            bottom: 105%;
+            left: 50%;
+            margin-left: -60px;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+        }
     </style>
     <script src="scripts/lottie.min.js"></script>
 </head>
@@ -312,28 +356,30 @@
                             <table col="0" style="margin: 20px 0">
                                 <tbody>
                                     <tr>
-                                        <th rowspan="2" style="padding-right:10px; font-size: 28px;">Dye Factor = </th>
+                                        <th rowspan="2" style="padding-right:10px; font-size: 18px;">Dye Factor = </th>
                                         <th>
-                                            <div style="border-bottom: 2px solid;width: 200px;font-size: 28px;">0.5
+                                            <div style="border-bottom: 2px solid;width: 200px;font-size: 18px;">0.5
                                             </div>
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th style="font-size: 28px;">Titrant used</th>
+                                        <th style="font-size: 18px;">Titrant used</th>
                                     </tr>
                                 </tbody>
                             </table>
 
-                            <p>Titrant Used = <span class="result-1">6.1 ml</span></p>
+                            <p style="font-size: 18px;">Titrant Used = <span class="result-1">6.1 ml</span></p>
 
                             <table col="0">
                                 <tbody>
                                     <tr>
-                                        <th rowspan="2" style="padding-right:10px;">Dye Factor = </th>
+                                        <th rowspan="2" style="padding-right:10px;font-size: 18px;">Dye Factor = </th>
                                         <th>
-                                            <div style="border-bottom: 2px solid;width: 100px;">0.5</div>
+                                            <div style="border-bottom: 2px solid;width: 100px;font-size: 18px;">0.5
+                                            </div>
                                         </th>
-                                        <th rowspan="2" style="padding-left:10px;" class="result-11"> = 0.08</th>
+                                        <th rowspan="2" style="padding-left:10px;font-size: 18px;" class="result-11"> =
+                                            0.08</th>
                                     </tr>
                                     <tr>
                                         <th>6.1</th>
@@ -541,10 +587,8 @@
             </div>
 
             <div class="step" id="step-11" style="background: url('./assets/bgAsset.png');">
-                <h1 class="title">Step11: Titrate each sample with DCPIP dye solution to a pink color which persists
-                    for
-                    15s
-                    Observation</h1>
+                <h1 class="title">Step11: Titrate each sample with DCPIP dye solution to a pink color which persists for
+                    15s observation</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
@@ -554,38 +598,48 @@
                     </small>
 
                     <small class="control-2 element" onclick="platySegments11()"
-                        style="left: 680px; opacity: 0; top: 400px; background: #000; color:#fff; padding: 4px;">
+                        style="left: 680px; top: 400px; opacity: 0; background: #000; color:#fff; padding: 4px;">
                         Pour Dye
                     </small>
 
-                    <small class="control-2 element" onclick="platySegments11()"
-                    style="left: 680px; opacity: 0; top: 400px; background: #000; color:#fff; padding: 4px;">
-                        Remove Apple
+                    <small class="control-3 element" onclick="platySegments11()"
+                        style="left: 200px; top: 100px; opacity: 0; background: #000; color:#fff; padding: 4px;">
+                        Remove funnel
                     </small>
 
-                    <small class="control-3 element" onclick="platySegments11()"
+                    <small class="control-4 element" onclick="platySegments11()"
                         style="left: 310px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
                         Tirate J1
                     </small>
 
-                    <small class="control-4 element" onclick="platySegments11()"
+                    <small class="control-5 element" onclick="platySegments11()"
                         style="left: 380px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
                         Tirate J2
                     </small>
 
-                    <small class="control-5 element" onclick="platySegments11()"
+                    <small class="control-6 element" onclick="platySegments11()"
                         style="left: 460px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
                         Tirate J3
                     </small>
 
-                    <small class="control-6 element" onclick="platySegments11()"
+                    <small class="control-7 element" onclick="platySegments11()"
                         style="left: 540px; opacity: 0; top: 420px;  background: #000; color:#fff; padding: 4px;">
                         Tirate J4
                     </small>
 
+                    <small class="control-111 element" onclick="startTitration2()"
+                        style="left: 250px; top: 380px;opacity:0; background: #000; color:#fff; padding: 12px;">
+                        start titration
+                    </small>
+
+                    <small class="control-112 element" onclick="stopTitration2()"
+                        style="left: 250px; top: 150px;opacity:0; background: #000; color:#fff; padding: 12px;">
+                        stop titration
+                    </small>
+
                 </div>
 
-                <div class="titration-status"
+                <div class="titration-status-1"
                     style="width: 310px;text-align: center;opacity: 0; position: absolute;top: 270px;left: 280px;padding: 20px;background-color: #8BC34A;">
                     <h1 style="color: #fff;">Titration Complete</h1>
                 </div>
@@ -625,13 +679,13 @@
 
             <div class="step step-title" style="background:#fff">
                 <h1 class="title">Calculation & Result </h1>
-                <img src="assets/formula2.png" alt="formula" />
+                <img src="assets/formula2.png" style="width: 100%;" alt="formula" />
 
-                <table style="width: 100%;">
+                <table style="width: 100%;border: 2px solid;">
                     <tr>
-                        <th>Sample Name</th>
-                        <th>Treatment</th>
-                        <th>Titrant Used</th>
+                        <th><b>Sample Name</b></th>
+                        <th><b>Treatment</b></th>
+                        <th><b>Titrant Used</b></th>
                     </tr>
                     <tr>
                         <th>J1</th>
