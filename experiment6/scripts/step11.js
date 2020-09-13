@@ -1,9 +1,9 @@
-let lottie11 = bodymovin.loadAnimation({
+lottie11 = bodymovin.loadAnimation({
     container: document.querySelector('#step-11 .bodymovinanim'),
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets9.lottiefiles.com/packages/lf20_GZuAli.json'
+    path: 'https://assets8.lottiefiles.com/packages/lf20_rWokBD.json'
 })
 
 var currentSegment11 = 1;
@@ -13,24 +13,23 @@ var j2results = [0.36, 4.1, 1.6, 66]
 var j3results = [0.32, 3.8, 1.4, 62]
 var j4results = [0.24, 3.6, 1.2, 56]
 
-
+task_done = false
 function platySegments11() {
     if (!task_done) {
         if (currentSegment11 == 1) {
-            lottie11.playSegments([0, 425], true)
+            lottie11.playSegments([0, 118], true)
             
             gsap.to('#step-11 .control-1', {opacity: 0})
-            gsap.to('#step-11 .control-2', {delay: 13, opacity: 1, onComplete: () => {
+            gsap.to('#step-11 .control-2', {delay: 5, opacity: 1, onComplete: () => {
                 currentSegment11++
             }})
         }
         else if (currentSegment11 == 2) {
-            lottie11.playSegments([425, 810], true)
+            lottie11.playSegments([118, 366], true)
             
             gsap.to('#step-11 .control-2', {opacity: 0})
-            gsap.to('#step-11 .control-3', {delay: 13, opacity: 1, onComplete: () => {
+            gsap.to('#step-11 .control-3', {delay: 5, opacity: 1, onComplete: () => {
                 currentSegment11++
-                document.querySelector('#step-11 .read-1').innerHTML = '<b>11 ml</b>'
             }})
         }
         else if (currentSegment11 == 3) {
@@ -71,6 +70,45 @@ function platySegments11() {
 
                 addTask('Step3: Add 5 ml of HPO<sub>3</sub> solution in the conical flask')
             }})
+        }
+    }
+}
+
+
+function startTitration2() {
+    if(part41done && !titrating) {
+        lottie4.playSegments([500, 4129], true)
+        titrating = true
+        handle = setInterval(() => {
+            currentValue += 0.2
+
+            if(Math.abs(currentValue - 6.0) <= 0.4) {
+                gsap.to('.titration-status', {opacity: 1})
+            } else if((currentValue - 6.0) > 0.4) {
+                gsap.to('.titration-status', {background: '#F44336'})
+                document.querySelector('.titration-status h1').innerHTML = 'Over Titrated'
+                stopTitration()
+            }
+
+            document.querySelector('#step-4 .read-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
+        }, 1000);
+    }
+}
+
+function stopTitration2() {
+    if(part41done) {
+        lottie4.pause()
+        titrating = false
+        clearInterval(handle)
+        
+        if(Math.abs(currentValue - 6.0) <= 0.4) {
+            task_done = true
+            dyeFactor = (0.5/currentValue).toFixed(2)
+            
+            document.querySelector('.result-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
+            document.querySelector('.result-11').innerHTML = ` = <b>${dyeFactor}</b>`
+
+            addTask('Step4: Titrate the mixture with DCPIP dye solution')
         }
     }
 }

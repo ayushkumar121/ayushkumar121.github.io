@@ -59,6 +59,15 @@ function startTitration() {
         titrating = true
         handle = setInterval(() => {
             currentValue += 0.2
+
+            if(Math.abs(currentValue - 6.0) <= 0.4) {
+                gsap.to('.titration-status', {opacity: 1})
+            } else if((currentValue - 6.0) > 0.4) {
+                gsap.to('.titration-status', {background: '#F44336'})
+                document.querySelector('.titration-status h1').innerHTML = 'Over Titrated'
+                stopTitration()
+            }
+
             document.querySelector('#step-4 .read-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
         }, 1000);
     }
@@ -75,7 +84,7 @@ function stopTitration() {
             dyeFactor = (0.5/currentValue).toFixed(2)
             
             document.querySelector('.result-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
-            document.querySelector('.result-11').innerHTML = `Dye Factor = 0.5/${currentValue.toFixed(1)} = ${dyeFactor}`
+            document.querySelector('.result-11').innerHTML = ` = <b>${dyeFactor}</b>`
 
             addTask('Step4: Titrate the mixture with DCPIP dye solution')
         }

@@ -4,7 +4,7 @@ var lottie7 = null
 var lottie8 = null
 var lottie9 = null
 var lottie10 = null
-
+var lottie11 = null
 function selectSample(className, id) {
     if (selectedSample == null) {
         selectedSample = id
@@ -29,10 +29,10 @@ function selectSample(className, id) {
         ]
 
         var exp8 = [
-            'https://assets10.lottiefiles.com/packages/lf20_PexXcT.json', // Apple
-            'https://assets6.lottiefiles.com/packages/lf20_Tx03Ab.json', // Mosambi
-            'https://assets5.lottiefiles.com/packages/lf20_QI7kUe.json', // Lemon
-            'https://assets4.lottiefiles.com/packages/lf20_9aSGgN.json'  // Amla
+            'https://assets5.lottiefiles.com/packages/lf20_jJUobf.json', // Apple
+            'https://assets1.lottiefiles.com/packages/lf20_FXoywY.json', // Mosambi
+            'https://assets6.lottiefiles.com/packages/lf20_bGQ1GX.json', // Lemon
+            'https://assets7.lottiefiles.com/packages/lf20_IslGvV.json'  // Amla
         ]
 
         var exp9 = [
@@ -47,6 +47,13 @@ function selectSample(className, id) {
             'https://assets2.lottiefiles.com/packages/lf20_NBsHSS.json', // Mosambi
             'https://assets1.lottiefiles.com/packages/lf20_1OK8XB.json', // Lemon
             'https://assets9.lottiefiles.com/packages/lf20_vsv9q5.json'  // Amla
+        ]
+
+        var exp11 = [
+            'https://assets8.lottiefiles.com/packages/lf20_rWokBD.json',
+            '',
+            '',
+            ''
         ]
         
         
@@ -84,7 +91,15 @@ function selectSample(className, id) {
         })
         
         lottie10.setSpeed(1.5)
-        
+
+        lottie11 = bodymovin.loadAnimation({
+            container: document.querySelector('#step-11 .bodymovinanim'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: exp11[selectedSample]
+        })
+         
         addTask('Step6: Selection of sample')
     }
 }
