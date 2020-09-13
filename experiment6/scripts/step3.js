@@ -3,7 +3,7 @@ let lottie3 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets3.lottiefiles.com/packages/lf20_MTYFcc.json'
+    path: 'https://assets4.lottiefiles.com/packages/lf20_HJplNl.json'
 })
 
 var currentSegment3 = 1;

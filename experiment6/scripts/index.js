@@ -31,6 +31,14 @@ function next() {
     }
 }
 
+function previous() {
+    if (curent_step > 0) {
+        curent_step--
+        if(!steps[curent_step].classList.contains('step-title'))
+            task_done = false
+    }
+}
+
 function addTask(task) {
     var taskli = document.createElement('li')
     taskli.innerHTML = task

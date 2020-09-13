@@ -21,10 +21,10 @@ function selectSample(id) {
         gsap.to('#step-6 .controls', { opacity: 0 })
 
         var exp7 = [
-            'https://assets2.lottiefiles.com/packages/lf20_OMWnNx.json', // apple
-            'https://assets1.lottiefiles.com/packages/lf20_350dJ7.json', // Mosambi
-            'https://assets7.lottiefiles.com/packages/lf20_DHD8Ph.json', // Lemon
-            'https://assets2.lottiefiles.com/packages/lf20_pzf4Ct.json'  // Amla
+            'https://assets5.lottiefiles.com/packages/lf20_RFyEsH.json', // apple
+            'https://assets7.lottiefiles.com/packages/lf20_ycmWNg.json', // Mosambi
+            'https://assets6.lottiefiles.com/packages/lf20_hFARos.json', // Lemon
+            'https://assets3.lottiefiles.com/packages/lf20_lGyVuN.json'  // Amla
         ]
 
         var exp8 = [
@@ -35,17 +35,17 @@ function selectSample(id) {
         ]
 
         var exp9 = [
-            'https://assets6.lottiefiles.com/packages/lf20_1UANSb.json', // Apple
-            'https://assets2.lottiefiles.com/packages/lf20_WLNZ7q.json', // Mosambi
-            'https://assets3.lottiefiles.com/packages/lf20_gPAHSo.json', // Lemon
-            'https://assets7.lottiefiles.com/packages/lf20_8EsV8T.json'  // Amla
+            'https://assets8.lottiefiles.com/packages/lf20_c5aLoW.json', // Apple
+            'https://assets5.lottiefiles.com/packages/lf20_VL2DyZ.json', // Mosambi
+            'https://assets1.lottiefiles.com/packages/lf20_3Q8hF8.json', // Lemon
+            'https://assets7.lottiefiles.com/packages/lf20_fwEGL2.json'  // Amla
         ]
 
         var exp10 = [
-            'https://assets10.lottiefiles.com/packages/lf20_wneUlI.json', // Apple
-            'https://assets7.lottiefiles.com/packages/lf20_ACgf0i.json', // Mosambi
-            'https://assets2.lottiefiles.com/packages/lf20_CWTTpc.json', // Lemon
-            'https://assets5.lottiefiles.com/packages/lf20_qPQXeW.json'  // Amla
+            'https://assets3.lottiefiles.com/packages/lf20_GfMq0E.json', // Apple
+            'https://assets2.lottiefiles.com/packages/lf20_NBsHSS.json', // Mosambi
+            'https://assets1.lottiefiles.com/packages/lf20_1OK8XB.json', // Lemon
+            'https://assets9.lottiefiles.com/packages/lf20_vsv9q5.json'  // Amla
         ]
         
         
