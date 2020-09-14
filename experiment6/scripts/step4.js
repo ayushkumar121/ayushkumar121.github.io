@@ -89,7 +89,7 @@ function stopTitration() {
         
         if(Math.abs(currentValue - 6.0) <= 0.4) {
             task_done = true
-            dyeFactor = (0.5/currentValue).toFixed(2)
+            dyeFactor = (0.5/currentValue)
             
             document.querySelector('.result-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
             document.querySelector('.result-11').innerHTML = ` = <b>${dyeFactor}</b>`

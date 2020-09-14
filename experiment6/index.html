@@ -145,6 +145,12 @@
             border: 0;
         }
 
+        .newtab table,
+        .newtab th,
+        .newtab td {
+            border: 1px solid #000;
+        }
+
         #controls-2 {
             display: none;
             position: absolute;
@@ -681,11 +687,11 @@
                 <h1 class="title">Calculation & Result </h1>
                 <img src="assets/formula2.png" style="width: 100%;" alt="formula" />
 
-                <table style="width: 100%;border: 2px solid;">
+                <table class="newtab" style="width: 100%;border: 2px solid;">
                     <tr>
-                        <th><b>Sample Name</b></th>
-                        <th><b>Treatment</b></th>
-                        <th><b>Titrant Used</b></th>
+                        <th style="background-color: #000; color: #fff;"><b>Sample Name</b></th>
+                        <th style="background-color: #000; color: #fff"><b>Treatment</b></th>
+                        <th style="background-color: #000; color: #fff"><b>Titrant Used</b></th>
                     </tr>
                     <tr>
                         <th>J1</th>
@@ -709,13 +715,13 @@
                     </tr>
                 </table>
 
-                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                <p style="font-size: 18px;text-align: center;font-weight: 600;"
                     class="result-final-j1"></p>
-                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                <p style="font-size: 18px;text-align: center;font-weight: 600;"
                     class="result-final-j2"></p>
-                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                <p style="font-size: 18px;text-align: center;font-weight: 600;"
                     class="result-final-j3"></p>
-                <p style="font-size: 18px;text-align: center;font-weight: 600; margin-top: 50px;"
+                <p style="font-size: 18px;text-align: center;font-weight: 600;"
                     class="result-final-j4"></p>
             </div>
 
