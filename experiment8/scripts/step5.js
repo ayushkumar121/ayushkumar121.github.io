@@ -3,7 +3,7 @@ let beakerAnimation_5 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets4.lottiefiles.com/packages/lf20_9caEPE.json'
+    path: 'https://assets8.lottiefiles.com/packages/lf20_XAVJ2S.json'
 });
 
 var machineON = false
@@ -98,7 +98,7 @@ function animateSegment() {
                     opacity: 1,
                     onStart: () => {
                         document.querySelector('#step-5 .controlCentrifuge2').style.left = '225px'
-                        document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Sample'
+                        document.querySelector('#step-5 .controlCentrifuge2 small').innerHTML = 'Remove Sample A'
                     },
                     onComplete: () => {
                         animateSegment1++
@@ -117,7 +117,7 @@ function animateSegment() {
                     opacity: 1,
                     onStart: () => {
                         document.querySelector('#step-5 .controlCentrifuge3').style.left = '225px'
-                        document.querySelector('#step-5 .controlCentrifuge3 small').innerHTML = 'Remove Water'
+                        document.querySelector('#step-5 .controlCentrifuge3 small').innerHTML = 'Remove Sample B'
                     },
                     onComplete: () => {
                         animateSegment1++

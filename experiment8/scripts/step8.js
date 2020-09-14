@@ -1,173 +1,141 @@
-let beakerAnimation_8 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-8 .bodymovinanim_8'),
+let beakerAnimation_81 = bodymovin.loadAnimation({
+    container: document.querySelector('#step-8 .bodymovinanim_81'),
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets7.lottiefiles.com/packages/lf20_sAWGMs.json'
+    path: 'https://assets10.lottiefiles.com/packages/lf20_SGt9jv.json'
 });
 
-var machineon = false
-var machineset = false
-var lambda = 280
+let beakerAnimation_82 = bodymovin.loadAnimation({
+    container: document.querySelector('#step-8 .bodymovinanim_82'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'https://assets10.lottiefiles.com/packages/lf20_SGt9jv.json'
+});
 
-var part81done = false
-var read1done = false
+var animationStep = 1
 
-function turnOnMachine() {
-    beep.play()
-
-    gsap.to('#step-8 .readings, #step-8 .control-1', {
-        opacity: 1, onComplete: () => {
-            machineon = true
-        }
-    })
-}
-
-function menu() {
-    if (machineon) {
-        beep.play()
-
-        document.querySelector('#step-8 .read-1').style.fontWeight = '600'
-    }
-}
-
-function read() {
-    if (machineon) {
-        beep.play()
-
-        if (machineset) {
-            if(!read1done) {
-                document.querySelector('#step-8 .read-2').innerHTML = `Abs=0.1275`
-                read1done = true
-            } else{
-                document.querySelector('#step-8 .read-2').innerHTML = `Abs=0.7312`
-            }
-        }
-    }
-}
-
-function inc() {
-    if (machineon) {
-        beep.play()
-
-        if (!machineset) {
-            if (lambda >= 280 && lambda < 750) {
-                lambda++
-            }
-
-            document.querySelector('#step-8 .read-1').innerHTML = `λ=${lambda}`
-        }
-    }
-}
-
-function dec() {
-    if (machineon) {
-        beep.play()
-
-        if (!machineset) {
-            if (lambda > 280 && lambda <= 750) {
-                lambda--
-            }
-
-            document.querySelector('#step-8 .read-1').innerHTML = `λ=${lambda}`
-        }
-    }
-}
-
-function step8() {
-    if (machineon) {
-        if (!part81done) {
-            machineset = true
-            beakerAnimation_8.playSegments([0, 320], true)
-            gsap.to('#step-8 .control-1', { opacity: 0 })
-            gsap.to('#step-8 .control-2', { delay: "11", opacity: 1 })
-        } 
-        else {
-            beakerAnimation_8.playSegments([500, 850], true)
+function suckPour8() {
+    if (!task_done) {
+        if (animationStep == 1) {
+            var obj = { i: 0 }
             var tl = gsap.timeline()
+
             tl
-                .to('#step-8 .control-1', { opacity: 0 })
-                .to('#step-8 .control-1', {
-                    delay: "+17", onComplete: () => {
+                .to('#step-8 .pipette small', { opacity: 0 })
+                .to('#step-8 .cap', { duration: 2, y: 150, x: 150 })
+                .to('#step-8 .pipette', {duration: 2, y: -170, x: 180})
+                .to('#step-8 .pipette', { delay: 2, duration: 1, y: -20 })
+                .to('#step-8 .pipette .pipetteTop', { y: -30 })
+                .to(obj, {
+                    i: 1, ease: new SteppedEase.config(1), onUpdate: () => {
+                        document.querySelector('#step-8 .ppReading').innerHTML = `${obj.i}000uL`
+                    }
+                })
+                .to('#step-8 .pipette', { delay: 2, duration: 2, y: -150 })
+                .to('#step-8 .pipette', {
+                    duration: 2,
+                    y: 0, x: 0,
+                    onComplete: () => {
+                        document.querySelector('#step-8 .pipette small').innerHTML = 'click to pour'
+                    }
+                })
+                .to('#step-8 .cap', { duration: 2, y: 0, x: 0 })
+                .to('#step-8 .pipette small', {
+                    opacity: 1, onComplete: () => {
+                        animationStep++
+                    }
+                })
+        } else if (animationStep == 2) {
+            var obj = { i: 1 }
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-8 .pipette small', { opacity: 0 })
+                .to('#step-8 .pipette', { duration: 2, y: -20, x: -200 })
+                .to('#step-8 .pipette .pipetteTop', { duration: 1, y: 0 })
+                .to('#step-8 .pipette', {
+                    duration: 3, y: 20, onStart: () => {
+                        beakerAnimation_82.play()
+                    }
+                })
+                .to(obj, {
+                    i: 0, ease: new SteppedEase.config(1), onUpdate: () => {
+                        document.querySelector('#step-8 .ppReading').innerHTML = `${obj.i}000uL`
+                    }
+                })
+                .to('#step-8 .pipette', { duration: 1, y: -20 })
+                .to('#step-8 .pipette', {
+                    duration: 2, y: 0, x: 0, onComplete: () => {
+                        document.querySelector('#step-8 .pipette small').innerHTML = 'click to pipette out'
+                    }
+                })
+                .to('#step-8 .pipette small', {
+                    opacity: 1, onComplete: () => {
+                        animationStep++
+                    }
+                })
+        } else if (animationStep == 3) {
+            var obj = { i: 0 }
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-8 .pipette small', { opacity: 0 })
+                .to('#step-8 .cap', { duration: 2, y: 150, x: 150 })
+                .to('#step-8 .pipette', {duration: 2, y: -170, x: 180 })
+                .to('#step-8 .pipette', { delay: 2, duration: 1, y: -20 })
+                .to('#step-8 .pipette .pipetteTop', { y: -30 })
+                .to(obj, {
+                    i: 1, ease: new SteppedEase.config(1), onUpdate: () => {
+                        document.querySelector('#step-8 .ppReading').innerHTML = `${obj.i}000uL`
+                    }
+                })
+                .to('#step-8 .pipette', { delay: 2, duration: 2, y: -150 })
+                .to('#step-8 .pipette', {
+                    duration: 2,
+                    y: 0, x: 0,
+                    onComplete: () => {
+                        document.querySelector('#step-8 .pipette small').innerHTML = 'click to pour'
+                    }
+                })
+                .to('#step-8 .cap', { duration: 2, y: 0, x: 0 })
+                .to('#step-8 .pipette small', {
+                    opacity: 1, onComplete: () => {
+                        animationStep++
+                    }
+                })
+
+        } else if (animationStep == 4) {
+            var obj = { i: 1 }
+            var tl = gsap.timeline()
+
+            tl
+                .to('#step-8 .pipette small', { opacity: 0 })
+                .to('#step-8 .pipette', { duration: 2, y: -20, x: -250 })
+                .to('#step-8 .pipette .pipetteTop', { duration: 1, y: 0 })
+                .to('#step-8 .pipette', {
+                    duration: 3, y: 20, onStart: () => {
+                        beakerAnimation_81.play()
+                    }
+                })
+                .to(obj, {
+                    i: 0, ease: new SteppedEase.config(1), onUpdate: () => {
+                        document.querySelector('#step-8 .ppReading').innerHTML = `${obj.i}000uL`
+                    }
+                })
+                .to('#step-8 .pipette', { duration: 1, y: -20 })
+                .to('#step-8 .pipette', {
+                    duration: 2, y: 0, x: 0, onComplete: () => {
+                        document.querySelector('#step-8 .pipette small').innerHTML = 'click to pipette out'
+                    }
+                })
+                .to('#step-8 .pipette small', {
+                    onComplete: () => {
                         task_done = true
-                        addTask('Step8: Measure absorbance of sample in spectrophotometer at 420 nm')
+                        addTask('Step7: Pipette out 1ml of supernatant from the centrifuge tubes and add to the seperate cuvettes')
                     }
                 })
         }
     }
 }
-
-function closeLidFunc() {
-    if (machineon && !part81done) {
-        beakerAnimation_8.playSegments([320, 450], true)
-
-        document.querySelector('#step-8 .control-1 small').innerHTML = 'replace cubit'
-
-        var tl = gsap.timeline()
-        tl
-            .to('#step-8 .control-2', { opacity: 0 })
-            .to('#step-8 .control-1', {
-                delay: "4",
-                opacity: 1,
-                onComplete: () => {
-                    part81done = true
-                }
-            })
-
-    }
-}
-
-
-/*
-var part81done = false
-var lidOpen = false
-
-function lidOpenFunc(sender) {
-    if(!lidOpen) {
-        sender.style.background = "green"
-        beakerAnimation_8.playSegments([0, 100], true)
-        gsap.to('#step-8 .controlCentrifuge', {delay: "2", opacity: 1})
-        lidOpen = true
-    }
-}
-
-function closeLidFunc() {
-    if(lidOpen && !part81done) {
-        beakerAnimation_8.playSegments([320, 450], true)
-
-        var tl = gsap.timeline()
-        tl
-        .to('#step-8 .closeLid', { opacity: 0})
-        .to('#step-8 .controlCentrifuge', {
-            delay: "5",
-            opacity:1,
-            onComplete: () => {
-                part81done = true
-            }
-        })
-
-    }
-}
-
-
-function step8() {
-    if (lidOpen) {
-        if (!part81done) {
-            beakerAnimation_8.playSegments([100, 320], true)
-            gsap.to('#step-8 .controlCentrifuge', { opacity: 0})
-            gsap.to('#step-8 .closeLid', { delay: "6", opacity: 1})
-
-        } else {
-            beakerAnimation_8.playSegments([500, 850], true)
-            var tl = gsap.timeline()
-            tl
-                .to('#step-8 .controlCentrifuge', { opacity: 0})
-                .to('#step-8 .controlCentrifuge', {
-                    delay: "+17", onComplete: () => {
-                        task_done = true
-                    }
-                })
-        }
-    }
-}
-*/

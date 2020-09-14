@@ -24,9 +24,9 @@ function suckPour() {
 
             tl
                 .to('#step-3 .pipette small', { opacity: 0 })
-                .to('#step-3 .pipette', { duration: 2, y: -150, x: 220 })
+                .to('#step-3 .pipette', { duration: 2, y: -150, x: 180 })
                 .to('#step-3 .pipette', {
-                    duration: 1, y: -20, x: 220, onComplete: () => {
+                    duration: 1, y: -20, onComplete: () => {
                         beakerAnimation_32.play()
                     }
                 })
@@ -57,7 +57,7 @@ function suckPour() {
             tl
                 .to('#step-3 .pipette small', { opacity: 0 })
                 .to('#step-3 .ppCap', { duration: 2, x: -100, y: 150 })
-                .to('#step-3 .pipette', { duration: 2, y: -110, x: -160 })
+                .to('#step-3 .pipette', { duration: 2, y: -110, x: -205 })
                 .to('#step-3 .pipette .pipetteTop', {duration: 1, y: 0})
                 .to('#step-3 .pipette', {
                     duration: 3, y: -30, onStart: () => {
