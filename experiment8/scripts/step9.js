@@ -11,7 +11,7 @@ var machineset = false
 var lambda = 280
 
 var part81done = false
-
+var canread1 = false
 function turnOnMachine() {
     beep.play()
 
@@ -31,7 +31,7 @@ function menu() {
 }
 
 function read() {
-    if (machineon) {
+    if (machineon && canread1) {
         beep.play()
 
         if (machineset) {
@@ -40,6 +40,12 @@ function read() {
 
         gsap.to('#step-9 .read-1', {color: '#000'})
         gsap.to('#step-9 .read-2', {color: 'blue'})
+
+        gsap.to('#step-9 .control-3', { opacity: 0 })
+
+        machineon = false
+        task_done = true
+        addTask('Step9: Switch on the UV-vis spectrophotometer and set the wavelength at 420 nm & calibrate it using ethyl alcohol cuvettes')
     }
 }
 
@@ -90,10 +96,8 @@ function closeLidFunc() {
 
         gsap.to('#step-9 .control-2', {
             delay: 4, onComplete: () => {
-                read()
-                machineon = false
-                task_done = true
-                addTask('Step9: Switch on the UV-vis spectrophotometer and set the wavelength at 420 nm & calibrate it using ethyl alcohol cuvettes')
+                canread1 = true
+                gsap.to('#step-9 .control-3', { opacity: 1 })
             }
         })
     }

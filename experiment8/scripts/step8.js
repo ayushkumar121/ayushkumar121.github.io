@@ -53,7 +53,7 @@ function suckPour8() {
 
             tl
                 .to('#step-8 .pipette small', { opacity: 0 })
-                .to('#step-8 .pipette', { duration: 2, y: -20, x: -200 })
+                .to('#step-8 .pipette', { duration: 2, y: -20, x: -202 })
                 .to('#step-8 .pipette .pipetteTop', { duration: 1, y: 0 })
                 .to('#step-8 .pipette', {
                     duration: 3, y: 20, onStart: () => {
@@ -112,7 +112,7 @@ function suckPour8() {
 
             tl
                 .to('#step-8 .pipette small', { opacity: 0 })
-                .to('#step-8 .pipette', { duration: 2, y: -20, x: -250 })
+                .to('#step-8 .pipette', { duration: 2, y: -20, x: -252 })
                 .to('#step-8 .pipette .pipetteTop', { duration: 1, y: 0 })
                 .to('#step-8 .pipette', {
                     duration: 3, y: 20, onStart: () => {
