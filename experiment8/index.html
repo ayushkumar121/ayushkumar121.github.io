@@ -218,6 +218,49 @@
                     style="position: absolute; top: 325px;left: 190px;" width="30" />
             </div>
 
+            <div class="step" id="step-31" style="background: url('./assets/bgAsset.svg');">
+                <h1 class="title">Step4: Heat strained juice & take 5ml of it in a centrifuge tube B </h1>
+
+                <div class="bodymovinanim_3-1" style="top:0; left:-400px;width:800px; position: absolute; "></div>
+                <div class="bodymovinanim_3-2" style="top:0; left: 0px;width:800px; position: absolute; "></div>
+
+                <div class="element pipette" onclick="suckPour31()"
+                    style="left: 200px; opacity: 0; top: 200px; display: flex;justify-content: center;align-items: center;flex-direction: column;">
+                    <img class="pipetteTop" src="assets/step3/pipette buttonAsset 4.svg"
+                        style="position: absolute;top: -20px;margin-left: 10px;z-index: 0" width="18" />
+
+                    <img src="assets/step3/empty pipetteAsset 3.svg" style="z-index: 1;" width="60" />
+
+                    <small
+                        style="z-index: 1; width: 200px; text-align: center; background: #000; color:#fff; padding: 4px; margin-top: -50px;">click
+                        to
+                        pipette out
+                        juice</small>
+
+                    <span class="ppReading" style="position: absolute;
+                font-size: 8px;
+                transform: rotateZ(-90deg);
+                margin-top: -85px;
+                color: white;
+                font-weight: 800;
+                z-index: 1;
+                margin-left: 20px;">0000uL</span>
+                </div>
+
+                <img class="ppCap" src="assets/step3/pp tube capAsset 6.svg"
+                style="position: absolute; top: 325px;left: 90px;" width="30" />
+
+                <div class="element control-1" onclick="heatjuice()" style="opacity:1; left: 170px;top: 450px;">
+                    <small style=" background: #000; color:#fff; padding: 4px; margin-top: -50px;">
+                        Heat Juice</small>
+                </div>
+
+                
+                <div style="position:absolute;top: 335px;left: 96px;z-index: 4;font-size: 28px;font-weight: 600;">B
+                </div>
+
+            </div>
+
             <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">step5: Add 5ml of 95% ethyl in both centrifuge tubes</h1>
 
@@ -366,7 +409,7 @@
                     margin-left: 20px;">0000uL</span>
                 </div>
             </div>
-         
+
             <div class="step" id="step-8" style="background: url('./assets/bgAsset.svg');">
                 <h1 class="title">Step8: Add 1 ml of 95% ethyl alcohol to 2 other cubettes</h1>
 
@@ -394,7 +437,7 @@
                     z-index: 1;
                     margin-left: 20px;">0000uL</span>
                 </div>
-                
+
                 <img src="assets/step4/ethyl alcoholAsset 12.svg" style="position: absolute; left: 550px;top: 300px;"
                     width="75" />
 
@@ -403,7 +446,8 @@
             </div>
 
             <div class="step" id="step-9" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step9: Switch on the UV-vis spectrophotometer and set the wavelength at 420 nm & calibrate it using ethyl alcohol cuvettes</h1>
+                <h1 class="title">Step9: Switch on the UV-vis spectrophotometer and set the wavelength at 420 nm &
+                    calibrate it using ethyl alcohol cuvettes</h1>
 
                 <div class="bodymovinanim_9" style="top:0; left: 0px;width:800px; position: absolute; "></div>
 
@@ -431,7 +475,8 @@
 
                 <div class="element control-1" onclick="step9()" style="opacity:0; left: 570px; top: 520px;">
                     <small
-                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">place cuvettes</small>
+                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">place
+                        cuvettes</small>
                 </div>
 
                 <div class="element control-2" onclick="closeLidFunc()" style="opacity:0; left: 200px;top: 300px;">
@@ -441,7 +486,8 @@
             </div>
 
             <div class="step" id="step-10" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step10: Replace one ethyl alcohol cuvette (A&B) with supernatant cuvette and measure the absorbance</h1>
+                <h1 class="title">Step10: Replace one ethyl alcohol cuvette (A&B) with supernatant cuvette and measure
+                    the absorbance</h1>
 
                 <div class="bodymovinanim_10" style="top:0; left: 0px;width:800px; position: absolute; "></div>
 
@@ -474,12 +520,14 @@
 
                 <div class="element control-2" onclick="animateMessage10()" style="opacity:0; left: 650px; top: 520px;">
                     <small
-                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">Replace cuvettes</small>
+                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">Replace
+                        cuvettes</small>
                 </div>
 
                 <div class="element control-3" onclick="animateMessage10()" style="opacity:0;left: 330px; top: 420px;">
                     <small
-                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">Press read</small>
+                        style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">Press
+                        read</small>
                 </div>
             </div>
         </div>
@@ -502,6 +550,7 @@
     <script src="scripts/step1.js"></script>
     <script src="scripts/step2.js"></script>
     <script src="scripts/step3.js"></script>
+    <script src="scripts/step3-1.js"></script>
     <script src="scripts/step4.js"></script>
     <script src="scripts/step5.js"></script>
     <script src="scripts/step7.js"></script>
