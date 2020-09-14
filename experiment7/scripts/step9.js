@@ -26,7 +26,7 @@ function platySegments9() {
                 currentSegment9++
             }})
         }
-        else if (currentSegment9 == 9) {
+        else if (currentSegment9 == 3) {
             lottie9.playSegments([270, 449], true)
             
             gsap.to('#step-9 .control-3', {opacity: 0})
