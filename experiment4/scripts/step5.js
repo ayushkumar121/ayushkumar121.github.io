@@ -3,7 +3,7 @@ let beakerAnimation_5 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets4.lottiefiles.com/packages/lf20_9caEPE.json'
+    path: 'https://assets8.lottiefiles.com/packages/lf20_OggzYE.json'
 });
 
 var machineON = false
@@ -127,7 +127,7 @@ function animateSegment() {
         }
 
         else if (animateSegment1 == 8) {
-            beakerAnimation_5.playSegments([620, 760], true)
+            beakerAnimation_5.playSegments([620, 900], true)
 
             gsap.to('#step-5 .controlCentrifuge3', { opacity: 0 })
             gsap.to('#step-5 .controlCentrifuge2', { opacity: 0 })

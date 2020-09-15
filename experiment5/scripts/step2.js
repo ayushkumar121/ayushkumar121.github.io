@@ -1,12 +1,3 @@
-let lottie2 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-2 .bodymovinanim'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'https://assets2.lottiefiles.com/packages/lf20_qDEU4M.json'
-})
-lottie2.setSpeed(.75)
-
 var part21done = false
 
 function part21() {
@@ -27,7 +18,7 @@ function part22() {
         gsap.to('#step-2 .control-2', {opacity: 0})
         gsap.to('#step-2 .control-2', {delay: "6", onComplete: () => {
             task_done = true
-            addTask('Step 2')
+            addTask('Step3 : Pipette out 25 ml water in a conical flask')
         }}) 
     }
 }

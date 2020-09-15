@@ -118,6 +118,27 @@
             padding: 5px 0;
             font-size: 22px;
         }
+        #controls-2 {
+            display: none;
+            position: absolute;
+            margin-top: 490px;
+            margin-left: -700px;
+        }
+
+        #controls-2 button {
+            background: #000;
+            font-size: 28px;
+            color: #fff;
+            border: 0;
+            outline: 0;
+            padding: 8px 20px;
+            border-radius: 0;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+
+        #controls-2.active {
+            display: block;
+        }
     </style>
     <script src="scripts/lottie.min.js"></script>
 </head>
@@ -132,8 +153,8 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
-            <div class="step" id="step-0" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 0</h1>
+            <div class="step" id="step-0" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step1 : Chemical reagents/solutions required</h1>
 
                 <div class="instruments">
                     <div class="element tooltip" style="left: 160px;bottom: 50px;">
@@ -157,8 +178,8 @@
                 </div>
             </div>
 
-            <div class="step" id="step-1" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 1</h1>
+            <div class="step" id="step-1" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step2 : Select the water sample</h1>
 
                 <div class="instruments step1-tools">
                     <div class="element tooltip" onclick="selectSample(this, 0)" style="left: 160px;top: 320px;">
@@ -180,25 +201,26 @@
                 </div>
             </div>
 
-            <div class="step" id="step-2" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 2</h1>
+            <div class="step" id="step-2" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step3 : Pipette out 25 ml water in a conical flask</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
                     <small class="control-1 element" onclick="part21()"
                         style="top: 300px; left: 360px; background: #000; color:#fff; padding: 4px;">
-                        click to suck liquid
+                        pipette out liquid
                     </small>
 
                     <small class="control-2 element" onclick="part22()"
                         style="left: 530px; top: 300px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
-                        click to pour liquid
+                        pour liquid
                     </small>
                 </div>
             </div>
 
-            <div class="step" id="step-3" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 3</h1>
+            <div class="step" id="step-3" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step4 : Add 1 ml ammonia buffer solution in the conical flask to adjust pH (10±0.1) of
+                    the sample</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
@@ -214,8 +236,8 @@
                 </div>
             </div>
 
-            <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 4</h1>
+            <div class="step" id="step-4" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step5 : Add 2-3 drops of EBT indicator in the sample conical flask</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
@@ -231,33 +253,63 @@
                 </div>
             </div>
 
-            <div class="step" id="step-5" style="background: url('./assets/bgAsset.svg');">
-                <h1 class="title">Step 5</h1>
+            <div class="step" id="step-5" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step6 : Titrate the sample with 0.01M standard EDTA solution until the wine red color
+                    changes permanently into blue color</h1>
                 <div class="bodymovinanim" style="position: absolute; top:0; left:0;width:800px;"></div>
 
                 <div class="controls">
                     <small class="control-1 element" onclick="part51()"
-                        style="top: 380px; left: 550px; background: #000; color:#fff; padding: 4px;">
-                        click to suck liquid
+                        style="left: 300px;top: 450px; background: #000; color:#fff; padding: 4px;">
+                        click to place funnel
                     </small>
 
-                    <small class="control-2 element" onclick="startTitration()"
+                    <small class="control-2 element" onclick="part51()"
+                        style="left: 570px;top: 320px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to pour in dye
+                    </small>
+
+                    <small class="control-3 element" onclick="part51()"
+                        style="left: 230px;top: 70px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to remove funnel
+                    </small>
+
+                    <small class="control-4 element" onclick="part51()"
+                        style="left: 410px;top: 450px; opacity: 0;  background: #000; color:#fff; padding: 4px;">
+                        click to place flask
+                    </small>
+
+                    <small class="control-5 element" onclick="startTitration()"
                         style="left: 230px; top: 380px;opacity:0; background: #000; color:#fff; padding: 12px;">
                         start titration
                     </small>
 
-
-                    <small class="control-3 element" onclick="stopTitration()"
-                    style="left: 230px; top: 150px;opacity:0; background: #000; color:#fff; padding: 12px;">
+                    <small class="control-6 element" onclick="stopTitration()"
+                        style="left: 230px; top: 150px;opacity:0; background: #000; color:#fff; padding: 12px;">
                         stop titration
                     </small>
                 </div>
+
+                <div class="titration-status"
+                    style="width: 310px;text-align: center;opacity: 0; position: absolute;top: 270px;left: 280px;padding: 20px;background-color: #8BC34A;">
+                    <h1 style="color: #fff;">Titration Complete</h1>
+                </div>
+            </div>
+
+            <div class="step step-title">
+                
             </div>
         </div>
 
         <div id="controls">
             <button onclick="next()">
                 Next
+            </button>
+        </div>
+
+        <div id="controls-2" style="z-index: 5; display: none;">
+            <button class="back-button">
+                Back
             </button>
         </div>
     </div>

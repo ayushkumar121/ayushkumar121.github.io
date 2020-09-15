@@ -1,12 +1,3 @@
-let lottie4 = bodymovin.loadAnimation({
-    container: document.querySelector('#step-4 .bodymovinanim'),
-    renderer: 'svg',
-    loop: false,
-    autoplay: false,
-    path: 'https://assets9.lottiefiles.com/packages/lf20_hhfxH2.json'
-})
-lottie4.setSpeed(.75)
-
 var part41done = false
 
 function part41() {
