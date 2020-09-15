@@ -71,7 +71,7 @@ function SET15() {
 
 function INC15() {
     if(machineOn15 && !machineset15) {
-        temp15 += 1
+        temp15 += 50
         beep.play()
     }
 
