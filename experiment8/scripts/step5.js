@@ -127,7 +127,7 @@ function animateSegment() {
         }
 
         else if (animateSegment1 == 8) {
-            beakerAnimation_5.playSegments([620, 760], true)
+            beakerAnimation_5.playSegments([620, 900], true)
 
             gsap.to('#step-5 .controlCentrifuge3', { opacity: 0 })
             gsap.to('#step-5 .controlCentrifuge2', { opacity: 0 })
