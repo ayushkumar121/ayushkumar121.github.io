@@ -10,6 +10,12 @@ var step2 = [
     'https://assets4.lottiefiles.com/packages/lf20_elWMfJ.json'
 ]
 
+var step3 = [
+    'https://assets3.lottiefiles.com/packages/lf20_UP5gu1.json',
+    'https://assets8.lottiefiles.com/packages/lf20_mhpcKG.json',
+    'https://assets6.lottiefiles.com/packages/lf20_6PBsA1.json'
+]
+
 var step4 = [
     'https://assets1.lottiefiles.com/packages/lf20_Wh8078.json',
     'https://assets1.lottiefiles.com/packages/lf20_MbHkuH.json',
@@ -25,6 +31,7 @@ var step5 = [
 var selectedSample = null
 
 var lottie2 = null
+var lottie3 = null
 var lottie4 = null
 var lottie5 = null
 
@@ -43,9 +50,18 @@ function selectSample(sender, id) {
             renderer: 'svg',
             loop: false,
             autoplay: false,
-            path: 'https://assets2.lottiefiles.com/packages/lf20_qDEU4M.json'
+            path: step2[selectedSample]
         })
         lottie2.setSpeed(.75)
+
+        lottie3 = bodymovin.loadAnimation({
+            container: document.querySelector('#step-3 .bodymovinanim'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            path: step3[selectedSample]
+        })
+        lottie3.setSpeed(.75)
 
         lottie4 = bodymovin.loadAnimation({
             container: document.querySelector('#step-4 .bodymovinanim'),

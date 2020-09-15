@@ -118,6 +118,7 @@
             padding: 5px 0;
             font-size: 22px;
         }
+
         #controls-2 {
             display: none;
             position: absolute;
@@ -145,7 +146,7 @@
 
 <body style="background: #eee">
     <header>
-        <h1>Experiment 3</h1>
+        <h1>Exp 3. Analysis of water for potable and food purposes</h1>
         <button class="clear" onclick="toggleSidebar()">
             <img src="assets/checklist.svg" width="50" alt="checklist" />
         </button>
@@ -153,7 +154,35 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
-            <div class="step" id="step-0" style="background: url('./assets/bgAsset.png');">
+            <div class="step step-title" id="step-01" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step0 : Chemical reagents/solutions required</h1>
+                <img src="assets/all glassware.png" style="position:absolute; left:0; top:0;" />
+
+                <div class="controls">
+                    <div class="controls">
+                        <small class="control-1 element"
+                            style="top: 300px;left: 180px;background: #000;color:#fff;padding: 4px;">Burette</small>
+
+                        <small class="control-1 element"
+                            style="top: 300px;left: 280px;background: #000;color:#fff;padding: 4px;">Pipette</small>
+
+                        <small class="control-1 element"
+                            style="top: 450px;left: 350px;background: #000;color:#fff;padding: 4px;">Conical
+                            Flask</small>
+
+                        <small class="control-1 element"
+                            style="top: 450px;left: 450px;background: #000;color:#fff;padding: 4px;">Micro
+                            pipette</small><small class="control-1 element"
+                            style="top: 420px;left: 550px;background: #000;color:#fff;padding: 4px;">Beaker</small>
+
+                        <small class="control-1 element"
+                            style="top: 420px;left: 650px;background: #000;color:#fff;padding: 4px;">Volumetric Flask
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step step-title" id="step-0" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step1 : Chemical reagents/solutions required</h1>
 
                 <div class="instruments">
@@ -164,7 +193,7 @@
                         </div>
                     </div>
                     <div class="element tooltip" style="left: 350px;bottom: 50px;">
-                        <img src="./assets/step0/ebt indicatorAsset 4.svg" />
+                        <img src="./assets/step0/ebtAsset 9.png" />
                         <div class="tooltiptext" style="background: #000; color:#fff; padding: 4px;">
                             EBT indicator
                         </div>
@@ -296,8 +325,13 @@
                 </div>
             </div>
 
-            <div class="step step-title">
-                
+            <div class="step step-title" style="background: #fff;">
+                <h1 class="title">Step7 : Observation and result</h1>
+                <img src="assets/formula1.png" style="width: 100%;">
+                <p style="margin-left: 30px; font-size: 18px;">ml EDTA used = <span class="read-1"></span></p>
+                <p style="margin-left: 30px; font-size: 18px;">ml of sample used = 25 ml</p>
+                <p style="margin-left: 30px; font-size: 18px;">hardness = <span class="read-2"></span> (mg/l as
+                    CaCO<sub>3</sub></p>
             </div>
         </div>
 

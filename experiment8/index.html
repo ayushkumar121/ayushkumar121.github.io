@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <title>HBTU vLab</title>
     <style>
+        table,
+        th,
+        td {
+            border: 4px solid black;
+        }
+
+        th,
+        td {
+            padding: 15px;
+        }
+
         button {
             outline: 0;
             border: 0;
@@ -248,14 +259,14 @@
                 </div>
 
                 <img class="ppCap" src="assets/step3/pp tube capAsset 6.svg"
-                style="position: absolute; top: 325px;left: 90px;" width="30" />
+                    style="position: absolute; top: 325px;left: 90px;" width="30" />
 
                 <div class="element control-1" onclick="heatjuice()" style="opacity:1; left: 170px;top: 450px;">
                     <small style=" background: #000; color:#fff; padding: 4px; margin-top: -50px;">
                         Heat Juice</small>
                 </div>
 
-                
+
                 <div style="position:absolute;top: 335px;left: 96px;z-index: 4;font-size: 28px;font-weight: 600;">B
                 </div>
 
@@ -535,6 +546,33 @@
                         style="background: #000; color:#fff; padding: 4px; margin-top: -50px;display: block; text-align: center;">Press
                         read</small>
                 </div>
+            </div>
+
+            <div class="step">
+                <h1 class="title">Step11: Observation & Result</h1>
+                <h1>Result</h1>
+                <table style="width: 100%;">
+                    <tr style="background: #000;">
+                        <th style="color: #fff;">Sample</th>
+                        <th style="color: #fff;">Absorbance</th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <th>Fresh Juice (A)</th>
+                            <th>0.7312</th>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            <th>Heated Sample (B)</th>
+                            <th>0.9147</th>
+                        </th>
+                    </tr>
+                </table>
+
+                <h1>Result</h1>
+                <p>NeBi of fresh apple juice is  = 0.7312</p>
+                <p>NeBi of heated apple juice is = 0.9147</p>
             </div>
         </div>
 

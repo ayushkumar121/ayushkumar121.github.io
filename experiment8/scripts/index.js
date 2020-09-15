@@ -26,7 +26,8 @@ function toggleSidebar() {
 function next() {
     if (curent_step < steps.length - 1) {
         curent_step++
-        task_done = false
+        if(!steps[curent_step].classList.contains('step-title'))
+            task_done = false
     }
 }
 

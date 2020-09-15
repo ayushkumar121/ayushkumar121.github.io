@@ -83,6 +83,10 @@ function stopTitration() {
         clearInterval(handle)
 
         if (Math.abs(currentValue - titration_values[selectedSample]) <= 0.4) {
+
+            document.querySelector('#step-5 .read-1').innerHTML = `${currentValue} ml`
+            document.querySelector('#step-5 .read-2').innerHTML = `${(currentValue/25).toFixed(3)} ml`
+
             task_done = true
             addTask('step6: Titrate the sample with 0.01M standard EDTA solution until the wine red color changes permanently into blue color')
         }
