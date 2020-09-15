@@ -1,6 +1,6 @@
 var curent_step = 0
 
-var task_done = false
+var task_done = true
 var sidebarToggle = false
 
 var steps = document.querySelectorAll('.step')
