@@ -31,11 +31,11 @@ let beakerAnimation_73 = bodymovin.loadAnimation({
 });
 
 
-var animationStep = 1
+var animationStep7 = 1
 
 function suckPour7() {
     if (!task_done) {
-        if (animationStep == 1) {
+        if (animationStep7 == 1) {
             var obj = { i: 0 }
             var tl = gsap.timeline()
 
@@ -63,10 +63,10 @@ function suckPour7() {
                 })
                 .to('#step-7 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep7++
                     }
                 })
-        } else if (animationStep == 2) {
+        } else if (animationStep7 == 2) {
             var obj = { i: 1 }
             var tl = gsap.timeline()
 
@@ -92,10 +92,10 @@ function suckPour7() {
                 })
                 .to('#step-7 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep7++
                     }
                 })
-        } else if (animationStep == 3) {
+        } else if (animationStep7 == 3) {
             var obj = { i: 0 }
             var tl = gsap.timeline()
 
@@ -123,11 +123,11 @@ function suckPour7() {
                 })
                 .to('#step-7 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep7++
                     }
                 })
 
-        } else if (animationStep == 4) {
+        } else if (animationStep7 == 4) {
             var obj = { i: 1 }
             var tl = gsap.timeline()
 

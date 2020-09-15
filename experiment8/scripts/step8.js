@@ -14,11 +14,11 @@ let beakerAnimation_82 = bodymovin.loadAnimation({
     path: 'https://assets10.lottiefiles.com/packages/lf20_SGt9jv.json'
 });
 
-var animationStep = 1
+var animationStep8 = 1
 
 function suckPour8() {
     if (!task_done) {
-        if (animationStep == 1) {
+        if (animationStep8 == 1) {
             var obj = { i: 0 }
             var tl = gsap.timeline()
 
@@ -44,10 +44,10 @@ function suckPour8() {
                 .to('#step-8 .cap', { duration: 2, y: 0, x: 0 })
                 .to('#step-8 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep8++
                     }
                 })
-        } else if (animationStep == 2) {
+        } else if (animationStep8 == 2) {
             var obj = { i: 1 }
             var tl = gsap.timeline()
 
@@ -73,10 +73,10 @@ function suckPour8() {
                 })
                 .to('#step-8 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep8++
                     }
                 })
-        } else if (animationStep == 3) {
+        } else if (animationStep8 == 3) {
             var obj = { i: 0 }
             var tl = gsap.timeline()
 
@@ -102,11 +102,11 @@ function suckPour8() {
                 .to('#step-8 .cap', { duration: 2, y: 0, x: 0 })
                 .to('#step-8 .pipette small', {
                     opacity: 1, onComplete: () => {
-                        animationStep++
+                        animationStep8++
                     }
                 })
 
-        } else if (animationStep == 4) {
+        } else if (animationStep8 == 4) {
             var obj = { i: 1 }
             var tl = gsap.timeline()
 
