@@ -56,7 +56,7 @@ function platySegments1() {
             }})
             
             var obj = {i:0}
-            gsap.to(obj, {delay: 4.8, i: 1, ease: new SteppedEase.config(1), onUpdate: () => {
+            gsap.to(obj, {delay: 7, i: 1, ease: new SteppedEase.config(1), onUpdate: () => {
                 document.querySelector('#step-1 .reading').innerHTML = `${obj.i.toFixed(1)} gms`
             }})
         }
@@ -70,7 +70,7 @@ function platySegments1() {
             }})
 
             var obj = {i:1}
-            gsap.to(obj, {delay: 4.8, i: 2, ease: new SteppedEase.config(1), onUpdate: () => {
+            gsap.to(obj, {delay: 7, i: 2, ease: new SteppedEase.config(1), onUpdate: () => {
                 document.querySelector('#step-1 .reading').innerHTML = `${obj.i.toFixed(1)} gms`
             }})
         }
