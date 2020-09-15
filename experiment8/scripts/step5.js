@@ -3,7 +3,7 @@ let beakerAnimation_5 = bodymovin.loadAnimation({
     renderer: 'svg',
     loop: false,
     autoplay: false,
-    path: 'https://assets8.lottiefiles.com/packages/lf20_XAVJ2S.json'
+    path: 'https://assets8.lottiefiles.com/packages/lf20_OggzYE.json'
 });
 
 var machineON = false
