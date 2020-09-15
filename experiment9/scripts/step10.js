@@ -8,7 +8,7 @@ let lottie10 = bodymovin.loadAnimation({
 
 var currentSegment10 = 1;
 
-function platySegments5() {
+function platySegments10() {
     if (!task_done) {
         if (currentSegment10 == 1) {
             lottie10.playSegments([0, 112], true)
