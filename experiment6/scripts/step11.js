@@ -7,7 +7,7 @@ var j4results = [0.24, 3.6, 1.2, 56]
 
 var dropScale = [0.02, 0.4, 0.17, 6]
 
-var currentValue = 0
+var currentValue11 = 0
 var handle = null
 
 
@@ -110,18 +110,18 @@ function startTitration2() {
         }
 
         handle = setInterval(() => {
-            currentValue += dropScale[selectedSample]
+            currentValue11 += dropScale[selectedSample]
 
             var diff = 0
 
             if (currentSegment11 == 4) {
-                diff = currentValue - j1results[selectedSample]
+                diff = currentValue11 - j1results[selectedSample]
             } else if (currentSegment11 == 5) {
-                diff = currentValue - j2results[selectedSample]
+                diff = currentValue11 - j2results[selectedSample]
             } else if (currentSegment11 == 6) {
-                diff = currentValue - j3results[selectedSample]
+                diff = currentValue11 - j3results[selectedSample]
             } else if (currentSegment11 == 7) {
-                diff = currentValue - j4results[selectedSample]
+                diff = currentValue11 - j4results[selectedSample]
             }
 
             if (Math.abs(diff) <= dropScale[selectedSample] * 2) {
@@ -139,13 +139,13 @@ function startTitration2() {
             }
 
             if (currentSegment11 == 4) {
-                document.querySelector('#step-11 .read-1').innerHTML = `${currentValue.toFixed(2)} ml`
+                document.querySelector('#step-11 .read-1').innerHTML = `${currentValue11.toFixed(2)} ml`
             } else if (currentSegment11 == 5) {
-                document.querySelector('#step-11 .read-2').innerHTML = `${currentValue.toFixed(2)} ml`
+                document.querySelector('#step-11 .read-2').innerHTML = `${currentValue11.toFixed(2)} ml`
             } else if (currentSegment11 == 6) {
-                document.querySelector('#step-11 .read-3').innerHTML = `${currentValue.toFixed(2)} ml`
+                document.querySelector('#step-11 .read-3').innerHTML = `${currentValue11.toFixed(2)} ml`
             }  else if (currentSegment11 == 7) {
-                document.querySelector('#step-11 .read-4').innerHTML = `${currentValue.toFixed(2)} ml`
+                document.querySelector('#step-11 .read-4').innerHTML = `${currentValue11.toFixed(2)} ml`
             }
         }, 1000);
     }
@@ -160,13 +160,13 @@ function stopTitration2() {
         var diff = 0
 
         if (currentSegment11 == 4) {
-            diff = currentValue - j1results[selectedSample]
+            diff = currentValue11 - j1results[selectedSample]
         } else if (currentSegment11 == 5) {
-            diff = currentValue - j2results[selectedSample]
+            diff = currentValue11 - j2results[selectedSample]
         } else if (currentSegment11 == 6) {
-            diff = currentValue - j3results[selectedSample]
+            diff = currentValue11 - j3results[selectedSample]
         }  else if (currentSegment11 == 7) {
-            diff = currentValue - j4results[selectedSample]
+            diff = currentValue11 - j4results[selectedSample]
         }
 
         if (Math.abs(diff) <= dropScale[selectedSample] * 2) {
@@ -203,7 +203,7 @@ function stopTitration2() {
 
             canTitrate = false
             currentSegment11++
-            currentValue = 0
+            currentValue11 = 0
         }
     }
 }
