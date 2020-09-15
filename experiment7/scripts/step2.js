@@ -8,8 +8,8 @@ let lottie2 = bodymovin.loadAnimation({
 
 var currentSegment2 = 1;
 var part1done_2 = false
-var machineOn = false
-var temp = 0
+var machineOn2 = false
+var temp2 = 0
 
 var machineset = false
 
@@ -43,8 +43,8 @@ function platySegments2() {
 }
 
 function turnOn2() {
-    if(!machineOn && part1done_2) {
-        machineOn = true
+    if(!machineOn2 && part1done_2) {
+        machineOn2 = true
         gsap.to('#step-2 .control-4', {opacity: 0})
 
         gsap.to('#step-2 .read-1', {opacity: 1})
@@ -55,34 +55,34 @@ function turnOn2() {
 }
 
 function SET2() {
-    if(machineOn & !machineset) {
+    if(machineOn2 & !machineset) {
         beep.play()
         machineset = true
 
         var obj = {i:0}
-        gsap.to(obj, {duration: 5, i: temp, ease: new SteppedEase.config(temp), onUpdate: () => {
+        gsap.to(obj, {duration: 5, i: temp2, ease: new SteppedEase.config(temp2), onUpdate: () => {
             document.querySelector('#step-2 .read-1').innerHTML = `PT ${pad(obj.i, 3)}C`
         }, onComplete: () => {
             task_done = true
-            addTask('Step2: Put this sample crucible in muffle furnace and set the temperature to 500°C')
+            addTask('Step2: Put this sample crucible in muffle furnace and set the temp2erature to 500°C')
         }})
     }
 }
 
 function INC2() {
-    if(machineOn && !machineset) {
-        temp += 1
+    if(machineOn2 && !machineset) {
+        temp2 += 1
         beep.play()
     }
 
-    document.querySelector('#step-2 .read-2').innerHTML = `ST ${pad(temp, 3)}C`
+    document.querySelector('#step-2 .read-2').innerHTML = `ST ${pad(temp2, 3)}C`
 }
 
 function DEC2() {
-    if(machineOn && !machineset) {
-        temp -= 1
+    if(machineOn2 && !machineset) {
+        temp2 -= 1
         beep.play()
     }
 
-    document.querySelector('#step-2 .read-2').innerHTML = `ST ${pad(temp, 3)}C`
+    document.querySelector('#step-2 .read-2').innerHTML = `ST ${pad(temp2, 3)}C`
 }
