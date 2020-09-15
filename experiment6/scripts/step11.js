@@ -176,19 +176,19 @@ function stopTitration2() {
             if (currentSegment11 == 4) {
                 gsap.to('#step-11 .control-5', { opacity: 1 })
                 document.querySelector('.result-observation-j1').innerHTML = `${j1results[selectedSample].toFixed(2)} ml`
-                document.querySelector('.result-final-j1').innerHTML = `J1:Ascorbic acid = ${j1results[selectedSample] * dyeFactor * 100} mg/100mg`
+                document.querySelector('.result-final-j1').innerHTML = `J1:Ascorbic acid = ${(j1results[selectedSample] * dyeFactor * 100).toFixed(3)} mg/100mg`
             }
 
             if (currentSegment11 == 5) {
                 gsap.to('#step-11 .control-6', { opacity: 1 })
                 document.querySelector('.result-observation-j2').innerHTML = `${j2results[selectedSample].toFixed(2)} ml`
-                document.querySelector('.result-final-j2').innerHTML = `J2:Ascorbic acid = ${j2results[selectedSample] * dyeFactor * 100} mg/100mg`
+                document.querySelector('.result-final-j2').innerHTML = `J2:Ascorbic acid = ${(j2results[selectedSample] * dyeFactor * 100).toFixed(3)} mg/100mg`
             }
 
             if (currentSegment11 == 6) {
                 gsap.to('#step-11 .control-7', { opacity: 1 })
                 document.querySelector('.result-observation-j3').innerHTML = `${j3results[selectedSample].toFixed(2)} ml`
-                document.querySelector('.result-final-j3').innerHTML = `J3:Ascorbic acid = ${j3results[selectedSample] * dyeFactor * 100} mg/100mg`
+                document.querySelector('.result-final-j3').innerHTML = `J3:Ascorbic acid = ${(j3results[selectedSample] * dyeFactor * 100).toFixed(3)} mg/100mg`
             }
 
             if (currentSegment11 == 7) {
@@ -198,7 +198,7 @@ function stopTitration2() {
                 addTask('Step11: Titrate each sample with DCPIP dye solution to a pink color which persists for 15s observation')
 
                 document.querySelector('.result-observation-j4').innerHTML = `${j3results[selectedSample].toFixed(2)} ml`
-                document.querySelector('.result-final-j4').innerHTML = `J4:Ascorbic acid = ${j4results[selectedSample] * dyeFactor * 100} mg/100mg`
+                document.querySelector('.result-final-j4').innerHTML = `J4:Ascorbic acid = ${(j4results[selectedSample] * dyeFactor * 100).toFixed(3)} mg/100mg`
             }
 
             canTitrate = false

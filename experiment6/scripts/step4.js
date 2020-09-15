@@ -92,7 +92,7 @@ function stopTitration() {
             dyeFactor = (0.5/currentValue)
             
             document.querySelector('.result-1').innerHTML = `<b>${currentValue.toFixed(1)} ml</b>`
-            document.querySelector('.result-11').innerHTML = ` = <b>${dyeFactor}</b>`
+            document.querySelector('.result-11').innerHTML = ` = <b>${dyeFactor.toFixed(3)}</b>`
 
             addTask('Step4: Titrate the mixture with DCPIP dye solution')
         }

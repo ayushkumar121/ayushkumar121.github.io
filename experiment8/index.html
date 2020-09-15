@@ -135,7 +135,7 @@
 
 <body style="background: #eee">
     <header>
-        <h1>NeBI calculation </h1>
+        <h1>Exp 2: Non-enzymatic browning reactions and its determination</h1>
         <button class="clear" onclick="toggleSidebar()">
             <img src="assets/checklist.svg" width="50" alt="checklist" />
         </button>
@@ -143,7 +143,33 @@
 
     <div style="display: flex; justify-content: center;margin-top: 20px;">
         <div id="experiment">
-            <div class="step active" id="step-1" style="background: url('./assets/bgAsset.svg');">
+            <div class="step step-title" id="step-1" style="background: url('./assets/bgAsset.png');">
+                <h1 class="title">Step0: Make yourself familiar with the instruments & glassware </h1>
+                <img src="./assets/all glassware used.png" style="position: absolute; top: 0; left: 0;" />
+                <div class="controls">
+                    <small
+                        style="position: absolute;top: 450px;left: 100px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">
+                        juicer
+                    </small>
+                    <small
+                        style="position: absolute;top: 450px;left: 250px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">Centrifuge</small><small
+                        style="position: absolute;top: 450px;left: 450px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">Spectrometer</small>
+
+                    <small
+                        style="position: absolute;top: 420px;left: 600px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">Cuvettes</small>
+
+                    <small
+                        style="position: absolute;top: 370px;left: 630px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">Centrifuge
+                        tube
+                    </small>
+
+                    <small
+                        style="position: absolute;top: 450px;left: 680px;background: #000;color:#fff;padding: 4px;margin-top: 5px;">Strainer
+                    </small>
+                </div>
+            </div>
+
+            <div class="step active" id="step-1" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step1: Extract juice from selected fruit/vegetable</h1>
 
                 <div class="element apple" onclick="juice()"
@@ -171,7 +197,7 @@
 
             </div>
 
-            <div class="step" id="step-2" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-2" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step2: Filtration of juice sample</h1>
 
                 <div class="bodymovinanim" style="top:0; left:0;width:800px; position: absolute; "></div>
@@ -193,7 +219,7 @@
                 </div>
             </div>
 
-            <div class="step" id="step-3" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-3" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step3: Pipette out 5ml strained juice and add into the centrifuge tube A</h1>
 
                 <div class="bodymovinanim_31" style="top:0; left:-300px;width:800px; position: absolute; "></div>
@@ -229,7 +255,7 @@
                     style="position: absolute; top: 325px;left: 190px;" width="30" />
             </div>
 
-            <div class="step" id="step-31" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-31" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step4: Heat strained juice & take 5ml of it in a centrifuge tube B </h1>
 
                 <div class="bodymovinanim_3-1" style="top:0; left:-400px;width:800px; position: absolute; "></div>
@@ -272,7 +298,7 @@
 
             </div>
 
-            <div class="step" id="step-4" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-4" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">step5: Add 5ml of 95% ethyl alcohol in both centrifuge tubes</h1>
 
                 <div class="bodymovinanim_4" style="top:0; left:-300px;width:800px; position: absolute; "></div>
@@ -323,7 +349,7 @@
                     style="position: absolute;left: 570px;top: 290px;" width="36" />
             </div>
 
-            <div class="step" id="step-5" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-5" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step6: Put both A and B tubes in the centrifuge machine and centrifuge it for 10 min
                     at 5000rpm</h1>
 
@@ -377,7 +403,7 @@
                 </div>
             </div>
 
-            <div class="step" id="step-7" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-7" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step7: Pipette out 1ml of supernatant from the centrifuge tubes and add to the
                     seperate cuvettes </h1>
 
@@ -421,7 +447,7 @@
                 </div>
             </div>
 
-            <div class="step" id="step-8" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-8" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step8: Add 1 ml of 95% ethyl alcohol to 2 other cubettes</h1>
 
                 <div class="bodymovinanim_81" style="top:0; left: -70px;width:800px; position: absolute; "></div>
@@ -456,7 +482,7 @@
                     style="position: absolute;left: 570px;top: 290px;" width="36" />
             </div>
 
-            <div class="step" id="step-9" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-9" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step9: Switch on the UV-vis spectrophotometer and set the wavelength at 420 nm &
                     calibrate it using ethyl alcohol cuvettes</h1>
 
@@ -502,7 +528,7 @@
                 </div>
             </div>
 
-            <div class="step" id="step-10" style="background: url('./assets/bgAsset.svg');">
+            <div class="step" id="step-10" style="background: url('./assets/bgAsset.png');">
                 <h1 class="title">Step10: Replace one ethyl alcohol cuvette (A&B) with supernatant cuvette and measure
                     the absorbance</h1>
 
