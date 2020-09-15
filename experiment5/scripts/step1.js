@@ -82,6 +82,7 @@ function selectSample(sender, id) {
         lottie5.setSpeed(.75)
 
        // document.querySelector('#step-5 .sample-name').innerHTML = `${sampleName[selectedSample]}`
+       document.querySelector('#step-6 .read-3').innerHTML = `${sampleName[selectedSample]}`
 
         addTask('step2 : Select the water sample')
     }
