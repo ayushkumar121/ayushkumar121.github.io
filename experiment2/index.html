@@ -99,6 +99,16 @@
                   flask</small>
               </div>
             </div>
+
+            <div class="popup-question question-1" style="opacity: 0;">
+              <p style="margin: 10px;">Generally fats are solid at room temperature
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-1', 1)">
+                <option value="1">True</option>
+                <option value="2">False</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
           </div>
 
           <div class="step" id="step-2">
@@ -140,6 +150,18 @@
               <div id="sample-reading">0.0</div>
             </div>
 
+            <div class="popup-question question-2" style="opacity: 0;">
+              <p style="margin: 10px;">What is the required quantity of sample to be taken for estimation of peroxide value of oil/fat
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-2', 1)">
+                <option value="1">2-5 g</option>
+                <option value="2">10-20 g</option>
+                <option value="2">20-30 g</option>
+                <option value="2">30-40 g</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-3">
@@ -165,6 +187,17 @@
               <img src="./assets/bottle cap.png" id="alcoholCabottleCap" class="element"
                 style="top: 290px; left: 635px;" />
 
+            </div>
+
+            <div class="popup-question question-3" style="opacity: 0;">
+              <p style="margin: 10px;">In what ratio acetic acid and Chloroform solution is prepared</p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-3', 3)">
+                <option value="1">2:2</option>
+                <option value="2">1:2</option>
+                <option value="3">3:2</option>
+                <option value="4">2:3</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
             </div>
 
           </div>
@@ -266,6 +299,18 @@
                   solution</small>
               </div>
             </div>
+
+            <div class="popup-question question-4" style="opacity: 0;">
+              <p style="margin: 10px;">Which indicator is used in titration for estimation of peroxide value of oil/fat</p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-4', 3)">
+                <option value="1">Phenopthelin</option>
+                <option value="2">Methylene blue</option>
+                <option value="3">Starch</option>
+                <option value="4">Bromothymol blue</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-9">
@@ -311,11 +356,31 @@
             <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 20px">
               Result
             </button>
+
+            <div class="popup-question question-5" style="opacity: 0;">
+              <p style="margin: 10px;">Fresh oil sample has less peroxide value than used oil which indicates its good quality and better shelf-life</p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-5', 1)">
+                <option value="1">True</option>
+                <option value="2">False</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-final" style="background-image: unset; background-color: #fff;">
-            <img src="./assets/formula.png" />
-            <h1 id="result" style="text-align: center;"></h1>
+            <div class="result">
+              <p>Peroxide value = <input type="text" id="result-user">
+              <input type="button" value="formula" onclick="toggleformula()">
+              <input type="button" value="check" onclick="validateresult()">
+              </p> 
+            </div>
+
+            <div id="forumla"  style="display: grid; place-items: center; opacity: 0;">
+              <img src="./assets/formula.png" width="800" />
+            </div>
+
+            <p class="result-status"></p>
           </div>
 
         </div>

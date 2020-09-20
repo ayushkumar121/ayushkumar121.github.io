@@ -19,6 +19,8 @@ function selectSample(sender, id) {
         selectedSample = id
         task_done = true
 
+        gsap.to('.question-2', { opacity: 1 })
+
         if(selectedSample == 3) {
             document.querySelector('#potential-step').classList.add('potential-step')
             document.querySelector('#potential-step').classList.add('step')

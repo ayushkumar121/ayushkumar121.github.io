@@ -25,6 +25,8 @@ function placeFlaskOnBurner() {
                         document.querySelector('#step-1-5-flask img').src = `./assets/ghee melting/${frameObject6.i}.png`
                     },
                     onComplete: () => {
+                        gsap.to('.question-1', { opacity: 1 })
+
                         task_done = true
                         addTask('<b>Step 1-1</b> Heat the mixture upto boiling condition')
                     }

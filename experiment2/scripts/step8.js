@@ -34,6 +34,7 @@ function suckitandsee2() {
         .to('#step-8-pipette', {duration: 1, y: -50})
         .to('#step-8-pipette', {duration: 1, x: 0, y: 0, onComplete: () => {
             task_done = true
+            gsap.to('.question-4', { opacity: 1 })
 
             document.querySelector('#step-8-flask').src = './assets/blue bottle.png'
 

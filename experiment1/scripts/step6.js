@@ -93,7 +93,7 @@ function closeKnob() {
             document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)}`
             document.querySelector('#reading1').innerHTML = `${readingTitration.toPrecision(2)}`
 
-            result = (readingTitration.toPrecision(2) * 0.0282 * 10) / 2
+            result = ((readingTitration.toPrecision(2) * 0.0282 * 10) / 2).toPrecision(4)
 
             //document.querySelector('#result').innerHTML = `<b>FFA(%) = ( ${readingTitration.toPrecision(2)} * 0.1 * 0.0282 * 100 ) / 2 =  ${result.toPrecision(4)}</b>`
 
