@@ -82,6 +82,9 @@ function toggleformula() {
 function validateresult() {
     var val = document.querySelector('#result-user').value
 
+    gsap.to('.question-5', { opacity: 1 })
+
+
     if(Math.abs(val - result) < 0.4)
         document.querySelector('.result-status').innerHTML = '<span style="color:green">Correct Answer</span>'
     else 
