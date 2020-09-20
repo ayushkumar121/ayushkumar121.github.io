@@ -12,10 +12,7 @@ var currentFrame = 16
 var buretteFilled = false
 
 var frameObject5 = { i: 0 }
-
-//var tl = gsap.timeline({repeat: -1})
-//tl.to('#step-6-flask', {rotation: -10}).to('#step-6-flask', {rotation: 10})
-//tl.pause()
+var result = 1
 
 function buretteFill() {
     if (!buretteFilled) {
@@ -91,12 +88,14 @@ function closeKnob() {
             document.querySelector('#nextbutton').innerHTML = 'Observations'
             task_done = true
 
+            gsap.to('.question-4', { opacity: 1 })
+
             document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)}`
             document.querySelector('#reading1').innerHTML = `${readingTitration.toPrecision(2)}`
 
-            var result = (readingTitration.toPrecision(2) * 0.0282 * 10) / 2
+            result = (readingTitration.toPrecision(2) * 0.0282 * 10) / 2
 
-            document.querySelector('#result').innerHTML = `<b>FFA(%) = ( ${readingTitration.toPrecision(2)} * 0.1 * 0.0282 * 100 ) / 2 =  ${result.toPrecision(4)}</b>`
+            //document.querySelector('#result').innerHTML = `<b>FFA(%) = ( ${readingTitration.toPrecision(2)} * 0.1 * 0.0282 * 100 ) / 2 =  ${result.toPrecision(4)}</b>`
 
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH solution')
             addTask('🎉 Experiment Completed 🎉')
@@ -104,4 +103,24 @@ function closeKnob() {
             
         }
     }
+}
+
+var formulaToggled = false
+
+function toggleformula() {
+    formulaToggled = !formulaToggled
+
+    if(formulaToggled)
+        gsap.to('#forumla', {opacity: 1})
+    else 
+        gsap.to('#forumla', {opacity: 0})
+}
+
+function validateresult() {
+    var val = document.querySelector('#result-user').value
+
+    if(Math.abs(val - result) < 0.4)
+        document.querySelector('.result-status').innerHTML = '<span style="color:green">Correct Answer</span>'
+    else 
+        document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
 }

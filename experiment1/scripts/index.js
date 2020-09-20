@@ -11,6 +11,17 @@ function next() {
     }
 }
 
+function validateanswer(selector, ans) {
+    var filled = document.querySelector(`${selector} .question`).value
+
+    if(filled == ans) 
+        document.querySelector(`${selector} .answer`).innerHTML = '<span style="color:green">Correct Answer</span>'
+    else 
+        document.querySelector(`${selector} .answer`).innerHTML = '<span style="color:red">Wrong Answer</span>'
+
+    gsap.to(selector, { delay: 2, duration: 1,  opacity: 0 })
+}
+
 function addTask(task) {
     var taskli = document.createElement('li')
     taskli.innerHTML = task

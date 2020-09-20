@@ -31,6 +31,7 @@ function selectSample(sender, id) {
         document.querySelector('#step-6-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
 
+        gsap.to('.question-1', { opacity: 1 })
         addTask('<b>Step 1</b> Sample selection')
     }
 }
