@@ -1,4 +1,4 @@
-function descitorPlace(selector) {
+function descitorPlace(selector, i) {
     var tl = gsap.timeline()
 
     if(!task_done) {
@@ -11,7 +11,11 @@ function descitorPlace(selector) {
             .to(`${selector} .lid-dessicator`, {duration: 1, x: 200})
             .to(`${selector} .lid-dessicator`, {duration: 1, y: -100, onComplete: () => {
                 task_done = true
-                addTask('Place Sample Petri dish in descicator')
+
+                if(i == 3)
+                    gsap.to('.question-3', {opacity: 1})
+
+                addTask(`<b>Step ${i}</b> Place Sample Petri dish in descicator`)
             }})
     }
 }

@@ -89,6 +89,20 @@
 
             <img src="./assets/step4/sample 1.png" id="sample1" class="element" style="left: 600px;top: 350px;" />
             <img src="./assets/step4/sample 2.png" id="sample2" class="element" style="left: 620px;top: 350px;" />
+
+            <div class="popup-question question-1" style="opacity: 0;">
+              <p style="margin: 10px;">How much sample is taken to calculate moisture content in oven drying method
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-1', 1)">
+                <option value="0">--Select Answer--</option>
+                <option value="1">2-5 g</option>
+                <option value="2">10-20 g</option>
+                <option value="3">20-30 g</option>
+                <option value="4">30-40 g</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-5" style="background-image: url('./assets/step5/step5.png');">
@@ -107,6 +121,19 @@
               style="font-size: 14px;left: 310px; top: 88px;color: greenyellow;opacity: 0;">ST000°C</span>
             <span class="element reading-indicator read-2"
               style="font-size: 14px;left: 310px; top: 103px;color: greenyellow;opacity: 0;">PT000°C</span>
+
+              <div class="popup-question question-2" style="opacity: 0;">
+                <p style="margin: 10px;">What is the required temperature (°C) range for Moisture content estimation in oven method
+                </p>
+                <select style="margin: 10px;" class="question" onchange="validateanswer('.question-2', 3)">
+                  <option value="0">--Select Answer--</option>
+                  <option value="1">50-55</option>
+                  <option value="2">200-205</option>
+                  <option value="3">100-105</option>
+                  <option value="4">30-35</option>
+                </select>
+                <p style="margin: 10px;" class="answer"></p>
+              </div>
 
           </div>
 
@@ -157,21 +184,35 @@
     
           <div class="step" id="step-5-7" style="background-image: url('./assets/background.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Place Sample Petri dish in descicator
+              Step 7: Place Sample Petri dish in descicator
             </p>
 
             <img src="./assets/dessicator/lid.png" class="lid-dessicator" style="left:200px; top:270px; position: absolute;" />
             <img src="./assets/dessicator/bottom.png" style="left:400px; top:230px; position: absolute; z-index: 2;" />
             
-            <div class="petri-dish element" onclick="descitorPlace('#step-5-7')" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
+            <div class="petri-dish element" onclick="descitorPlace('#step-5-7', 7)" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
               <img src="./assets/step5/sample.png" />
               <div class="small">click to place petri dish</div>
             </div>
+
+            <div class="popup-question question-3" style="opacity: 0;">
+              <p style="margin: 10px;">Which apparatus is used to cool hot sample taken from oven before weighing?
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-3', 1)">
+                <option value="0">--Select Answer--</option>
+                <option value="1">Dessicator</option>
+                <option value="2">Refrigerator</option>
+                <option value="3">Cooling cabinet</option>
+                <option value="4">None of the above</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-8" style="background-image: url('./assets/step1/step1.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 7: Take out petri dish and record the weight
+              Step 8: Take out petri dish and record the weight
 
             <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
               Please note down this observation in your own practical notebook
@@ -193,7 +234,7 @@
 
           <div class="step" id="step-9" style="background-image: url('./assets/step5/open oven.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 8: Place sample Petri dish in oven again
+              Step 9: Place sample Petri dish in oven again
             </p>
 
             <div class="instruments">
@@ -238,13 +279,13 @@
   
           <div class="step" id="step-5-15" style="background-image: url('./assets/background.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Place Sample Petri dish in descicator
+              Step 10: Place Sample Petri dish in descicator
             </p>
 
             <img src="./assets/dessicator/lid.png" class="lid-dessicator" style="left:200px; top:270px; position: absolute;" />
             <img src="./assets/dessicator/bottom.png" style="left:400px; top:230px; position: absolute; z-index: 2;" />
             
-            <div class="petri-dish element" onclick="descitorPlace('#step-5-15')" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
+            <div class="petri-dish element" onclick="descitorPlace('#step-5-15', 10)" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
               <img src="./assets/step5/sample.png" />
               <div class="small">click to place petri dish</div>
             </div>
@@ -252,7 +293,7 @@
 
           <div class="step" id="step-10" style="background-image: url('./assets/step1/step1.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 9: Take out petri dish and record the weight
+              Step 11: Take out petri dish and record the weight
 
             <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
               Please note down this observation in your own practical notebook
@@ -274,7 +315,7 @@
 
           <div class="step" id="step-11" style="background-image: url('./assets/step5/open oven.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 10: Place sample Petri dish in oven again
+              Step 12: Place sample Petri dish in oven again
             </p>
 
             <div class="instruments">
@@ -319,22 +360,21 @@
 
           <div class="step" id="step-5-17" style="background-image: url('./assets/background.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Place Sample Petri dish in descicator
+              Step 13: Place Sample Petri dish in descicator
             </p>
 
             <img src="./assets/dessicator/lid.png" class="lid-dessicator" style="left:200px; top:270px; position: absolute;" />
             <img src="./assets/dessicator/bottom.png" style="left:400px; top:230px; position: absolute; z-index: 2;" />
             
-            <div class="petri-dish element" onclick="descitorPlace('#step-5-17')" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
+            <div class="petri-dish element" onclick="descitorPlace('#step-5-17', 13)" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
               <img src="./assets/step5/sample.png" />
               <div class="small">click to place petri dish</div>
             </div>
           </div>
 
-
           <div class="step" id="step-12" style="background-image: url('./assets/step1/step1.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 11: Take out petri dish and record the weight
+              Step 14: Take out petri dish and record the weight
 
             <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
               Please note down this observation in your own practical notebook
@@ -356,7 +396,7 @@
 
           <div class="step" id="step-13" style="background-image: url('./assets/step5/open oven.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Step 12: Place sample Petri dish in oven again
+              Step 15: Place sample Petri dish in oven again
             </p>
 
             <div class="instruments">
@@ -401,13 +441,13 @@
 
           <div class="step" id="step-5-19" style="background-image: url('./assets/background.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding: 10px 0;">
-              Place Sample Petri dish in descicator
+              Step 16: Place Sample Petri dish in descicator
             </p>
 
             <img src="./assets/dessicator/lid.png" class="lid-dessicator" style="left:200px; top:270px; position: absolute;" />
             <img src="./assets/dessicator/bottom.png" style="left:400px; top:230px; position: absolute; z-index: 2;" />
             
-            <div class="petri-dish element" onclick="descitorPlace('#step-5-19')" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
+            <div class="petri-dish element" onclick="descitorPlace('#step-5-19', 16)" style="top:350px; left:600px; cursor: pointer; z-index: 0;">
               <img src="./assets/step5/sample.png" />
               <div class="small">click to place petri dish</div>
             </div>
@@ -416,7 +456,7 @@
 
           <div class="step" id="step-14" style="background-image: url('./assets/step1/step1.png');">
             <p class="title" style="text-align: center; font-size: 22px; background: #fff;padding-top: 10px;">
-              Step 13: Take out petri dish and record the weight
+              Step 17: Take out petri dish and record the weight
 
             <div style="padding: 10px; font-size: 18px; text-align: center; background: lightyellow;">
               Please note down this observation in your own practical notebook
@@ -472,6 +512,18 @@
               </button>
 
             </div>
+
+            <div class="popup-question question-4" style="opacity: 1;">
+              <p style="margin: 10px;">Weight loss of sample is highest during initial phase of process.
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-4', 2)">
+                <option value="0">--Select Answer--</option>
+                <option value="1">False</option>
+                <option value="2">True</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
           <div class="step" id="step-result" style="background-image: unset; background-color: #fff;">
@@ -483,6 +535,20 @@
               <br/>
               <h1 id="result" style="text-align: center;">Moisture content (%) = 78</h1>
             </div>
+
+            <div class="popup-question question-5" style="opacity: 1;">
+              <p style="margin: 10px;">The relation between moisture content & food stability is
+              </p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-5', 1)">
+                <option value="0">--Select Answer--</option>
+                <option value="1">Directly proportional</option>
+                <option value="2">Indirectly proportional</option>
+                <option value="2">Linear relation</option>
+                <option value="2">No relation</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+
           </div>
 
         </div>

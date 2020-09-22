@@ -13,6 +13,7 @@ function placeSample() {
             }})
 
         task_done = true
+        gsap.to('.question-1', {opacity: 1})
         addTask('<b>Step 4</b> Weigh 5 g ground food sample')
     }
 }

@@ -12,6 +12,17 @@
     display: inline-block;
   }*/
   
+  .popup-question{
+    position: absolute;
+    left: 300px;
+    top: 100px;
+    padding: 20px;
+    background: #fff;
+    z-index: 5;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    border-radius: 10px;
+  }
+  
   .tooltip .tooltiptext {
     width: 120px;
     visibility: hidden;
