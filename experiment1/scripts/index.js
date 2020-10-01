@@ -20,6 +20,8 @@ function validateanswer(selector, ans) {
         document.querySelector(`${selector} .answer`).innerHTML = '<span style="color:red">Wrong Answer</span>'
 
     gsap.to(selector, { delay: 2, duration: 1,  opacity: 0 })
+
+    task_done = false
 }
 
 function addTask(task) {

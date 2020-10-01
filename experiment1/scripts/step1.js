@@ -17,7 +17,6 @@ var selectedSample = null
 function selectSample(sender, id) {
     if (selectedSample == null) {
         selectedSample = id
-        task_done = true
 
         gsap.to('.step1-tools .tooltiptext', { opacity: 0 })
         gsap.to(sender, {

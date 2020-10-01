@@ -86,7 +86,6 @@ function closeKnob() {
 
         if (Math.abs(prefferedReading[selectedSample] - readingTitration) <= 0.2 && !task_done) {
             document.querySelector('#nextbutton').innerHTML = 'Observations'
-            task_done = true
 
             gsap.to('.question-4', { opacity: 1 })
 
