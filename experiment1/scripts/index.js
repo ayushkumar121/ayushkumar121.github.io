@@ -21,7 +21,7 @@ function validateanswer(selector, ans) {
 
     gsap.to(selector, { delay: 2, duration: 1,  opacity: 0 })
 
-    task_done = false
+    task_done = true
 }
 
 function addTask(task) {
