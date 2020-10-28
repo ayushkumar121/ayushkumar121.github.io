@@ -126,8 +126,12 @@ function validateresult() {
     else 
         document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
 
-    gsap.to('.question-5', { opacity: 1 })
+        document.querySelector('.result-status').innerHTML += '<input type="button" value="result" style="margin-left:10px;" onclick="showsteps()">'
+}
+
+function showsteps() {
     gsap.to('.result-steps', {opacity: 1})
+    gsap.to('.question-5', { opacity: 1 })
 
     document.querySelector('#nextbutton').innerHTML = 'Inference'
     task_done = true
