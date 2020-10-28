@@ -126,7 +126,7 @@ function validateresult() {
     else 
         document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
 
-        document.querySelector('.result-status').innerHTML += '<input type="button" value="result" style="margin-left:10px;" onclick="showsteps()">'
+        document.querySelector('.result-status').innerHTML += '<input type="button" style="color: #fff; background-color: lightskyblue;" value="result" style="margin-left:10px;" onclick="showsteps()">'
 }
 
 function showsteps() {
