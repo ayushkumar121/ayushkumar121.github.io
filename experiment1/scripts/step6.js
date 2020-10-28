@@ -122,4 +122,9 @@ function validateresult() {
         document.querySelector('.result-status').innerHTML = '<span style="color:green">Correct Answer</span>'
     else 
         document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
+
+    gsap.to('.question-5', { opacity: 1 })
+
+    document.querySelector('#nextbutton').innerHTML = 'Readings'
+    task_done = true
 }

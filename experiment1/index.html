@@ -269,32 +269,35 @@
             </div>
           </div>
 
-          <div class="step" id="step-7" style="background-image: unset; background-color: #d4dbff;">
+          <div class="step" id="step-7" style="background-color: #fff; background-image: unset; padding: 15px;">
 
             <div id="observation">
               <p style="font-size: 28px; text-align: center;">Observation Table</p>
               <br />
               <table style="width: 100%;">
                 <tr>
-                  <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample</th>
-                  <th style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used (ml)</th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample</th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Weight of sample (g) (W) </th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Normality of NaOH  (N)  </th>
+                  <th colspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Burette reading (ml) </th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used (ml)</th>
+                </tr>
+                <tr>
+                    <th>Initial value </th>
+                    <th>Final value </th>
                 </tr>
                 <tr>
                   <th id="observationSample"></th>
+                  <th>2.0</th>
+                  <th>0.1</th>
+                  <th>0.0</th>
+                  <th id="observationReading"></th>
                   <th id="observationReading"></th>
                 </tr>
               </table>
             </div>
 
-            <button onclick="next()" style="font-size: 28px;background: #000;color: #fff; margin-top: 20px">
-              Result
-            </button>
-          </div>
-
-          <div class="step" id="step-8" style="background-image: unset; background-color: #fff; padding: 50px;">
-            <p>Volume of NaOH used = <span id="reading1"></span> ml</p>
-            <p>Normal of NaOH = 0.1 N</p>
-            <p>Weight of sample = 2.0 gm</p>
+            <br />
             <br />
 
             <div class="result">
@@ -304,13 +307,31 @@
               </p> 
             </div>
 
-            <div id="forumla"  style="display: grid; place-items: center; opacity: 0;">
-              <img src="./assets/calculation.png" width="800" />
+            <div id="forumla"  style="float: right; opacity: 0; margin-right: 20px; margin-top: -65px;">
+              <img src="./assets/calculation.png" width="300" />
             </div>
 
-            <p class="result-status"></p>
+            <p class="result-status" style="margin-top: 20px; font-weight: 600; font-size: 18px;"></p>
           </div>
 
+          <div class="step" id="step-8" style="background-color: #d4dbff; background-image: unset; padding: 20px;">
+            <p style="font-size: 28px; text-align: center;">Inference</p>
+
+            <div class="popup-question question-5" style="opacity: 0;">
+              <p style="margin: 10px;">The maximum permissible limit of FFA as per FSSAI in the edible oil is 0.5%</p>
+              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-5', 1); gsap.to('.inferencetext', {opacity:1})">
+                <option value="0">--Select Answer--</option>
+                <option value="1">True</option>
+                <option value="2">False</option>
+              </select>
+              <p style="margin: 10px;" class="answer"></p>
+            </div>
+            
+            <p class="inferencetext" style="opacity: 0; font-size: 18px; text-align: center; margin-top: 20px;">
+              The limit of FFA as per FSSAI standard is 0.05%. The FFA content of the given sample is 0.28%.<br/>
+               So, this sample is in the FSSAI range and safe for edible purposes. 
+            </p>
+          </div>
         </div>
       </div>
       <div id="sidebar">

@@ -225,11 +225,11 @@
   }
 
   table, th, td {
-    border: 4px solid black;
+    border: 2px solid black;
   }  
 
   th, td {
-    padding: 15px;
+    padding: 15px 0;
   }
 
   .drop-step-6{
