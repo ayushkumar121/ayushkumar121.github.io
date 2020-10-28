@@ -125,6 +125,6 @@ function validateresult() {
 
     gsap.to('.question-5', { opacity: 1 })
 
-    document.querySelector('#nextbutton').innerHTML = 'Readings'
+    document.querySelector('#nextbutton').innerHTML = 'Inference'
     task_done = true
 }
