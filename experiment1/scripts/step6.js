@@ -89,12 +89,15 @@ function closeKnob() {
 
             gsap.to('.question-4', { opacity: 1 })
 
-            document.querySelector('#observationReading').innerHTML = `${readingTitration.toPrecision(2)}`
-            document.querySelector('#reading1').innerHTML = `${readingTitration.toPrecision(2)}`
+            document.querySelectorAll('.observationReading').forEach(element => {
+                element.innerHTML = `${readingTitration.toPrecision(2)}`
+            })
+
+        //    document.querySelector('#reading1').innerHTML = `${readingTitration.toPrecision(2)}`
 
             result = ((readingTitration.toPrecision(2) * 0.0282 * 10) / 2).toPrecision(4)
 
-            //document.querySelector('#result').innerHTML = `<b>FFA(%) = ( ${readingTitration.toPrecision(2)} * 0.1 * 0.0282 * 100 ) / 2 =  ${result.toPrecision(4)}</b>`
+            document.querySelector('#result1').innerHTML = result
 
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH solution')
             addTask('🎉 Experiment Completed 🎉')
@@ -124,6 +127,7 @@ function validateresult() {
         document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
 
     gsap.to('.question-5', { opacity: 1 })
+    gsap.to('.result-steps', {opacity: 1})
 
     document.querySelector('#nextbutton').innerHTML = 'Inference'
     task_done = true

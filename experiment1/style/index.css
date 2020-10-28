@@ -229,7 +229,15 @@
   }  
 
   th, td {
-    padding: 15px 0;
+    padding: 8px 0;
+  }
+
+  table.dense, table.dense th, table.dense td{
+    border: none;
+  }
+
+  table.dense th, table.dense td{
+    padding: 2px;
   }
 
   .drop-step-6{

@@ -193,7 +193,8 @@
               <div class="element" onclick="turnOnHotPlate()" id="hotplate1"
                 style="top: 350px;left: 373px; display: flex; justify-content: center;align-items: center;flex-direction: column;">
                 <img src="./assets/hot plate off.png" />
-                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to turn on hot plate</small>
+                <small style="background: #000; color:#fff; padding: 4px; margin-top: 10px;">click to turn on hot
+                  plate</small>
               </div>
 
               <div class="element" onclick="placeFlaskOnBurner()" id="step-4-flask"
@@ -276,23 +277,28 @@
               <br />
               <table style="width: 100%;">
                 <tr>
-                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample</th>
-                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Weight of sample (g) (W) </th>
-                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Normality of NaOH  (N)  </th>
-                  <th colspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Burette reading (ml) </th>
-                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used (ml)</th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Selected sample
+                  </th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Weight of
+                    sample (g) (W) </th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Normality of
+                    NaOH (N) </th>
+                  <th colspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Burette reading
+                    (ml) </th>
+                  <th rowspan="2" style="background: #000;font-size: 18px;color: #fff;font-weight: 600;">Titrant used
+                    (ml)</th>
                 </tr>
                 <tr>
-                    <th>Initial value </th>
-                    <th>Final value </th>
+                  <th>Initial value </th>
+                  <th>Final value </th>
                 </tr>
                 <tr>
                   <th id="observationSample"></th>
                   <th>2.0</th>
                   <th>0.1</th>
                   <th>0.0</th>
-                  <th id="observationReading"></th>
-                  <th id="observationReading"></th>
+                  <th class="observationReading"></th>
+                  <th class="observationReading"></th>
                 </tr>
               </table>
             </div>
@@ -301,17 +307,43 @@
             <br />
 
             <div class="result">
-              <p>FFA(%) = <input type="text" id="result-user">
-              <input type="button" value="formula" onclick="toggleformula()">
-              <input type="button" value="check" onclick="validateresult()">
-              </p> 
+              <p>
+                FFA(%) = <input type="text" id="result-user">
+                <input type="button" value="formula" onclick="toggleformula()">
+                <input type="button" value="check" onclick="validateresult()">
+                <span class="result-status" style="margin-top: 20px; font-weight: 600; font-size: 18px;"></span>
+              </p>
             </div>
 
-            <div id="forumla"  style="float: right; opacity: 0; margin-right: 20px; margin-top: -65px;">
+            <div id="forumla" style="float: right; opacity: 0; margin-right: 20px; margin-top: -65px;">
               <img src="./assets/calculation.png" width="300" />
             </div>
 
-            <p class="result-status" style="margin-top: 20px; font-weight: 600; font-size: 18px;"></p>
+            <table style="opacity: 0; margin-top: 5px;" class="dense result-steps">
+              <tr>
+                <td rowspan="2" style="font-size: 12px;">FFA (%, Oleic acid) =</td>
+                <th style="font-size: 12px;border-bottom: 1px solid #000; width: 150px;">V x N x 28.2</th>
+              </tr>
+
+              <tr>
+                <th style="font-size: 12px;">W</th>
+              </tr>
+
+              <tr>
+                <td rowspan="2" style="font-size: 12px;">FFA (%, Oleic acid) =</td>
+                <th style="font-size: 12px;border-bottom: 1px solid #000;width: 150px;">
+                  <span class="observationReading"></span> x 0.1 x 28.2</th>
+              </tr>
+
+              <tr>
+                <th style="font-size: 12px;">2</th>
+              </tr>
+
+              <tr>
+                <td style="font-size: 12px;">FFA (%, Oleic acid) =</td>
+                <th style="font-size: 12px;" id="result1"></th>
+              </tr>
+            </table>
           </div>
 
           <div class="step" id="step-8" style="background-color: #d4dbff; background-image: unset; padding: 20px;">
@@ -319,17 +351,18 @@
 
             <div class="popup-question question-5" style="opacity: 0;">
               <p style="margin: 10px;">The maximum permissible limit of FFA as per FSSAI in the edible oil is 0.5%</p>
-              <select style="margin: 10px;" class="question" onchange="validateanswer('.question-5', 1); gsap.to('.inferencetext', {opacity:1})">
+              <select style="margin: 10px;" class="question"
+                onchange="validateanswer('.question-5', 1); gsap.to('.inferencetext', {opacity:1})">
                 <option value="0">--Select Answer--</option>
                 <option value="1">True</option>
                 <option value="2">False</option>
               </select>
               <p style="margin: 10px;" class="answer"></p>
             </div>
-            
+
             <p class="inferencetext" style="opacity: 0; font-size: 18px; text-align: center; margin-top: 20px;">
-              The limit of FFA as per FSSAI standard is 0.05%. The FFA content of the given sample is 0.28%.<br/>
-               So, this sample is in the FSSAI range and safe for edible purposes. 
+              The limit of FFA as per FSSAI standard is 0.05%. The FFA content of the given sample is 0.28%.<br />
+              So, this sample is in the FSSAI range and safe for edible purposes.
             </p>
           </div>
         </div>
