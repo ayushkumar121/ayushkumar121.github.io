@@ -55,11 +55,15 @@ function closeKnob1() {
 
             var S2 = readingTitration1
 
-            document.querySelector('#observationReading').innerHTML = `${(S1+S2).toPrecision(2)}`
+            document.querySelectorAll('.observationReading').forEach(element => {
+                element.innerHTML = `${(S1+S2).toPrecision(2)}`
+            })
 
             var peroxide = ((S1 + S2).toPrecision(2) * .1 * 1000) / 5
             result = peroxide.toPrecision(4)
             
+            document.querySelector('#result1').innerHTML = result
+
             //document.querySelector('#result').innerHTML = `<b>Peroxide value : ${peroxide.toPrecision(4)}</b>`
 
             addTask('<b>Step 8</b> Titrate the mixture with 0.1 N sodium thio-sulphate solution until yellow color is almost gone.')
@@ -84,9 +88,18 @@ function validateresult() {
 
     gsap.to('.question-5', { opacity: 1 })
 
-
     if(Math.abs(val - result) < 0.4)
         document.querySelector('.result-status').innerHTML = '<span style="color:green">Correct Answer</span>'
     else 
         document.querySelector('.result-status').innerHTML = '<span style="color:red">Wrong Answer</span>'
+
+    document.querySelector('.result-status').innerHTML += '<input type="button" style="border: 0;padding: 5px;font-weight: 600;font-size: 18px;  background-color: lightskyblue;" value="result" style="margin-left:10px;" onclick="showsteps()">'
+}
+
+function showsteps() {
+    gsap.to('.result-steps', {opacity: 1})
+    gsap.to('.question-6', { opacity: 1 })
+
+    document.querySelector('#nextbutton').innerHTML = 'Inference'
+    task_done = true
 }

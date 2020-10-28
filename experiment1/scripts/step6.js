@@ -131,7 +131,7 @@ function validateresult() {
 
 function showsteps() {
     gsap.to('.result-steps', {opacity: 1})
-    gsap.to('.question-5', { opacity: 1 })
+    gsap.to('.question-6', { opacity: 1 })
 
     document.querySelector('#nextbutton').innerHTML = 'Inference'
     task_done = true

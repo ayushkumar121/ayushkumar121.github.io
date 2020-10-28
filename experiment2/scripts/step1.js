@@ -36,7 +36,7 @@ function selectSample(sender, id) {
         document.querySelector('#step-3-5-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#step-3-9-flask img').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
         document.querySelector('#step-6-flask').src = `./assets/${flaskSamples[id]}/alcohol/2.png`
-        document.querySelector('#observationSample').innerHTML = `<img src="${sampleImages[id]}"/>`
+        document.querySelector('#observationSample').innerHTML = `${flaskSamples[id]}`
         addTask('<b>Step 1</b> Sample selection')
     }
 }

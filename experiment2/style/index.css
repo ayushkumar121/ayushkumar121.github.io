@@ -225,11 +225,19 @@
   }
 
   table, th, td {
-    border: 4px solid black;
+    border: 2px solid black;
   }  
 
   th, td {
-    padding: 15px;
+    padding: 8px 0;
+  }
+
+  table.dense, table.dense th, table.dense td{
+    border: none;
+  }
+
+  table.dense th, table.dense td{
+    padding: 2px;
   }
 
   .drop-step-6{
