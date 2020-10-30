@@ -96,7 +96,6 @@ function common() {
             duration: 2, x: 0, y: 0, rotation: 0, delay: "+3", onComplete: () => {
                 gsap.to('.question-2', { opacity: 1 })
 
-                task_done = true
                 addTask('<b>Step 2</b> Weigh 5g of Oil/Fat sample in conical flask')
             }
         })
