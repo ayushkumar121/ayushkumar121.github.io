@@ -100,7 +100,6 @@ function closeKnob() {
             document.querySelector('#result1').innerHTML = result
 
             addTask('<b>Step 6</b>Titrate the mixture with 0.1 N NaOH solution')
-            addTask('🎉 Experiment Completed 🎉')
         } else{
             
         }
@@ -119,6 +118,7 @@ function toggleformula() {
 }
 
 function validateresult() {
+    addTask('<b>Step 7</b>Calculation & Result')
     var val = document.querySelector('#result-user').value
 
     if(Math.abs(val - result) < 0.4)

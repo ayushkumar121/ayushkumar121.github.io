@@ -67,7 +67,6 @@ function closeKnob1() {
             //document.querySelector('#result').innerHTML = `<b>Peroxide value : ${peroxide.toPrecision(4)}</b>`
 
             addTask('<b>Step 8</b> Titrate the mixture with 0.1 N sodium thio-sulphate solution until yellow color is almost gone.')
-            addTask('🎉 Experiment Completed 🎉')
         }
     }
 }
@@ -85,6 +84,7 @@ function toggleformula() {
 
 function validateresult() {
     var val = document.querySelector('#result-user').value
+    addTask('<b>Step 9</b> Calculation & Result')
 
     gsap.to('.question-5', { opacity: 1 })
 
