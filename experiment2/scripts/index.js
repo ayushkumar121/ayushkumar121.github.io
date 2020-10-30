@@ -19,7 +19,7 @@ function validateanswer(selector, ans) {
     else 
         document.querySelector(`${selector} .answer`).innerHTML = `<span style="color:red">Wrong Answer</span>, Correct answer is  ${document.querySelector(`${selector} .question`).item(ans).innerHTML}`
 
-    gsap.to(selector, { delay: 1, duration: 1,  opacity: 0 })
+    gsap.to(selector, { delay: 2, duration: 1,  opacity: 0 })
 
     task_done = true
 }
