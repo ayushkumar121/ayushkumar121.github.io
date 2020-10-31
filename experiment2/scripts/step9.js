@@ -86,8 +86,6 @@ function validateresult() {
     var val = document.querySelector('#result-user').value
     addTask('<b>Step 9</b> Calculation & Result')
 
-    gsap.to('.question-5', { opacity: 1 })
-
     if(Math.abs(val - result) < 0.4)
         document.querySelector('.result-status').innerHTML = '<span style="color:green">Correct Answer</span>'
     else 
@@ -98,8 +96,9 @@ function validateresult() {
 
 function showsteps() {
     gsap.to('.result-steps', {opacity: 1})
+
+    gsap.to('.question-5', { opacity: 1 , delay: 2})
     gsap.to('.question-6', { opacity: 1 })
 
     document.querySelector('#nextbutton').innerHTML = 'Inference'
-    task_done = true
 }
