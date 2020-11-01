@@ -18,8 +18,7 @@ var handle = setInterval(() => {
     }
 
     if(value == 105){
-        task_done = true
-        gsap.to('.question-2', {opacity: 1})
+        gsap.to('.question-2', {opacity: 1, delay: 1})
 
         addTask('<b>Step 5</b> press ‘On’ button of the convective hot air oven and set temperature to 105°')
         clearInterval(handle)

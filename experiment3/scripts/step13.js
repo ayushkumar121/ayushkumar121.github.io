@@ -8,8 +8,9 @@ function placeInOven3() {
             document.querySelector('#step-13').style.background  = `url('./assets/step5/closed oven.png')`
             document.querySelector('#step-13 .petri-dish').style.display = 'none'
 
+            
             task_done = true
-            addTask('<b>Step 12</b> Place sample Petri dish in oven once more')
+            addTask('<b>Step 15</b> Place sample Petri dish in oven once more')
         }})
     }
 }

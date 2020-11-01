@@ -16,7 +16,41 @@ function placeDish4() {
 
         document.querySelector('#nextbutton').innerHTML = 'Observations'
 
-        task_done = true
-        addTask('<b>Step 13</b> Take out petri dish from desiccator and record the weight')
+        gsap.to('.question-4', { opacity: 1 })
+        
+        addTask('<b>Step 17</b> Take out petri dish from desiccator and record the weight')
     }
+}
+
+var formulaToggled = false
+
+function toggleformula() {
+    formulaToggled = !formulaToggled
+
+    if(formulaToggled)
+        gsap.to('#forumla', {opacity: 1})
+    else 
+        gsap.to('#forumla', {opacity: 0})
+}
+
+function validateresult() {
+    var val = document.querySelector('#result-user').value
+    addTask('<b>Step 9</b> Calculation & Result')
+
+    if(Math.abs(val - 78) < 5)
+        document.querySelector('.result-status').innerHTML = '<span style="color:green; margin-right: 4px;">Correct Answer</span>'
+    else 
+        document.querySelector('.result-status').innerHTML = '<span style="color:red; margin-right: 4px;">Wrong Answer</span>'
+
+    document.querySelector('.result-status').innerHTML += '<input type="button" style="border: 0;padding: 5px;font-weight: 600;font-size: 18px;  background-color: lightskyblue;" value="result" style="margin-left:10px;" onclick="showsteps()">'
+}
+
+function showsteps() {
+    task_done = true
+    gsap.to('.result-steps', {opacity: 1})
+
+    gsap.to('.question-5', { opacity: 1 , delay: 2})
+    gsap.to('.question-6', { opacity: 1 })
+
+    document.querySelector('#nextbutton').innerHTML = 'Inference'
 }

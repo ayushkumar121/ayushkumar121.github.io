@@ -15,7 +15,7 @@
   .popup-question{
     position: absolute;
     left: 300px;
-    top: 100px;
+    top: 150px;
     width: 400px;
     padding: 20px;
     background: #fff;
@@ -228,7 +228,7 @@
   }  
 
   th, td {
-    padding: 15px;
+    padding: 4px 15px;
   }
 
   .drop-step-6{

@@ -12,8 +12,7 @@ function placeSample() {
                 document.querySelector('#step-4 .reading-indicator').innerHTML = `${obj.i.toFixed(1)} gm`
             }})
 
-        task_done = true
-        gsap.to('.question-1', {opacity: 1})
+        gsap.to('.question-1', {opacity: 1, delay: 1})
         addTask('<b>Step 4</b> Weigh 5 g ground food sample')
     }
 }

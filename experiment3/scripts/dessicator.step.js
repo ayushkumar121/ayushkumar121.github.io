@@ -13,7 +13,7 @@ function descitorPlace(selector, i) {
                 task_done = true
 
                 if(i == 3)
-                    gsap.to('.question-3', {opacity: 1})
+                    gsap.to('.question-3', {opacity: 1, delay: 1})
 
                 addTask(`<b>Step ${i}</b> Place Sample Petri dish in descicator`)
             }})

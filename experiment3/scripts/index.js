@@ -17,10 +17,13 @@ function validateanswer(selector, ans) {
     if(filled == ans) 
         document.querySelector(`${selector} .answer`).innerHTML = '<span style="color:green">Correct Answer</span>'
     else 
-        document.querySelector(`${selector} .answer`).innerHTML = '<span style="color:red">Wrong Answer</span>'
+        document.querySelector(`${selector} .answer`).innerHTML = `<span style="color:red">Wrong Answer</span>, Correct answer is  ${document.querySelector(`${selector} .question`).item(ans).innerHTML}`
 
     gsap.to(selector, { delay: 2, duration: 1,  opacity: 0 })
+
+    task_done = true
 }
+
 
 function addTask(task) {
     var taskli = document.createElement('li')
