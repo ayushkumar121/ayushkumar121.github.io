@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "monospace";
+}
+
+a {
+    text-decoration: underline dotted;
+    color: saddlebrown;
+    font-weight: bold;
+}
+
+header {
+    margin: 20px 0;
+}
+
+header h1 {
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    margin: 0 10px;
+}
+
+body {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #faf8f1;
+}
+
+main h1,
+h2,
+h3,
+h4 {
+    margin: 10px 0;
+}
