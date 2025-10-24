@@ -1,13 +1,10 @@
-:root {
-    --primary: saddlebrown;
-    --background: #faf8f1;
-}
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: monospace, sans-serif;
+    font-family: "JetBrains Mono", monospace;
 }
 
 a {
@@ -23,11 +20,7 @@ header {
 header h1 {
     text-align: center;
 }
-
-nav {
-    display: flex;
-    justify-content: center;
-}
+ 
 
 nav a {
     margin: 0 10px;
@@ -37,7 +30,6 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 10px auto;
-    background-color: var(--background);
 }
 
 main {
@@ -48,17 +40,20 @@ main h1,
 h2,
 h3,
 h4 {
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 article {
-    border: 2px solid var(--primary);
     padding: 10px;
     margin: 10px 0;
 }
 
 footer {
     text-align: center;
+}
+
+pre {
+    margin-top: 20px;
 }
 
 .not-found {

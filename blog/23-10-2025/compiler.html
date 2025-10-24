@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Compiler internals</title>
+	<link rel="stylesheet" href="../../static/index.css" />
+</head>
+<body>
+	<header>
+		<nav>
+    		<a href="/">home</a>
+    		<a href="/blog">blog</a>
+    		<a href="https://github.com/ayushkumar121">github</a>
+    		<a href="https://www.linkedin.com/in/ayush-kumar-b244b8131/">linkedin</a>
+		</nav>
+	</header>
+	<main>
+		<article>
+		<h1>The Magical Art of Writing Compilers</h1>
+
+		<p><a href="https://github.com/ayushkumar121/a-compiler">
+		Project Github</a> </p>
+
+		<h2>Why Write a Compiler?</h2>
+		<p>
+			To me, programming languages have always felt arcane — like magical runes.
+			You write strange symbols, and your computer suddenly obeys.
+			With the rise of new languages like Rust, Zig, and Odin, I wanted to understand
+			the magic myself: what would it take to build my own language?
+		</p>
+
+		<h2>Setting Goals</h2>
+		<p>
+			My goal was to keep things simple — close to C — but with modern improvements
+			to support common idioms like slices, native strings, option/result types, and tagged unions.
+		</p>
+
+		<h2>Which Came First — the Compiler or the Language?</h2>
+		<p>
+			If a compiler is a program that translates high-level code into machine instructions,
+			how do you write the first compiler when you don’t yet have the language?
+		</p>
+		<p>
+			The answer is straightforward: write the first version of your compiler in another language.
+			Then, use that compiler to recompile itself — this process is called
+			<a href="https://en.wikipedia.org/wiki/Self-hosting_(compilers)" target="_blank">self-hosting</a>.
+			This is exactly how Clang, one of the most popular C++ compilers, was built.
+		</p>
+		<p>
+			In this article, I’ll focus on bootstrapping that very first version.
+		</p>
+
+		<h2>Lexing</h2>
+		<p>
+			The first step of compilation is to strip away everything that doesn’t affect
+			the grammar — whitespace, newlines, and comments — and convert the code into
+			a sequence of tokens. This process is called
+			<a href="https://en.wikipedia.org/wiki/Lexical_analysis" target="_blank">lexical analysis</a>.
+		</p>
+		<p>
+			The lexer scans the source code for recognizable patterns and produces tokens
+			for the parser to analyze syntactically.
+		</p>
+
+		<h3>Lexers as Iterators</h3>
+		<p>
+			A simple and elegant approach is the lookahead lexer (LL1), which works like an iterator:
+		</p>
+		<pre>
+		typedef struct {
+			int start;
+			int end;
+			string source;
+		} lexer;
+
+		token lexer_peek(lexer* lex); // look ahead without consuming
+		token lexer_next(lexer* lex); // consume and advance
+		</pre>
+		<p>
+			Lexers are lazy — they only compute when you call <code>peek</code> or <code>next</code>.
+		</p>
+
+		<h2>Parsing</h2>
+
+		<h3>Extended Backus–Naur Form (EBNF)</h3>
+		<p>
+			EBNF is a meta-language used to describe programming language grammars.
+			It’s an extension of the classic
+			<a href="https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form" target="_blank">Backus–Naur Form</a>.
+		</p>
+		<p>
+			Here’s an example grammar for expressions:
+		</p>
+		<pre>
+		expr = number | unaryop expr | expr binop expr
+		unaryop = "-" | "&" | "*"
+		binop = "+" | "-" | "*" | "/"
+		</pre>
+		<p>
+			EBNF helps you reason about and refine your grammar to eliminate ambiguities.
+		</p>
+
+		<h3>Tagged Unions</h3>
+		<p>
+			To represent expression nodes like the ones above, we need a structure that can
+			hold multiple data types. A tagged union does exactly that.
+			I use them throughout the compiler:
+		</p>
+		<pre>
+		typedef struct expr expr;
+
+		typedef enum {
+			expr_type_term,
+			expr_type_unary,
+			expr_type_binary
+		} expr_type;
+
+		typedef struct expr {
+			expr_type type;
+			union {
+				int term;
+				struct {
+					operation op;
+					expr* rhs;
+				} unary;
+				struct {
+					operation op;
+					expr* lhs;
+					expr* rhs;
+				} binary;
+			};
+		} expr;
+		</pre>
+		<p>
+			Note that recursive definitions require pointers because structs must have a fixed size.
+		</p>
+
+		<h3>Recursive Descent Parsing</h3>
+		<p>
+			A recursive descent parser is one of the simplest and most natural ways to
+			implement parsing. To parse an expression, you check for a number first,
+			then unary operators, and finally binary expressions:
+		</p>
+		<pre>
+		expr = number | unaryop expr | expr binop expr
+		</pre>
+		<p>
+			This leads to elegant, human-readable parser code:
+		</p>
+		<pre>
+		expr parse_expr(lexer* lex) {
+			if (lexer_peek(lex).type == token_number) {
+				return parse_expr_number(lex);
+			}
+
+			if (is_unary_op(lexer_peek(lex))) {
+				return parse_expr_unary(lex);
+			}
+
+			expr lhs = parse_expr(lex);
+			operator op = parse_operator(lex);
+			expr rhs = parse_expr(lex);
+
+			return expr_binary(op, lhs, rhs);
+		}
+		</pre>
+
+		<h3>Left Recursion</h3>
+		<p>
+			One limitation of recursive descent is that grammars with left recursion
+			can’t be parsed directly — they lead to infinite recursion:
+		</p>
+		<pre>expr = expr binop expr | number</pre>
+
+		<h3>Intermediate Representation (IR)</h3>
+		<p>
+			After parsing, most compilers convert the syntax tree into an
+			Intermediate Representation (IR), which is later lowered into machine code.
+		</p>
+		<p>
+			This approach allows reuse and optimization — IRs can even be passed to backends
+			like LLVM for code generation.
+		</p>
+		<p>
+			My language’s IR uses tagged unions once again:
+		</p>
+		<pre>
+		typedef struct {
+			instruction_type type;
+			union {
+				instruction_assign assign;
+				instruction_func func;
+				instruction_scope scope;
+				instruction_return ret;
+				instruction_intrinsic intrinsic;
+			} as;
+		} instruction;
+		</pre>
+
+		<h3>Symbol Table</h3>
+		<p>
+			A symbol table tracks where variables and functions live in memory
+			and ensures they’re used correctly. I initially thought a hashmap
+			would suffice, but scopes made it more complex than expected.
+		</p>
+
+		<h3>Properties of a Symbol Table</h3>
+		<ul>
+			<li>It must allow multiple symbols with the same name (e.g., two <code>foo</code> variables in nested scopes).</li>
+			<li>Symbols should be added at scope entry and removed on exit.</li>
+		</ul>
+
+		<h3>Doubly Linked List</h3>
+		<p>
+			I implemented my symbol table as a doubly linked list:
+		</p>
+		<pre>
+		typedef struct symbol symbol;
+
+		struct symbol {
+			symbol_type type;
+			string identifier;
+			size_t offset;
+			size_t size;
+
+			symbol* next;
+			symbol* prev;
+		};
+
+		typedef struct {
+			symbol* first;
+			symbol* last;
+		} symbol_list;
+		</pre>
+		<p>
+			This makes it easy to “rollback” to a previous scope by restoring the first and last pointers.
+		</p>
+		<p>
+			Here’s an example of symbol table usage during scope compilation:
+		</p>
+		<pre>
+		void compile_scope(scope sc, symbol_list* symbols) {
+			symbol_list saved = *symbols;
+			size_t offset = 0;
+
+			for (int i = 0; i < sc.statements.len; i++) {
+				statement stm = sc.statements.ptr[i];
+				switch (stm.type) {
+				case statement_type_scope:
+					compile_scope(stm.as.scope, symbols);
+					break;
+
+				case statement_type_decl: {
+					size_t size = size_of_type(stm.as.declaration.type);
+					symbol_add(symbols, symbol_type_local,
+						stm.as.declaration.identifier, offset, size);
+					offset += size;
+				} break;
+
+				case statement_type_assign: {
+					symbol* sym = symbol_lookup(symbols, stm.as.assignment.identifier);
+					if (!sym) continue;
+
+					instruction ins = {0};
+					ins.type = INS_ASSIGN;
+					ins.as.assign.value = compile_expression(stm.as.assignment.value, symbols);
+
+					array_append(&instructions, ins);
+				} break;
+				}
+			}
+
+			*symbols = saved;
+		}
+		</pre>
+		<p>
+			<code>symbol_lookup</code> walks backward through the list to find the most recent symbol definition.
+		</p>
+
+		<h3>Epiloge</h3>
+		<p>
+			This is just the beginning — I still have a long way to go,
+			especially in the code generation and assembly stages.
+			I’ll definitely cover that in part 2.
+		</p>
+	</article>
+	</main>
+	<footer>
+		reach out to me <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@outlook.com</a>
+	</footer>
+</body>
+</html>
