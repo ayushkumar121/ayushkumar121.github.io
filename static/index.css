@@ -54,6 +54,11 @@ footer {
 
 pre {
     margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    color: #FFBF00;
+    background: #272727;    
+    overflow: scroll;
 }
 
 .not-found {

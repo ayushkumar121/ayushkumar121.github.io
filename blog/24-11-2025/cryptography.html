@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cryptography</title>
+	<link rel="stylesheet" href="../../static/index.css" />
+</head>
+<body>
+	<header>
+		<nav>
+    		<a href="/">home</a>
+    		<a href="/blog">blog</a>
+    		<a href="https://github.com/ayushkumar121">github</a>
+    		<a href="https://www.linkedin.com/in/ayush-kumar-b244b8131/">linkedin</a>
+		</nav>
+	</header>
+	<main>
+		<article>
+			<h1>Learning Cryptography</h1>
+			<p>
+				While explaining my friend how cryptocurrencies work
+				i realized i never tried to understand how these
+				cryptographic algorithm actually work and thus
+				learning cryptography became my weekend project.
+			</p>
+
+			<br/>
+
+			<p>
+				It's one of those fields of computer science where you are 
+				constantly discouraged, if you write your own function
+				boogeyman will come and steal your data booooo......<br/>
+
+				Jokes aside in my current day job (working on Java backend)
+				we work on such high level that we rarely get to learn 
+				the nitty-gritty details of cryptography.
+			</p>
+
+			<h2>What exactly is cryptography</h2>
+			<p>
+				Its the art of hiding information from unintended recipients. Please refer to the info-graphic.
+			</p>
+			
+			<br />		
+
+			<img src="https://imgs.xkcd.com/comics/security.png" alt="xkcd comic on cryptograaphy" />
+
+			<h2>Cryptopals</h2>
+			<p>
+				Cryptopals is a set of cryptographic puzzles that teach you basic concepts and standard algorithms,
+				you can choose complete challenges in any language
+				(i chose C obviously).
+				They are designed to teach of fundamentals of cryptography and 
+				cryptographic attempts and quite fun to do.
+
+				<a href="https://cryptopals.com/">https://cryptopals.com/</a>
+			</p>
+
+			<h2>Set1</h2>
+			<p>
+				Cryptopals is divided into sets, with each set you have 6-7 
+				challenges design to teach you a specific aspect of cryptography.
+				Set 1 is teach us basics basics.
+			</p>
+			
+			<h2 id="challenge1">Challenge 1: Given a hex string convert it to base 64</h2>
+			<p>
+				That's it, the original challenge gave no directions on what Base64
+				is or why it is used. you just gotta figure that shit for yourself.
+			</p>
+
+			<h3>What is base 64 and why it is used?</h3>
+			<p>
+				Base64 is a binary encoding it encodes binary data to 64 printable ASCII characters. It is used to print, inspect or send binary data. It is more efficient than hex strings because for 
+				each byte hex strings need 2 bytes to present, where as base64 needs 4 bytes for every 3 bytes.
+
+				In cryptography we often work with buffers which cannot be 
+				printed directly because they contain non printable ascii chracters therefore to properly debug you code or save your data
+				into file you need to use base64 (or hex).
+			</p>
+
+			<br/>
+
+			<table border>
+				<caption>Byte usage of different formats</caption>
+				<tr>
+					<th>Type</th>
+					<th>Data</th>
+					<th>Size</th>
+				</tr>
+				<tr>
+					<th>Raw</th>
+					<td>Supercalifragilisticexpialidocious</td>
+					<td>34</td>
+				</tr>
+				<tr>
+					<th>Hex</th>
+					<td>537570657263616c6966726167696c697374696365787069616c69646f63696f7573</td>
+					<td>68</td>
+				</tr>
+				<tr>
+				<th>Base64</th>
+					<td>U3VwZXJjYWxpZnJhZ2lsaXN0aWNleHBpYWxpZG9jaW91cw==</td>
+					<td>48</td>
+				</tr>
+			</table>
+
+			<h3>How does base64 works?</h3>
+			<p>
+				In essence if imagine your input data as a bit string (101100....) instead of taking 8 bits at a time for 8 bit bytes
+				you take 6 bits and map them to a <a href="https://datatracker.ietf.org/doc/html/rfc4648#section-4">table</a>. 
+			</p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>
+string encode_to_base64(buffer buf) {
+    static const char base64table[64] = {
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+        '0','1','2','3','4','5','6','7','8','9','+','/'
+    };
+
+    string_builder out = {0};
+
+    int i = 0;
+    while (i < buf.len) {
+        uint32_t v = 0;
+        int bytes = 0;
+
+        for (int k = 0; k < 3; k++) {
+            v = v << 8;
+            if (i < buf.len) {
+                v |= buf.ptr[i++];
+                bytes++;
+            }
+        }
+
+        for (int k = 0; k < 4; k++) {
+            if (k < bytes + 1) {
+                uint8_t index = (v >> (18 - 6*k)) & 0x3F;
+                array_append(&out, base64table[index]);
+            } else {
+                array_append(&out, '=');
+            }
+        }
+    }
+
+    return (string){ out.len, out.ptr };
+}
+				</pre>
+			</details>
+			<br/>
+			<p>
+				Idea for this algorithm is to collect upto 3 bytes from input 
+				into a <i>uint32_t</i> then once collected 4 extract 6 bit bytes
+				from it. incase you have less than 3 bytes you add padding 
+			</p>
+
+			<h2 id="challenge2">Challenge 2: Implement fixed XOR</h2>
+			<p>
+				Given two equal length buffers you need to XOR them together. 
+			</p>
+
+			<h3>Ehhhh why????</h3>
+			<p>
+				XOR operation has properties rudimentary encryption/decryption
+				if you a buffer a XOR'd against another it becomes unintelligible.
+				You can only recover it if you have the original key it was XOR'd 
+				against.
+			</p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>
+void block_xor(uint8_t* b1, const uint8_t* b2, int n) {
+    for (int i = 0; i < n; i++) {
+        b1[i] ^= b2[i];
+    }
+}
+				</pre>
+			</details>
+
+			<p>Code for doing this is not terribly exciting but it implements a fundamental algorithm for cryptography.</p>
+
+			<h2 id="challenge3">Challenge 3: Decrypting Single-byte XOR cipher</h2>
+
+			<p>Given an encrypted hex string using a single-byte XOR cipher, we need to decrypt it.</p>
+
+			<p>
+				Hint given was to develop a scoring system, idea is that we 
+				try different possible combinations of keys (randomly or sequentially) and for each key we try to decrypt the buffer
+				(XOR it) and see if it sorta resembles any English text
+				using our scoring system. 
+			</p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show Code</summary>
+				<pre>
+#include "../common.c"
+#include &lt;ctype.h&gt;
+
+int score_eng(buffer buf) {
+    int score = 0;
+    for (int i=0; i&lt;buf.len; i++) {
+        if (isalnum(buf.ptr[i])) score++;
+        else if (buf.ptr[i] == ' ') score += 5;
+        else score--;
+    }
+    return score;
+}
+
+void single_xor(buffer buf, uint8_t key) {
+    for (int i=0; i&lt;buf.len; i++) {
+        buf.ptr[i] = buf.ptr[i] ^ key;
+    }
+}
+
+int main(void) {
+    string str = sv("1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736");
+    buffer buf = decode_hex_string(str);
+    uint8_t k = 88;
+
+    int best_key = 0;
+    int best_score = 0;
+
+    for (int i=0; i&lt;100; i++) {
+        single_xor(buf, i);
+        int score = score_eng(buf);
+        printf("score(%d) = %d\n", i, score);
+        if (score &gt; best_score) {
+            best_score = score;
+            best_key = i;
+        }
+        single_xor(buf, i);
+    }
+    
+    printf("key = %d\n", best_key);
+    single_xor(buf, best_key);
+    printf(sfmt"\n", sarg(buf));
+}
+				</pre>
+			</details>
+
+			<p>It does feel very exciting to decrypt a text without even knowing the key in the first place.</p>
+
+			<h2 id="challenge4">Challenge 4: Detecting a single xor'd encrypted text</h2>
+			<p>
+				Given a bunch of hex strings we need to find which ones 
+				are encrypted using single XOR.
+			</p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>
+#include "../common.c"
+#include &lt;ctype.h&gt;
+
+int score_eng(buffer buf) {
+    int score = 0;
+    for (int i=0; i&lt;buf.len; i++) {
+        if (isalnum(buf.ptr[i])) score++;
+        else if (buf.ptr[i] == ' ') score += 5;
+        else if (buf.ptr[i] == 0) score -= 5;
+        else score--;
+    }
+    return score;
+}
+
+void single_xor(uint8_t* buf, int n, uint8_t key) {
+    for (int i=0; i&lt;n; i++) {
+        buf[i] = buf[i] ^ key;
+    }
+}
+
+typedef struct {
+    uint8_t key;
+    int score; 
+} detect_xor_result;
+
+detect_xor_result detect_single_xor(buffer buf) {
+    uint8_t best_key = 0;
+    int best_score = 0;
+
+    for (uint8_t i=32; i&lt;126; i++) { // printable ascii range
+        single_xor(buf.ptr, buf.len, i);
+        int score = score_eng(buf);
+        if (score &gt; best_score) {
+            best_score = score;
+            best_key = i;
+        }
+        single_xor(buf.ptr, buf.len, i);
+    }
+
+    return (detect_xor_result) {best_key, best_score};
+}
+
+int main(void) {
+    string input = file_read_to_string("4.txt");
+    string_pair pair = string_split(input, '\n');
+
+    int best_score = 0;
+    int best_key = 0;
+    uint8_t best_buffer[30];
+
+    while(pair.first.len != 0) {
+        buffer buf = decode_hex_string(pair.first);
+        detect_xor_result result = detect_single_xor(buf);
+        if (result.score &gt; best_score) {
+            best_score = result.score;
+            best_key = result.key;
+            memcpy(best_buffer, buf.ptr, buf.len);
+        }
+        free(buf.ptr);
+        pair = string_split(pair.second, '\n');
+    }
+
+    single_xor(best_buffer, 30, best_key);
+
+    printf("Message: %.*s\n", 30, best_buffer);
+    free(input.ptr);
+}
+				</pre>
+			</details>
+
+			<p>Ideally for this solution is very similar to previous one, for each buffer try multiple keys, see if XOR'd buffer looks like English 
+			and now you have your answer.</p>
+
+			<h2 id="challenge5">Challenge 5: Implement repeating-key XOR cipher</h2>
+			<p>
+				In this challenge you are giving input and a key, you need to implement a repeating XOR Cipher
+			</p>
+
+			<h3>Repeating-Key XOR Cipher</h3> 
+			<p> In this cipher, you encrypt the plaintext by XOR-ing each byte with a corresponding byte from the key. The key is repeated as many times as necessary to match the length of the plaintext. If the remaining plaintext is shorter than the key (i.e., <i>n &lt; sizeof(key)</i>), only the first <i>n</i> bytes of the key are used for the final XOR operation. </p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>	
+void repeated_xor(const uint8_t* buf, int bufsize, const uint8_t* key, int keysize) {
+	uint8_t k = 0;
+	for (int i=0; i &lt; bufsize; i++) {
+		buf[i] = buf[i] ^ key[k];
+		k = (k+1)%keysize;
+	}
+}
+				</pre>
+			</details>
+
+			<p>
+				Despite the complicated description the code for it is rather simple.
+			</p>
+	
+			<h2 id="challenge6">Challenge 6: Break repeating-key XOR</h2>
+			<p>
+				This was by far their toughest challenges not because it is
+				conceptually tough but rather it had a lot of moving parts
+				so i had to do a lot of fiddling to make it work.
+			</p>
+
+			<p>The challenge is you are a long encrypted text using repeating-key XOR you need to decrypt it (without knowing the key !!!!)</p>
+
+			<h3>Finding the key</h3>
+
+			<p>
+				Before you find the key you need to find the key size, to find that we use the idea that two blocks XOR'd using same key
+				will be similar.
+			</p>
+
+			<p>
+				To calculate the similarity we use <a href="https://en.wikipedia.org/wiki/Hamming_distance">The Humming distance algorithm</a>, essentially how many bits are different between two buffers. Here is the code for that.
+			</p>
+
+			<br/>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>
+int ham_dist(uint8_t* b1, uint8_t* b2, int n) {
+	int result = 0;
+	for (int i=0; i &lt; n; i++) {
+		uint8_t n = b1[i] ^ b2[i];
+		while (n&gt;0) {
+			if ((n&1) == 1) {
+				result += 1;
+			}
+			n >>= 1;
+		}
+	}
+	return result;
+}
+				</pre>
+			</details>
+
+			<br/>
+
+			<p>
+				To reduce noise, instead of comparing two blocks you compare multiple and take average to reduce noise.
+				Here is code finding key.
+			</p>
+
+			<br/>
+
+			<details>
+				<summary>Show code</summary>
+				<pre>
+int find_keysize(buffer buf) {
+    int best = 0;
+    float best_score = 1e9;
+
+    for (int keysize = 2; keysize &lt;= 40; keysize++) { // Guessed key size
+
+        if (buf.len &lt; keysize * 4)
+            continue;
+
+        uint8_t* b1 = buf.ptr;
+        uint8_t* b2 = b1 + keysize;
+        uint8_t* b3 = b2 + keysize;
+        uint8_t* b4 = b3 + keysize;
+
+        float s12 = ham_dist(b1, b2, keysize);
+        float s13 = ham_dist(b1, b3, keysize);
+        float s14 = ham_dist(b1, b4, keysize);
+        float s23 = ham_dist(b2, b3, keysize);
+        float s24 = ham_dist(b2, b4, keysize);
+        float s34 = ham_dist(b3, b4, keysize);
+
+        float avg = (s12 + s13 + s14 + s23 + s24 + s34) / 6.0f;
+        float norm = avg / keysize;
+
+        if (norm &lt; best_score) {
+            best_score = norm;
+            best = keysize;
+        }
+    }
+
+    return best;
+}
+				</pre>
+			</details>
+
+			<p>Here if the blocks have least different then that is the best score</p>
+
+			<br/>
+
+			<h3>Putting it all together</h3>
+
+			<p>
+				After obtaining the keysize, we collect all the bytes XOR'd 
+				by key[0] to buffer0 and key[1] to buffer1 and so on.
+				<br/>
+				If you imagine key and buffer as a matrix this operation
+				is essentially transposing.
+
+				<br/>
+
+				After transposing you n buffers (n=keysize) and each buffer
+				is XOR's by single byte and problem becomes breaking single
+				byte XOR which we have solved earlier (<a href="#challenge3">Challenge 3</a>).
+			</p>
+
+			<h3>Solution</h3>
+
+			<details>
+				<summary>Show Code</summary>
+				<pre>
+int main(void) {
+	string input = file_read_to_string("6.txt");
+	buffer buf = decode_base64(input);
+
+	int keysize = find_keysize(buf);
+
+	// Transposing: collecting all the bytes which were
+	// xorred by same key index
+	buffer* blocks = calloc(keysize, sizeof(buffer));
+	for (int i = 0; i &lt; buf.len; i++) {
+    	int block_index = i % keysize;
+    	array_append(&blocks[block_index], buf.ptr[i]);
+	}
+
+	char* key = malloc(keysize);
+	for (int i=0; i&lt;keysize; i++) {
+		buffer block = blocks[i];
+
+		int best_score = 0;
+		int best_key = 0;
+		for (int k=32; k &lt; 126; k++) { // printable ascii text
+			single_xor(block.ptr, block.len, k);
+			int score = score_eng(block.ptr, block.len);
+			if (score > best_score) {
+				best_score = score;
+				best_key = k;
+			}
+			single_xor(block.ptr, block.len, k);
+		}
+
+		key[i] = best_key;
+	}
+
+	printf("key=%.*s\n", keysize, key);
+
+	// Repeated XOR
+	uint8_t k = 0;
+	for (int i=0; i&lt;buf.len; i++) {
+		uint8_t c = buf.ptr[i] ^ key[k];
+		k = (k+1)%keysize;
+		putchar(c);
+	}
+	putchar('\n');
+}
+				</pre>
+			</details>
+
+			<h2>Epilogue</h2>
+			<p>
+				It was actually quite fun working on solving crypto challenges,
+				looking forward to doing the next set.
+			</p>
+
+		</article>
+		<footer>
+			reach out to me <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@outlook.com</a>
+		</footer>
+	</main>
+</body>
+</html>
