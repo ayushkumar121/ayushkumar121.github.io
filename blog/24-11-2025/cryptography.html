@@ -249,6 +249,8 @@ int main(void) {
 				</pre>
 			</details>
 
+			<br/>
+
 			<p>It does feel very exciting to decrypt a text without even knowing the key in the first place.</p>
 
 			<h2 id="challenge4">Challenge 4: Detecting a single xor'd encrypted text</h2>
@@ -332,6 +334,8 @@ int main(void) {
 				</pre>
 			</details>
 
+			<br/>
+
 			<p>Ideally for this solution is very similar to previous one, for each buffer try multiple keys, see if XOR'd buffer looks like English 
 			and now you have your answer.</p>
 
@@ -357,6 +361,8 @@ void repeated_xor(const uint8_t* buf, int bufsize, const uint8_t* key, int keysi
 }
 				</pre>
 			</details>
+
+			<br/>
 
 			<p>
 				Despite the complicated description the code for it is rather simple.
@@ -449,6 +455,8 @@ int find_keysize(buffer buf) {
 }
 				</pre>
 			</details>
+
+			<br/>
 
 			<p>Here if the blocks have least different then that is the best score</p>
 
