@@ -17,80 +17,102 @@
 	</header>
 	<main>
 		<article>
-			<h1>Compiler - Part 2</h1>
-			<p>
-				From past couple of weeks i have been aggressively working on my
-				compile, rewriting most of the compilation logic.
-			</p>
-			<h2> Correctness </h2>
-			<p>
-				The biggest issue i was struggling with was understanding which parts
-				of my compiler needs work is it the intermediate language ? or the assembly
-				generation, often it gets confusing how to approach this task.
-			</p>
+		  <h1>Compiler – Part 2</h1>
 
-			<h3>Why do we need an intermediate language/representation at all ?</h3>
-			<p>
-				Very valid question you might ask yourself, why do i want to convert 
-				my language to this third format before compiling it to real assembly.
+		  <p>
+		    Over the past few weeks, I’ve been working aggressively on my compiler,
+		    rewriting large parts of the compilation pipeline and rethinking several
+		    design decisions.
+		  </p>
 
-				And the answer is that you don't, it is perfectly reasonable to do 
-				create compiler without any intermediate representation at all in fact many
-				early compilers did it that way and many still do it that way and for a simple
-				language such as c it was how it was done.
-			</p>
-			<br/>
-			<p>
-				The benefit you achieve from using intermediate language is when you are trying to
-				compile for multiple targets with your compiler (which i am try to do), 
-				you can do the work common to all the targets and then pass the "half-compiled" 
-				intermediate object for platform specific code
-			</p>
+		  <h2>Correctness</h2>
+		  <p>
+		    One of the biggest challenges I faced was identifying <em>where</em> things
+		    were going wrong. Was the issue in my intermediate representation, or was it
+		    in the assembly generation stage?
+		  </p>
 
-			<img src="./compiler-steps.svg" style="width:100%;" />
+		  <p>
+		    When you’re building a compiler, this distinction isn’t always obvious.
+		    Bugs can surface far downstream from where they were introduced, which
+		    makes debugging especially confusing.
+		  </p>
 
-			<h2>Interpreter mode</h2>
-			<p>
-				While designing my compiler i was struggling a lot in identifying issues and sometimes
-				issues had multiple solutions (a dilemma) which can be approached from either fixing
-				my code generation or my compiler.
+		  <h3>Why do we need an intermediate representation?</h3>
+		  <p>
+		    This is a very reasonable question. Why convert a language into a third
+		    format before translating it into real machine code?
+		  </p>
 
-				Eventually i came up with an idea to develop an interpreter validate my compiler
-				before code generation that way i could diagnose issues that were specific to
-				compiler. 
-			</p>
+		  <p>
+		    The short answer is: you don’t have to. It’s perfectly valid to build a
+		    compiler without any intermediate representation at all. Many early
+		    compilers worked this way, and even today some simple languages are
+		    compiled directly to assembly.
+		  </p>
 
-			<p>
-				While working on a interpreter it also became clear to me what what abstraction level
-				i need to keep my intermediate language be.
-			</p>
+		  <p>
+		    However, the real benefit of an intermediate representation becomes clear
+		    when targeting multiple architectures. Since my goal is to support more
+		    than one platform, an IR lets me share the majority of the compilation
+		    logic and defer only the platform-specific work to the final stage.
+		  </p>
 
-			<p>I took inspiration from existing arm64 cpu architecture to model my interpreter 
-				(took shortcuts where they seemed necessary). that way i could validate my 
-				assumptions about the code i was generating.
-			</p>
+		  <h2>Interpreter Mode</h2>
+		  <p>
+		    While debugging my compiler, I often ran into situations where multiple
+		    fixes seemed possible. Should I change how the IR behaves, or should I fix
+		    the code generator?
+		  </p>
 
-			<h2>Code generation</h2>
-			<p>
-				for compilers the hardest part code generation is translating concepts of higher
-				abstraction to a lower abstraction. For example 
-			</p>
+		  <p>
+		    To break this dilemma, I decided to write an interpreter for my
+		    intermediate language. This allowed me to validate the compiler logic
+		    <em>before</em> generating any assembly code.
+		  </p>
 
-			<pre>
-// C 
-x = 4;
+		  <p>
+		    Working on the interpreter also helped me better understand the level of
+		    abstraction my IR should operate at.
+		  </p>
 
-// arm64 asm
-str #4, [x29, #-16] 
-			</pre>
+		  <p>
+		    I loosely modeled the interpreter after the ARM64 architecture, taking
+		    shortcuts where appropriate. This helped validate many of the assumptions
+		    I was making about the code my compiler emits.
+		  </p>
 
-			<p>At hardware level we don't have variables, just a very big buffer its compiler's job 
-			to divide that memory into variables and types.</p>
+		  <h2>Code Generation</h2>
+		  <p>
+		    Code generation is often the hardest part of a compiler. It involves
+		    translating high-level concepts into very low-level operations.
+		  </p>
 
-			<p>I'm not an assembly master in fact i'm pretty bad at it, i did not work on arm64 before
-			working on this project and while online resources are good they are still very dense for me
-			so took lots of help of compiler explorer tool <a href="https://godbolt.org/">godbolt</a> 
-			which help me with assembly generation. </p>
+		  <pre>
+		// C
+		x = 4;
+
+		// ARM64 assembly
+		str #4, [x29, #-16]
+		  </pre>
+
+		  <p>
+		    At the hardware level, there are no variables—only memory. It’s the
+		    compiler’s responsibility to divide that memory into variables and give
+		    them meaning through types and conventions.
+		  </p>
+
+		  <p>
+		    I’m far from an assembly expert. In fact, I had no prior experience with
+		    ARM64 before starting this project. While online documentation is helpful,
+		    it can also be overwhelming.
+		  </p>
+
+		  <p>
+		    One tool that helped me immensely was
+		    <a href="https://godbolt.org/">Compiler Explorer (Godbolt)</a>, which made it
+		    much easier to understand how high-level code maps to assembly.
+		  </p>
 		</article>
 		<footer>
 			reach out to me <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@outlook.com</a>
