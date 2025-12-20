@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Compiler - Part 2</title>
+	<link rel="stylesheet" href="../../static/index.css" />
+</head>
+<body>
+	<header>
+		<nav>
+    		<a href="/">home</a>
+    		<a href="/blog">blog</a>
+    		<a href="https://github.com/ayushkumar121">github</a>
+    		<a href="https://www.linkedin.com/in/ayush-kumar-b244b8131/">linkedin</a>
+		</nav>
+	</header>
+	<main>
+		<article>
+			<h1>Compiler - Part 2</h1>
+			<p>
+				From past couple of weeks i have been aggressively working on my
+				compile, rewriting most of the compilation logic.
+			</p>
+			<h2> Correctness </h2>
+			<p>
+				The biggest issue i was struggling with was understanding which parts
+				of my compiler needs work is it the intermediate language ? or the assembly
+				generation, often it gets confusing how to approach this task.
+			</p>
+
+			<h3>Why do we need an intermediate language/representation at all ?</h3>
+			<p>
+				Very valid question you might ask yourself, why do i want to convert 
+				my language to this third format before compiling it to real assembly.
+
+				And the answer is that you don't, it is perfectly reasonable to do 
+				create compiler without any intermediate representation at all in fact many
+				early compilers did it that way and many still do it that way and for a simple
+				language such as c it was how it was done.
+			</p>
+			<br/>
+			<p>
+				The benefit you achieve from using intermediate language is when you are trying to
+				compile for multiple targets with your compiler (which i am try to do), 
+				you can do the work common to all the targets and then pass the "half-compiled" 
+				intermediate object for platform specific code
+			</p>
+
+			<img src="./compiler-steps.svg" style="width:100%;" />
+
+			<h2>Interpreter mode</h2>
+			<p>
+				While designing my compiler i was struggling a lot in identifying issues and sometimes
+				issues had multiple solutions (a dilemma) which can be approached from either fixing
+				my code generation or my compiler.
+
+				Eventually i came up with an idea to develop an interpreter validate my compiler
+				before code generation that way i could diagnose issues that were specific to
+				compiler. 
+			</p>
+
+			<p>
+				While working on a interpreter it also became clear to me what what abstraction level
+				i need to keep my intermediate language be.
+			</p>
+
+			<p>I took inspiration from existing arm64 cpu architecture to model my interpreter 
+				(took shortcuts where they seemed necessary). that way i could validate my 
+				assumptions about the code i was generating.
+			</p>
+
+			<h2>Code generation</h2>
+			<p>
+				for compilers the hardest part code generation is translating concepts of higher
+				abstraction to a lower abstraction. For example 
+			</p>
+
+			<pre>
+// C 
+x = 4;
+
+// arm64 asm
+str #4, [x29, #-16] 
+			</pre>
+
+			<p>At hardware level we don't have variables, just a very big buffer its compiler's job 
+			to divide that memory into variables and types.</p>
+
+			<p>I'm not an assembly master in fact i'm pretty bad at it, i did not work on arm64 before
+			working on this project and while online resources are good they are still very dense for me
+			so took lots of help of compiler explorer tool <a href="https://godbolt.org/">godbolt</a> 
+			which help me with assembly generation. </p>
+		</article>
+		<footer>
+			reach out to me <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@outlook.com</a>
+		</footer>
+	</main>
+</body>
+</html>
