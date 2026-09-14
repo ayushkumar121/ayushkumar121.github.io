@@ -56,6 +56,10 @@ h4 {
     margin: 20px 0;
 }
 
+p {
+    font-size: medium;
+}
+
 article {
     padding: 10px;
     margin: 10px 0;
@@ -69,6 +73,10 @@ img {
     max-width: 100%;
 }
 
+video {
+    max-width: 100%;
+}
+
 table tr {
     overflow-wrap: anywhere;
 }
@@ -76,10 +84,20 @@ table tr {
 pre {
     margin-top: 20px;
     margin-bottom: 20px;
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 20px;
     color: #FFBF00;
     background: #272727;    
     overflow: scroll;
+}
+
+ol,ul {
+    padding-left: 50px;
+}
+
+code {
+    color: #FFBF00;
+    background: #272727;    
 }
 
 .not-found {

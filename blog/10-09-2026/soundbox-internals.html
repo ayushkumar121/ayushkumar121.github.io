@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Soundbox - Internals</title>
+	<link rel="stylesheet" href="../../static/index.css" />
+</head>
+<body>
+	<header>
+		<nav>
+    		<a href="/">home</a>
+    		<a href="/blog">blog</a>
+    		<a href="https://github.com/ayushkumar121">github</a>
+    		<a href="https://www.linkedin.com/in/ayush-kumar-b244b8131/">linkedin</a>
+		</nav>
+	</header>
+	<main>
+		<article>
+		  <h1>Soundbox - Internals</h1>
+		  <h3>Complete guide for understanding payment devices from hardware to software</h3>
+		  <p>
+		  	Descend with me into a deep rabbit hole - one that had me emailing sketchy Chinese hardware suppliers, learning Soviet-era telephone compression, and losing countless hours of sleep and money.
+		  </p>
+		  <br/>
+
+		  <img src="./soundbox1.png" alt="Paytm's soundbox" />
+		  
+		  <h2>It Speaks !</h2>
+		  <p>
+			We have all heard and seen sound-boxes, they are ubiquitous at this point. I've seen them in countless
+			stores and even with street vendors selling vegetables.
+
+			They an incredibility clever and simple piece of machinery allowing merchants to have a clear audio 
+			confirmation about the payment.
+		   </p>
+
+			<br/>
+
+			<p>
+			At the heart of this system are voices, whenever you make a soundboxes receive this a message with amount from internet and an announcement is made such as - 
+			</p>
+
+			<pre>
+521 Rupees received
+			</pre>
+
+			<p>
+			When the amount is received it is broken up into individual clips and played in sequence for example
+			</p>
+
+			<h4>Message received</h4>
+			<pre>
+transaction_id = 123456
+amount = 512
+language = "english"
+			</pre>
+
+			<h4>Machine plays in order following clips</h4>
+			<pre>
+play: 5.mp3
+play: hundred.mp3
+play: 12.mp3
+play: Rupees_Received.mp3
+			</pre>
+
+			<p>
+				Depending upon the language the amount is broken up into speak-able chunks and played in order.
+				Here is a simple algorithm for the same.
+			</p>
+
+			<br />
+			<details>
+			<summary>Show Code</summary>
+			<pre>
+// looks up clip via name and play it till completion
+extern void play_clip(const char* clip_name);
+
+// speaks a number <= 20
+void speak_num(int n) {
+	char name[8];
+	snprintf(name, sizeof(name), "%d.mp3", n);
+	play_clip(vp, sink, name);
+}
+
+// speaks a number <= 99
+void speak_2num(int n) {
+	if (n <= 20) {
+		speak_num(n);
+	} else {
+		speak_num((n / 10) * 10);
+		if (n % 10) speak_num(n % 10);
+	}
+}
+
+void speak(int number) {
+	if (number == 0) {
+		play_clip("0.mp3");
+	} else {
+		int crores    = number / 10000000;
+		int lakhs     = (number / 100000) % 100;
+		int thousands = (number / 1000) % 100;
+		int rest      = number % 1000;
+
+		if (crores) {
+			speak_2num(crores);
+			play_clip("crores.mp3");
+		}
+
+		if (lakhs) {
+			speak_2num(lakhs);
+			play_clip("lakhs.mp3");
+		}
+
+		if (thousands) {
+			speak_2num(thousands);
+			play_clip("thousand.mp3");
+		}
+
+		if (rest) {
+			if (rest / 100) {
+				speak_2num(rest / 100);
+				play_clip("hundred.mp3");
+			}
+			if (rest % 100) speak_2num(rest % 100);
+		}
+	}
+	play_clip("rupees_received.mp3");
+}
+			</pre>
+			</details>
+
+			<br/>
+
+			<p>
+				Next piece of the puzzle is actual looking up of clips. Since these devices are memory and storage
+				constraint having an actual file system or a general purpose database will consume too much space.
+				
+				Instead, they pack all clips into a single file called a "Voice Pack" which is stored in flash memory and <a href="https://en.wikipedia.org/wiki/Memory-mapped_file">memory mapped</a> for efficient reading.
+			</p>
+
+			<h3>Structure of voice pack</h3>
+			<pre>
+[ header: magic, version, clip_count ]
+[ index: array of { name[16], offset, length, frame_count, sample_rate } ]
+[ blob:  clip0 bytes | clip1 bytes | clip2 bytes | ... ]
+			</pre>
+
+			<p>
+				The primary idea behind voice packs is that we store a big list of clip names with offsets to the actual clip data. When finding a desired clip, we can quickly jump to its offset and play it.
+			</p>
+			<br/>
+			<p>
+				Raw PCM bytes are stored so we don't have to unpack the clip - which could introduce a delay in announcements.
+			</p>
+			<p>
+				Another benefit of voice packs are that they can be independently updated and swapped for a different voice or language. 
+			</p>
+
+			<p>I'm not going into details of voice pack generation and loading because it's rather straight forward binary file format.</p>
+
+		  <br/>
+		  <hr/>
+		  
+		  <h2>Less is More</h2>
+		  <p>
+		  	After generating the voice pack and a some simple code to test everything, it worked great,
+		  	the voices were crisp, it felt like real soundbox announcement system.
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	Except, of course the size it was around 1 MB which would be too much if you ever plan to store multiple language for your soundbox. It was clear to me i needed to compress it somehow and decode it
+		  	in real time before playing.
+		  </p>
+
+		  <p>
+		  	Soundboxes are small low power computing devices with weak CPUs and very low memory, this limits 
+		  	my choice for compression algorithm considerably. 
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	Fortunately for me early telecom operators faced similar problems and then they invented Adaptive Differential Pulse-Code Modulation or <a href="https://en.wikipedia.org/wiki/Adaptive_differential_pulse-code_modulation" target="_blank">ADPCM</a>.
+		  </p>
+
+		  <h3>ADPCM</h3>
+		  <p>
+		  	The reason for choosing ADPCM as oppose to a general purpose compression algorithm is that we can leverage domain knowledge for compression, for audio we don't need all the information for a sample
+		  	of audio to be understandable.
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	<b>The differential part:</b> imagine a voice clip or sample to be series of number which represent a
+		  	an aptitude wave. You can logically imagine that for any human speech values might not be that different in magnitude. Storing only differences can save up a lot of space
+		  </p>
+
+		  <pre>
+Original: 1000, 1010, 1020, 1015, 1030
+We store: 1000, +10, +10, -5, +15 
+		  </pre>
+
+		  <br/>
+
+		  <p>
+		  	<b>The adaptive part:</b> it refers to adaptive quantisation, a rapidly changing speech we would
+		  	need to encode larger values and for small changes we would need encode smaller values. Essentially 
+		  	we would need a to vary "step_size" which refers to a quantisation size ie. what the values stored
+		  	represent or how do we scale them.
+		  </p>
+
+		  <br/>
+
+		  <pre>
+Original : [1000, 1010, 1020, 1015, 1030]
+Codes    : [1, 2, -1, 6]
+Decoded  : [1000, 1010, 1020.0, 1015.0, 1030.0]
+		  </pre>
+		  
+		  <br />
+		  <details>
+		  	<summary>
+		  		Show code
+		  	</summary>
+		  	<pre>
+samples = [1000, 1010, 1020, 1015, 1030]
+
+
+def clamp(n, a, b):
+    return max(a, min(n, b))
+
+
+def encode(input_samples):
+    predictor = input_samples[0]
+    step_size = 10
+
+    output_codes = []
+
+    for sample in input_samples[1:]:
+        diff = sample - predictor
+
+        code = round(diff / step_size)
+        code = clamp(code, -8, +7)
+
+        quantized_difference = code * step_size
+
+        predictor += quantized_difference
+        output_codes.append(code)
+
+        if abs(code) >= 6:
+            step_size *= 2
+        elif abs(code) <= 1:
+            step_size /= 2
+
+    return input_samples[0], step_size, output_codes
+
+
+def decode(initial_predictor, initial_step_size, input_codes):
+    predictor = initial_predictor
+    step_size = initial_step_size
+
+    output_samples = [predictor]
+
+    for code in input_codes:
+        predictor += code * step_size
+        output_samples.append(predictor)
+
+        if abs(code) >= 6:
+            step_size *= 2
+        elif abs(code) <= 1:
+            step_size /= 2
+
+    return output_samples
+
+
+initial_predictor = samples[0]
+initial_step_size = 10
+
+codes = encode(samples)[2]
+
+print("Original :", samples)
+print("Codes    :", codes)
+print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
+		  	</pre>
+
+		  </details>
+
+		  <br/>
+		  <hr/>
+
+		  <h2>Firmware</h2>
+		  <p>
+		  	Here comes the actual hardware programming, i started with ESP32 primarily because it's documentation is widely available and it is designed for hobbyist to tinker with.
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	ESP32 is programmed with <a href="https://docs.espressif.com/projects/esp-idf/en/stable/esp32/get-started/index.html" target="_blank" alt="">Espressif IoT Development Framework or IDF</a> (not to be confused with Israeli Defense Forces)
+		  	which comes with a c/c++ cross compiler bunch of libraries to be used with ESP32 such FreeRTOS, 
+		  	which we will be using as a base for my soundbox firmware. 
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	I started with porting my ADPCM and voicepack decoding code into the firm ware and wired up an
+		  	MAX98357A Amplifier with a small speaker. 
+		  </p>
+
+		  <br/>
+
+		  <p>MAX98357A is a two is one device firstly it is a DAC (digital to analog convertor) which receives our
+		  digital audio sample values and converts them into a continuous wave form and then it amplifies it using external power source to drive a speaker.</p>
+
+		  <br/>
+
+		  <p>It has an I²S peripheral to communicate with the host MCU in our case ESP32, which is designed to
+		  send and receive a stream of digital values such as audio samples.</p>
+
+		  <h3>Demo</h3>
+
+		  <video src="soundbox_prototype_1.mp4" alt="Soundbox protoype video using esp32" controls></video>
+
+ 		  <p>I have not include any code for firmware because it is mostly just boilerplate setup for what we have already discussed.</p>
+ 		  <hr/>
+
+		  <h2>Connecting it to internet - MQTT</h2>
+		  <p>
+		  	Most important component of any soundbox specially from the perspective of payment processors
+		  	is it's ability to connect to internet which enables it to actually receive real time payment 
+		  	notifications.
+		  </p>
+
+		  <br/>
+
+		  <p>Soundboxes use MQTT protocol for this purpose, it is a purpose build protocol for communication
+		  between IOT devices and servers.</p>
+
+		  <br/>
+
+		  <p>It uses 3 main components for its operations</p>
+		  <ol>
+		  	<li>Subscribers (IOT devices)</li>
+		  	<li>Publishers (Payment service)</li>
+		  	<li>MQTT broker</li>
+		  </ol>
+
+		  <br/>
+
+		  <p>MQTT broker acts as a message broker between the subscribers and publishers which allows this
+		  system to scale to millions of devices.</p>
+
+		  <h3>Topics</h3>
+
+		  <p>Similar to other message brokers, subscribers and publishers send and receive messages on dedicated
+		  channels called topics. These topics are hierarchical like a file path which allows subscribes and publishers to receive and send message to any level in the tree</p>
+
+		  <br/>
+		  <p>Consider following topics</p>
+
+		  <pre>
+/soundbox/< device-id >/status
+/soundbox/< device-id >/play
+/soundbox/< device-id >/telemetry
+		  </pre>
+
+		  <p>
+		  	My soundbox pushes it's online status on <code>/soundbox/< device-id >/status</code> which is received
+		  	by my soundbox-health service, it is subscribed to <code>/soundbox/#</code> here # means a wildcard topics. This allows my health service to listen to all the device's status 
+		  </p>
+
+		  <br/>
+
+		  <p>
+		  	Similarly my device listened to only <code>/soundbox/< device-id >/play</code> topic which is a dedicated topic for receiving payment notification. (see section 1 for how notifications are announced).
+		  </p>
+
+		  <br/>
+		  <hr/>
+
+		  <h2>Battery sensing</h2>
+		  <p>
+		  	For production soundboxes it is quite important to measure it's battery specially for 
+		  	going into deep sleep and preserving battery life when not in sleep
+		  </p>
+
+		  <br/>
+
+		  <p>The ESP32 has a built-in 12-bit ADC, which is what we need to read the scaled-down battery voltage.</p>
+
+		  <br/>
+
+		  <img src="battery_sense_voltage_devider.png" alt="Schematic of voltage devider" />
+
+		  <p>
+		  	The voltage divider circuit shown above allows the ESP32 to measure the battery voltage accurately. 
+		  	Since the ESP32's ADC can only measure up to 3.3V, we use resistors to scale down the actual battery voltage 
+		  	(typically 3.7V to 4.2V for LiPo batteries) to a safe range. The measured voltage is then sampled periodically 
+		  	and used to estimate battery capacity.
+		  </p>
+
+		  <img src="battery_charge.jpeg" alt="Battery charge over time" />
+
+		  <p>
+		  	The graph shows a typical discharge curve of a LiPo battery over time.s
+		  </p>
+
+		  <hr/>
+
+		  <h2>Sleeping...</h2>
+		  <p>
+		  	Once you have battery sensing in place, the next logical step is to put your device into deep sleep when 
+		  	it's not actively listening for payments. The ESP32 has multiple sleep modes - light sleep, modem sleep, and deep sleep - each consuming progressively less power.
+		  </p>
+
+		  <p>
+		  	For soundboxes, deep sleep is perfect because they don't need to maintain WiFi connection constantly. 
+		  	The device wakes up only when it receives an MQTT message or when the user physically activates it. 
+		  	Combined with battery sensing, this can extend battery life from days to weeks.
+		  </p>
+
+		  <hr/>
+
+		  <h2>Making it for Real</h2>
+		  <img src="schematic.png" alt="Schematic of soundbox" />
+
+		  <p>
+		  	After months of breadboard prototyping and debugging on the bench, it was time to commit to actual PCB design. 
+		  	The schematic captures all the key components: the ESP32, the MAX98357A amplifier, the battery charging circuit.
+		  </p>
+
+		  <img src="pcb.png" alt="PCB" />
+
+		  <p>
+		  	The PCB layout was a lengthy and complicated process and quite literally took the most amount
+		  	of time (yet it has the shortest section in this article).
+
+		  	After designing i used JLCPB's PCB assembly service to get my PCB made, the process was quite seamless
+		  	and somewhat affordable (with my salary atleast).
+		  </p>
+
+		  	<br/>
+
+		  <hr/>
+
+		  <h2>It's Real</h2>
+		  <img src="pcb_real.jpeg" alt="PCB manufactured" />
+
+		  <br/>
+
+		  <p>
+		  	The moment the manufactured PCBs arrived from the fab house was surreal. After countless late-night design sessions, holding the actual board in your hands gives another level of satisfaction.
+		  </p>
+
+		  <br/>
+
+		  <hr/>
+
+		  <h2>Cellular networks</h2>
+		  <p>
+		  	I will be covering cellular on its own article, it's not fundamentally different but communicating
+		  	to modem (and even finding a proper cellular modem) is its own challenge.
+		  </p>
+
+		  <br/>
+		  <hr/>
+
+		</article>
+		<footer>
+			reach out to me <a href="mailto:ayushkumar121@outlook.com">ayushkumar121@outlook.com</a>
+		</footer>
+	</main>
+</body>
+</html>
