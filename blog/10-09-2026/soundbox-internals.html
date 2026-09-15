@@ -38,18 +38,18 @@
 			<br/>
 
 			<p>
-			At the heart of this system are voices, whenever you make a soundboxes receive this a message with amount from internet and an announcement is made such as - 
+			At the heart of this system are voices, whenever a soundbox receives a payment notification, it makes an announcement such as - 
 			</p>
 
 			<pre>
-521 Rupees received
+512 Rupees received
 			</pre>
 
 			<p>
-			When the amount is received it is broken up into individual clips and played in sequence for example
+			When the amount is received, it is broken up into individual clips and played in sequence, for example
 			</p>
 
-			<h4>Message received</h4>
+			<h4>Example of kind of message received by a soundbox</h4>
 			<pre>
 transaction_id = 123456
 amount = 512
@@ -196,7 +196,7 @@ void speak(int number) {
 
 		  <p>
 		  	<b>The differential part:</b> imagine a voice clip or sample to be series of number which represent a
-		  	an aptitude wave. You can logically imagine that for any human speech values might not be that different in magnitude. Storing only differences can save up a lot of space
+		  	an amplitude wave. You can logically imagine that for any human speech values might not be that different in magnitude. Storing only differences can save up a lot of space
 		  </p>
 
 		  <pre>
@@ -294,7 +294,7 @@ print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
 
 		  <h2>Firmware</h2>
 		  <p>
-		  	Here comes the actual hardware programming, i started with ESP32 primarily because it's documentation is widely available and it is designed for hobbyist to tinker with.
+		  	Here comes the actual hardware programming, I started with ESP32 primarily because its documentation is widely available and it is designed for hobbyists to tinker with.
 		  </p>
 
 		  <br/>
@@ -332,13 +332,13 @@ print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
 		  <h2>Connecting it to internet - MQTT</h2>
 		  <p>
 		  	Most important component of any soundbox specially from the perspective of payment processors
-		  	is it's ability to connect to internet which enables it to actually receive real time payment 
+		  	is its ability to connect to the internet which enables it to actually receive real time payment 
 		  	notifications.
 		  </p>
 
 		  <br/>
 
-		  <p>Soundboxes use MQTT protocol for this purpose, it is a purpose build protocol for communication
+		  <p>Soundboxes use MQTT protocol for this purpose, it is a purpose-built protocol for communication
 		  between IOT devices and servers.</p>
 
 		  <br/>
@@ -370,7 +370,7 @@ print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
 		  </pre>
 
 		  <p>
-		  	My soundbox pushes it's online status on <code>/soundbox/< device-id >/status</code> which is received
+		  	My soundbox pushes its online status on <code>/soundbox/< device-id >/status</code> which is received
 		  	by my soundbox-health service, it is subscribed to <code>/soundbox/#</code> here # means a wildcard topics. This allows my health service to listen to all the device's status 
 		  </p>
 
@@ -385,7 +385,7 @@ print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
 
 		  <h2>Battery sensing</h2>
 		  <p>
-		  	For production soundboxes it is quite important to measure it's battery specially for 
+		  	For production soundboxes it is quite important to measure its battery specially for 
 		  	going into deep sleep and preserving battery life when not in sleep
 		  </p>
 
@@ -440,7 +440,7 @@ print("Decoded  :", decode(initial_predictor, initial_step_size, codes))
 		  	The PCB layout was a lengthy and complicated process and quite literally took the most amount
 		  	of time (yet it has the shortest section in this article).
 
-		  	After designing i used JLCPB's PCB assembly service to get my PCB made, the process was quite seamless
+		  	After designing i used <a href="https://jlcpcb.com" target="_blank" alt="JLCPCB's website">JLCPCB</a>'s PCB assembly service to get my PCB made, the process was quite seamless
 		  	and somewhat affordable (with my salary atleast).
 		  </p>
 
