@@ -2,102 +2,342 @@
 
 :root {
   color-scheme: light dark;
+
+  --bg: #14110f;
+  --fg: #ddd6cc;
+  --dim: #8a8078;
+  --accent: #ffbf00;
+  --rule: #2e2a26;
+  --code-bg: #1d1a17;
+
+  /* ~72 characters at the body's 15px; a fixed unit so the smaller
+     type in the header and footer still lines up with the prose */
+  --measure: 648px;
+  /* how far media sticks out past the measure on each side:
+     (980 - 648) / 2 */
+  --bleed-out: 166px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f6f3ee;
+    --fg: #241f1a;
+    --dim: #6d6459;
+    --accent: #9a5b00;
+    --rule: #ddd6ca;
+  }
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "JetBrains Mono", monospace;
-}
-
-a {
-    text-decoration: underline dotted;
-    color: saddlebrown;
-    font-weight: bold;
-}
-
-header {
-    margin: 20px 0;
-}
-
-header h1 {
-    text-align: center;
-}
- 
-
-nav a {
-    margin: 0 10px;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
 }
 
 body {
-    width: 100%;
-    max-width: 1200px;
-    margin: 10px auto;
-    background: white;
-    color: black;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 15px;
+    line-height: 1.7;
+    padding: 0 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  body {
-    background: black;
-    color: white;
-  }
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    font-weight: bold;
 }
+
+/* custom elements are inline by default */
+site-header, site-footer {
+    display: block;
+}
+
+/* ---- header: prompt line ---- */
+
+header {
+    border-bottom: 1px solid var(--rule);
+    padding: 20px 0 14px;
+    margin-bottom: 40px;
+}
+
+header > div {
+    max-width: var(--measure);
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    align-items: baseline;
+}
+
+.prompt {
+    color: var(--dim);
+}
+
+.prompt b {
+    color: var(--accent);
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    margin-left: auto;
+}
+
+nav a {
+    color: var(--fg);
+    font-weight: normal;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+}
+
+nav a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+}
+
+/* ---- layout ---- */
 
 main {
-    padding: 10px;
-}
-
-main h1,
-h2,
-h3,
-h4 {
-    margin: 20px 0;
-}
-
-p {
-    font-size: medium;
+    max-width: var(--measure);
+    margin: 0 auto;
 }
 
 article {
-    padding: 10px;
-    margin: 10px 0;
+    margin-bottom: 56px;
 }
 
-footer {
-    text-align: center;
+/* ---- prose ---- */
+
+h1, h2, h3, h4 {
+    line-height: 1.3;
+    letter-spacing: -0.01em;
 }
 
-img {
+h1 {
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+/* the subtitle articles put directly under the title */
+h1 + h3 {
+    font-size: 15px;
+    font-weight: normal;
+    color: var(--dim);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 18px;
+    margin-bottom: 32px;
+}
+
+h2 {
+    font-size: 18px;
+    margin: 44px 0 14px;
+}
+
+article:not(.post) h2::before {
+    content: "## ";
+    color: var(--accent);
+}
+
+h3, h4 {
+    font-size: 16px;
+    margin: 32px 0 12px;
+}
+
+p {
+    margin-bottom: 20px;
+}
+
+/* the <br/> spacers between blocks are redundant now that blocks
+   carry their own margins; ones inside a <p> still break the line */
+article > br {
+    display: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 40px 0;
+}
+
+ol, ul {
+    padding-left: 4ch;
+    margin-bottom: 20px;
+}
+
+b, strong {
+    color: var(--fg);
+}
+
+em, i {
+    color: var(--dim);
+}
+
+/* ---- media: breaks out past the reading measure ---- */
+
+img, video {
+    display: block;
+    /* max-width, never width: small images keep their natural size
+       instead of being upscaled past it */
+    width: auto;
+    height: auto;
     max-width: 100%;
+    max-height: 80vh;
+    /* centres a box of any width, including one wider than the measure */
+    margin: 32px 0 32px 50%;
+    transform: translateX(-50%);
+    border: 1px solid var(--rule);
 }
 
-video {
-    max-width: 100%;
+/* Past this width there is room for genuinely wide media (schematics,
+   board shots) to spill into the margins. The breakpoint leaves slack
+   for a scrollbar; no 100vw here, since vw units include it. */
+@media (min-width: 1040px) {
+    article img,
+    article video {
+        max-width: 980px;
+    }
 }
 
-table tr {
-    overflow-wrap: anywhere;
-}
+/* ---- code ---- */
 
 pre {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    padding-left: 20px;
-    color: #FFBF00;
-    background: #272727;    
-    overflow: scroll;
-}
-
-ol,ul {
-    padding-left: 50px;
+    background: var(--code-bg);
+    color: var(--accent);
+    padding: 18px 20px;
+    margin: 28px 0;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.6;
+    border-left: 2px solid var(--accent);
 }
 
 code {
-    color: #FFBF00;
-    background: #272727;    
+    color: var(--accent);
+    background: var(--code-bg);
+    padding: 1px 4px;
+}
+
+pre code {
+    padding: 0;
+}
+
+details {
+    border-left: 2px solid var(--rule);
+    padding-left: 18px;
+    margin: 28px 0;
+}
+
+summary {
+    cursor: pointer;
+    color: var(--dim);
+}
+
+summary:hover {
+    color: var(--accent);
+}
+
+details pre {
+    margin-top: 16px;
+}
+
+/* ---- tables ---- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    font-size: 13.5px;
+}
+
+th, td {
+    border: 1px solid var(--rule);
+    padding: 8px 10px;
+    text-align: left;
+}
+
+/* long hex/base64 cells wrap; headings shouldn't be broken mid-word */
+td {
+    overflow-wrap: anywhere;
+}
+
+th {
+    color: var(--dim);
+    font-weight: normal;
+}
+
+caption {
+    color: var(--dim);
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+/* ---- blog index ---- */
+
+.section {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dim);
+    font-weight: normal;
+    margin-bottom: 18px;
+}
+
+.post {
+    display: grid;
+    grid-template-columns: 4ch 1fr;
+    gap: 0 12px;
+    padding: 14px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--rule);
+}
+
+.post .num {
+    color: var(--dim);
+}
+
+.post h2 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.post h2 a {
+    color: var(--fg);
+    text-decoration: none;
+}
+
+.post h2 a:hover {
+    color: var(--accent);
+}
+
+.post time {
+    display: block;
+    color: var(--dim);
+    font-size: 13px;
+}
+
+.post p {
+    color: var(--dim);
+    font-size: 14px;
+    margin: 8px 0 0;
+}
+
+/* ---- footer ---- */
+
+footer {
+    border-top: 1px solid var(--rule);
+    margin-top: 72px;
+    padding: 24px 0 48px;
+    color: var(--dim);
+    font-size: 13px;
+}
+
+footer > div {
+    max-width: var(--measure);
+    margin: 0 auto;
 }
 
 .not-found {
